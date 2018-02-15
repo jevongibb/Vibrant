@@ -1,0 +1,115 @@
+#activity-container {
+  padding: 50px 50px;
+}
+
+#activity-wrapper {
+  margin: 0;
+  width: 100%;
+  /* display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap; */
+}
+
+#activity-bubble-wrapper {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+}
+
+#activity-bubble-wrapper .activity-bubble-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#activity-bubble-legend {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+#activity-bubble-scale {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#activity-bubble-scale img {
+  width: 30px;
+}
+
+#activity-bubble-scale p {
+  margin: 0;
+  font-size: 8px;
+  text-align: center;
+  width: 40px;
+}
+
+#activity-bubble-legend div {
+  position: relative
+}
+
+#activity-bubble-legend img {
+  cursor: pointer;
+  width: 20px;
+  padding: 0 10px;
+  max-height: 25px;
+}
+
+#activity-bubble-legend .activity-bubble-legend-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#activity-table-wrapper {
+  margin: 20px 50px;
+}
+
+#activity-table-search {
+  /* height: 30px; */
+  padding: 5px;
+}
+
+#activity-table-search:focus,
+#activity-table-search:hover {
+  outline: none;
+}

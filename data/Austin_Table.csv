@@ -1,0 +1,639 @@
+NAICS,Description,Employees,Relative Size (RS),% Total
+113110,Timber Tract Operations,0,0,0%
+113210,Forest Nurseries and Gathering Forest Products,0,0,0%
+113310,Logging,35,0.056949035,0%
+114111,Finfish Fishing,0,0,0%
+114210,Hunting and Trapping,4,0.183408365,0%
+115111,Cotton Ginning,0,0,0%
+115112,"Soil Preparation, Planting, and Cultivating",5,0.037373458,0%
+115113,"Crop Harvesting, Primarily by Machine",0,0,0%
+115114,Postharvest Crop Activities (except Cotton Ginning),0,0,0%
+115115,Farm Labor Contractors and Crew Leaders,2,0.015252238,0%
+115116,Farm Management Services,8,0.128760444,0%
+115210,Support Activities for Animal Production,83,0.343765688,0%
+115310,Forestry Support Activities,3,0.020198498,0%
+211111,Crude Petroleum and Natural Gas Extraction,1327,1.057671403,0%
+211112,Natural Gas Liquid Extraction,363,2.847073246,0%
+212111,Bituminous Coal and Lignite Surface Mining,318,0.827809171,0%
+212112,Bituminous Coal Underground Mining,3,0.006499974,0%
+212113,Anthracite Mining,2,0.221027512,0%
+212221,Gold Ore Mining,0,0,0%
+212231,Lead Ore and Zinc Ore Mining,3,0.097294611,0%
+212299,All Other Metal Ore Mining,0,0,0%
+212311,Dimension Stone Mining and Quarrying,391,9.768859362,0%
+212312,Crushed and Broken Limestone Mining and Quarrying,542,1.707675586,0%
+212313,Crushed and Broken Granite Mining and Quarrying,0,0,0%
+212319,Other Crushed and Broken Stone Mining and Quarrying,71,0.879128003,0%
+212321,Construction Sand and Gravel Mining,153,0.600421899,0%
+212322,Industrial Sand Mining,0,0,0%
+212324,Kaolin and Ball Clay Mining,0,0,0%
+212325,"Clay, Ceramic, and Refractory Minerals Mining",0,0,0%
+212391,"Potash, Soda, and Borate Mineral Mining",3,0.069515248,0%
+212393,Other Chemical and Fertilizer Mineral Mining,0,0,0%
+212399,All Other Nonmetallic Mineral Mining,5,0.126990957,0%
+213111,Drilling Oil and Gas Wells,482,0.616731187,0%
+213112,Support Activities for Oil and Gas Operations,2391,0.799179834,0%
+213113,Support Activities for Coal Mining,0,0,0%
+213114,Support Activities for Metal Mining,0,0,0%
+213115,Nonmetallic Minerals Support Activity (exc Fuels),13,0.374892594,0%
+221111,Hydroelectric Power Generation,7,0.163822917,0%
+221112,Fossil Fuel Electric Power Generation,150,0.162718856,0%
+221114,Solar Electric Power Generation ,77,4.49328282,0%
+221115,Wind Electric Power Generation ,38,0.980788442,0%
+221116,Geothermal Electric Power Generation ,3,0.210804989,0%
+221118,Other Electric Power Generation ,5,0.143943318,0%
+221121,Electric Bulk Power Transmission and Control,856,5.175650967,0%
+221310,Water Supply and Irrigation Systems,423,0.984819819,0%
+221330,Steam and Air-Conditioning Supply,0,0,0%
+236210,Industrial Building Construction,268,0.255149035,0%
+237120,Oil and Gas Pipeline and Related Structures Construction,983,0.500976234,0%
+237130,Power and Communication Line and Related Structures Construction,1405,0.619771411,0%
+237990,Other Heavy and Civil Engineering Construction,11090,11.36992599,2%
+311111,Dog and Cat Food Manufacturing,15,0.043744551,0%
+311119,Other Animal Food Manufacturing,87,0.237742283,0%
+311211,Flour Milling,7,0.036948605,0%
+311212,Rice Milling,0,0,0%
+311213,Malt Manufacturing,2,0.165499501,0%
+311221,Wet Corn Milling,0,0,0%
+311224,Soybean and Other Oilseed Processing ,0,0,0%
+311225,Fats and Oils Refining and Blending,0,0,0%
+311230,Breakfast Cereal Manufacturing,0,0,0%
+311340,Nonchocolate Confectionery Manufacturing,146,0.578334729,0%
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans ,5,0.054331183,0%
+311352,Confectionery Manufacturing from Purchased Chocolate ,7,0.015689481,0%
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",2,0.004912867,0%
+311412,Frozen Specialty Food Manufacturing,382,0.540580042,0%
+311421,Fruit and Vegetable Canning,224,0.401055866,0%
+311422,Specialty Canning,3,0.020261593,0%
+311423,Dried and Dehydrated Food Manufacturing,0,0,0%
+311511,Fluid Milk Manufacturing,783,1.183482518,0%
+311513,Cheese Manufacturing,2,0.003279672,0%
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",65,0.297246582,0%
+311520,Ice Cream and Frozen Dessert Manufacturing,120,0.477226784,0%
+311611,Animal (except Poultry) Slaughtering,35,0.017350307,0%
+311612,Meat Processed from Carcasses,1430,1.148910492,0%
+311613,Rendering and Meat Byproduct Processing,136,1.14999914,0%
+311615,Poultry Processing,23,0.007833863,0%
+311710,Seafood Product Preparation and Packaging,10,0.026706995,0%
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",626,2.335644662,0%
+311821,Cookie and Cracker Manufacturing,542,1.098539089,0%
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour ",212,0.759367194,0%
+311830,Tortilla Manufacturing,214,0.910852915,0%
+311911,Roasted Nuts and Peanut Butter Manufacturing,74,0.306234182,0%
+311919,Other Snack Food Manufacturing,750,1.613138884,0%
+311920,Coffee and Tea Manufacturing,49,0.206506287,0%
+311930,Flavoring Syrup and Concentrate Manufacturing,10,0.102781565,0%
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",59,0.315632391,0%
+311942,Spice and Extract Manufacturing,454,2.043133163,0%
+311991,Perishable Prepared Food Manufacturing,725,1.185905857,0%
+311999,All Other Miscellaneous Food Manufacturing,27,0.081730826,0%
+312111,Soft Drink Manufacturing,846,1.29789874,0%
+312112,Bottled Water Manufacturing,21,0.155343619,0%
+312113,Ice Manufacturing,122,2.096450679,0%
+312120,Breweries,258,0.455737282,0%
+312130,Wineries,40,0.064961766,0%
+312140,Distilleries,198,1.455728936,0%
+312230,Tobacco Manufacturing ,35,0.200725692,0%
+313110,"Fiber, Yarn, and Thread Mills ",0,0,0%
+313210,Broadwoven Fabric Mills,378,1.604354679,0%
+313220,Narrow Fabric Mills and Schiffli Machine Embroidery,0,0,0%
+313240,Knit Fabric Mills,0,0,0%
+313310,Textile and Fabric Finishing Mills ,10,0.035973548,0%
+313320,Fabric Coating Mills,3,0.03508057,0%
+314110,Carpet and Rug Mills,28,0.073823272,0%
+314120,Curtain and Linen Mills,81,0.276633522,0%
+314910,Textile Bag and Canvas Mills ,28,0.104391205,0%
+314994,"Rope, Cordage, Twine, Tire Cord, and Tire Fabric Mills ",0,0,0%
+314999,All Other Miscellaneous Textile Product Mills,266,0.632426856,0%
+315110,Hosiery and Sock Mills,3,0.023878232,0%
+315190,Other Apparel Knitting Mills ,3,0.090962239,0%
+315210,Cut and Sew Apparel Contractors ,36,0.075103091,0%
+315220,Men’s and Boys’ Cut and Sew Apparel Manufacturing ,151,0.96914457,0%
+315240,"Women’s, Girls’, and Infants’ Cut and Sew Apparel Manufacturing ",23,0.078812008,0%
+315280,Other Cut and Sew Apparel Manufacturing ,13,0.123918827,0%
+315990,Apparel Accessories and Other Apparel Manufacturing ,43,0.447028211,0%
+316110,Leather and Hide Tanning and Finishing,19,0.362634205,0%
+316210,Footwear Manufacturing ,1257,8.525114508,0%
+316992,Women's Handbag and Purse Manufacturing,7,0.381547492,0%
+316998,All Other Leather Good and Allied Product Manufacturing ,96,0.78325221,0%
+321113,Sawmills,29,0.031991966,0%
+321114,Wood Preservation,12,0.089608922,0%
+321211,Hardwood Veneer and Plywood Manufacturing,0,0,0%
+321213,Engineered Wood Member (except Truss) Manufacturing,3,0.058273667,0%
+321214,Truss Manufacturing,371,1.2766675,0%
+321219,Reconstituted Wood Product Manufacturing,0,0,0%
+321911,Wood Window and Door Manufacturing,722,1.153039412,0%
+321912,"Cut Stock, Resawing Lumber, and Planing",68,0.220364939,0%
+321918,Other Millwork (including Flooring),134,0.368002457,0%
+321920,Wood Container and Pallet Manufacturing,252,0.392231526,0%
+321991,Manufactured Home (Mobile Home) Manufacturing,181,0.666824591,0%
+321992,Prefabricated Wood Building Manufacturing,50,0.31177252,0%
+321999,All Other Miscellaneous Wood Product Manufacturing,79,0.225261655,0%
+322121,Paper (except Newsprint) Mills,0,0,0%
+322130,Paperboard Mills,0,0,0%
+322211,Corrugated and Solid Fiber Box Manufacturing,503,0.497699646,0%
+322212,Folding Paperboard Box Manufacturing,3,0.006075509,0%
+322219,Other Paperboard Container Manufacturing ,7,0.025106507,0%
+322220,Paper Bag and Coated and Treated Paper Manufacturing,75,0.12512167,0%
+322230,Stationery Product Manufacturing,51,0.219813013,0%
+322291,Sanitary Paper Product Manufacturing,7,0.031891829,0%
+322299,All Other Converted Paper Product Manufacturing,47,0.257697757,0%
+323111,Commercial Gravure Printing,2272,0.56129021,0%
+323113,Commercial Screen Printing,512,0.68962928,0%
+323117,Books Printing,57,0.215676633,0%
+323120,Support Activities for Printing,93,0.29103528,0%
+324110,Petroleum Refineries,169,0.212423303,0%
+324121,Asphalt Paving Mixture and Block Manufacturing,57,0.308435716,0%
+324122,Asphalt Shingle and Coating Materials Manufacturing,0,0,0%
+324191,Petroleum Lubricating Oil and Grease Manufacturing,0,0,0%
+324199,All Other Petroleum and Coal Products Manufacturing,0,0,0%
+325110,Petrochemical Manufacturing,0,0,0%
+325120,Industrial Gas Manufacturing,67,0.401419193,0%
+325180,Other Basic Inorganic Chemical Manufacturing ,154,0.331112942,0%
+325199,All Other Basic Organic Chemical Manufacturing,190,0.221909209,0%
+325211,Plastics Material and Resin Manufacturing,98,0.115068867,0%
+325212,Synthetic Rubber Manufacturing,0,0,0%
+325220,Artificial and Synthetic Fibers and Filaments Manufacturing,0,0,0%
+325311,Nitrogenous Fertilizer Manufacturing,44,0.578538564,0%
+325312,Phosphatic Fertilizer Manufacturing,0,0,0%
+325314,Fertilizer (Mixing Only) Manufacturing,0,0,0%
+325320,Pesticide and Other Agricultural Chemical Manufacturing,0,0,0%
+325411,Medicinal and Botanical Manufacturing,1488,4.167091654,0%
+325412,Pharmaceutical Preparation Manufacturing,974,0.546761714,0%
+325413,In-Vitro Diagnostic Substance Manufacturing,342,1.101069931,0%
+325414,Biological Product (except Diagnostic) Manufacturing,55,0.105900709,0%
+325510,Paint and Coating Manufacturing,37,0.081876757,0%
+325520,Adhesive Manufacturing,2,0.00759213,0%
+325611,Soap and Other Detergent Manufacturing,57,0.194810058,0%
+325612,Polish and Other Sanitation Good Manufacturing,420,2.167793244,0%
+325620,Toilet Preparation Manufacturing,38,0.061776738,0%
+325910,Printing Ink Manufacturing,14,0.111200823,0%
+325991,Custom Compounding of Purchased Resins,3,0.013009308,0%
+325992,"Photographic Film, Paper, Plate, and Chemical Manufacturing",0,0,0%
+325998,All Other Miscellaneous Chemical Product and Preparation Manufacturing,47,0.11462426,0%
+326111,Plastics Bag Manufacturing,0,0,0%
+326112,Plastics Packaging Film and Sheet (including Laminated) Manufacturing,13,0.033133416,0%
+326113,Unlaminated Plastics Film and Sheet (except Packaging) Manufacturing,179,0.374950621,0%
+326121,Unlaminated Plastics Profile Shape Manufacturing,0,0,0%
+326122,Plastics Pipe and Pipe Fitting Manufacturing,340,1.189062194,0%
+326130,"Laminated Plastics Plate, Sheet (except Packaging), and Shape Manufacturing",2,0.014098311,0%
+326140,Polystyrene Foam Product Manufacturing,79,0.272284393,0%
+326150,Urethane and Other Foam Product (except Polystyrene) Manufacturing,216,0.571513103,0%
+326160,Plastics Bottle Manufacturing,0,0,0%
+326191,Plastics Plumbing Fixture Manufacturing,114,0.553026551,0%
+326199,All Other Plastics Product Manufacturing,868,0.20617496,0%
+326211,Tire Manufacturing (except Retreading),2,0.003687255,0%
+326212,Tire Retreading,91,1.088411577,0%
+326220,Rubber and Plastics Hoses and Belting Manufacturing,2,0.008704206,0%
+326291,Rubber Product Manufacturing for Mechanical Use,0,0,0%
+326299,All Other Rubber Product Manufacturing,41,0.108621397,0%
+327110,"Pottery, Ceramics, and Plumbing Fixture Manufacturing ",11,0.068742456,0%
+327120,Clay Building Material and Refractories Manufacturing ,288,1.108841367,0%
+327211,Flat Glass Manufacturing,0,0,0%
+327212,Other Pressed and Blown Glass and Glassware Manufacturing,8,0.047568998,0%
+327215,Glass Product Manufacturing Made of Purchased Glass,110,0.180308299,0%
+327310,Cement Manufacturing,358,2.21476702,0%
+327331,Concrete Block and Brick Manufacturing,126,0.66023934,0%
+327332,Concrete Pipe Manufacturing,96,0.870514205,0%
+327410,Lime Manufacturing,175,3.061483249,0%
+327420,Gypsum Product Manufacturing,2,0.018271288,0%
+327910,Abrasive Product Manufacturing,3,0.018475459,0%
+327991,Cut Stone and Stone Product Manufacturing,607,1.777696979,0%
+327992,Ground or Treated Mineral and Earth Manufacturing,0,0,0%
+327993,Mineral Wool Manufacturing,0,0,0%
+327999,All Other Miscellaneous Nonmetallic Mineral Product Manufacturing,47,0.348346119,0%
+331110,Iron and Steel Mills and Ferroalloy Manufacturing ,79,0.062535205,0%
+331210,Iron and Steel Pipe and Tube Manufacturing from Purchased Steel,7,0.022716929,0%
+331221,Rolled Steel Shape Manufacturing,0,0,0%
+331222,Steel Wire Drawing,33,0.175981904,0%
+331313,Alumina Refining and Primary Aluminum Production ,0,0,0%
+331314,Secondary Smelting and Alloying of Aluminum,0,0,0%
+331315,"Aluminum Sheet, Plate, and Foil Manufacturing",0,0,0%
+331318,"Other Aluminum Rolling, Drawing, and Extruding ",0,0,0%
+331410,Nonferrous Metal (except Aluminum) Smelting and Refining ,0,0,0%
+331420,"Copper Rolling, Drawing, Extruding, and Alloying",7,0.02446243,0%
+331491,"Nonferrous Metal (except Copper and Aluminum) Rolling, Drawing, and Extruding",3,0.013966762,0%
+331492,"Secondary Smelting, Refining, and Alloying of Nonferrous Metal (except Copper and Aluminum)",41,0.327014929,0%
+331511,Iron Foundries,0,0,0%
+331512,Steel Investment Foundries,75,0.440124552,0%
+331513,Steel Foundries (except Investment),0,0,0%
+331524,Aluminum Foundries (except Die-Casting),0,0,0%
+331529,Other Nonferrous Metal Foundries (except Die-Casting) ,48,0.406371064,0%
+332111,Iron and Steel Forging,45,0.157991831,0%
+332112,Nonferrous Forging,0,0,0%
+332114,Custom Roll Forming,201,0.692859175,0%
+332119,"Metal Crown, Closure, and Other Metal Stamping (except Automotive) ",2,0.00308561,0%
+332215,"Metal Kitchen Cookware, Utensil, Cutlery, and Flatware (except Precious) Manufacturing ",0,0,0%
+332216,Saw Blade and Handtool Manufacturing ,21,0.056746096,0%
+332311,Prefabricated Metal Building and Component Manufacturing,64,0.198084266,0%
+332312,Fabricated Structural Metal Manufacturing,562,0.490071787,0%
+332313,Plate Work Manufacturing,252,0.594414875,0%
+332321,Metal Window and Door Manufacturing,185,0.311188518,0%
+332323,Ornamental and Architectural Metal Work Manufacturing,84,0.209007278,0%
+332410,Power Boiler and Heat Exchanger Manufacturing,7,0.021339623,0%
+332420,Metal Tank (Heavy Gauge) Manufacturing,93,0.202477294,0%
+332431,Metal Can Manufacturing,4,0.019174985,0%
+332439,Other Metal Container Manufacturing,33,0.211783687,0%
+332510,Hardware Manufacturing,10,0.029660556,0%
+332613,Spring Manufacturing ,7,0.03469837,0%
+332618,Other Fabricated Wire Product Manufacturing,151,0.54255247,0%
+332721,Precision Turned Product Manufacturing,693,0.5608033,0%
+332722,"Bolt, Nut, Screw, Rivet, and Washer Manufacturing",3,0.006759639,0%
+332811,Metal Heat Treating,217,0.78863344,0%
+332812,"Metal Coating, Engraving (except Jewelry and Silverware), and Allied Services to Manufacturers",164,0.250689906,0%
+332813,"Electroplating, Plating, Polishing, Anodizing, and Coloring",269,0.423467569,0%
+332911,Industrial Valve Manufacturing,19,0.039723245,0%
+332912,Fluid Power Valve and Hose Fitting Manufacturing,47,0.107778788,0%
+332919,Other Metal Valve and Pipe Fitting Manufacturing,321,1.682770323,0%
+332991,Ball and Roller Bearing Manufacturing,0,0,0%
+332994,Small Arms Manufacturing,303,1.409397877,0%
+332996,Fabricated Pipe and Pipe Fitting Manufacturing,110,0.281705021,0%
+332999,All Other Miscellaneous Fabricated Metal Product Manufacturing,113,0.127606609,0%
+333111,Farm Machinery and Equipment Manufacturing,42,0.052319749,0%
+333112,Lawn and Garden Tractor and Home Lawn and Garden Equipment Manufacturing,0,0,0%
+333120,Construction Machinery Manufacturing,194,0.259037342,0%
+333131,Mining Machinery and Equipment Manufacturing,0,0,0%
+333132,Oil and Gas Field Machinery and Equipment Manufacturing,678,1.00397431,0%
+333241,Food Product Machinery Manufacturing ,3,0.015004804,0%
+333242,Semiconductor Machinery Manufacturing ,1847,9.989911879,0%
+333243,"Sawmill, Woodworking, and Paper Machinery Manufacturing ",2,0.01194278,0%
+333244,Printing Machinery and Equipment Manufacturing ,0,0,0%
+333249,Other Industrial Machinery Manufacturing ,114,0.178641656,0%
+333314,Optical Instrument and Lens Manufacturing,15,0.078835075,0%
+333316,Photographic and Photocopying Equipment Manufacturing ,6,0.109556512,0%
+333318,Other Commercial and Service Industry Machinery Manufacturing ,579,0.833801885,0%
+333413,Industrial and Commercial Fan and Blower and Air Purification Equipment Manufacturing ,182,0.598891833,0%
+333414,Heating Equipment (except Warm Air Furnaces) Manufacturing,371,1.792645718,0%
+333415,Air-Conditioning and Warm Air Heating Equipment and Commercial and Industrial Refrigeration Equipment Manufacturing,755,0.698611917,0%
+333511,Industrial Mold Manufacturing,22,0.052230873,0%
+333514,"Special Die and Tool, Die Set, Jig, and Fixture Manufacturing",32,0.061297225,0%
+333515,Cutting Tool and Machine Tool Accessory Manufacturing,92,0.266639981,0%
+333517,Machine Tool Manufacturing ,27,0.08024722,0%
+333519,Rolling Mill and Other Metalworking Machinery Manufacturing ,3,0.019687601,0%
+333611,Turbine and Turbine Generator Set Units Manufacturing,3,0.007218113,0%
+333612,"Speed Changer, Industrial High-Speed Drive, and Gear Manufacturing",3,0.017857263,0%
+333613,Mechanical Power Transmission Equipment Manufacturing,0,0,0%
+333618,Other Engine Equipment Manufacturing,77,0.163033112,0%
+333911,Pump and Pumping Equipment Manufacturing,0,0,0%
+333913,Measuring and Dispensing Pump Manufacturing,753,16.86439915,0%
+333921,Elevator and Moving Stairway Manufacturing,7,0.080801365,0%
+333922,Conveyor and Conveying Equipment Manufacturing,75,0.171964044,0%
+333923,"Overhead Traveling Crane, Hoist, and Monorail System Manufacturing",3,0.012386329,0%
+333924,"Industrial Truck, Tractor, Trailer, and Stacker Machinery Manufacturing",0,0,0%
+333991,Power-Driven Handtool Manufacturing,31,0.304376091,0%
+333992,Welding and Soldering Equipment Manufacturing,31,0.158059129,0%
+333993,Packaging Machinery Manufacturing,103,0.415061676,0%
+333995,Fluid Power Cylinder and Actuator Manufacturing,0,0,0%
+333996,Fluid Power Pump and Motor Manufacturing,0,0,0%
+333997,Scale and Balance (except Laboratory) Manufacturing,3,0.07304822,0%
+333999,All Other Miscellaneous General Purpose Machinery Manufacturing,95,0.148366232,0%
+334111,Electronic Computer Manufacturing,2001,12.56728091,0%
+334112,Computer Storage Device Manufacturing,35,0.33590597,0%
+334118,Computer Terminal and Other Computer Peripheral Equipment Manufacturing ,274,1.059729696,0%
+334210,Telephone Apparatus Manufacturing,42,0.28386693,0%
+334220,Radio and Television Broadcasting and Wireless Communications Equipment Manufacturing,209,0.253506964,0%
+334290,Other Communications Equipment Manufacturing,113,0.704189308,0%
+334310,Audio and Video Equipment Manufacturing,10,0.086768878,0%
+334412,Bare Printed Circuit Board Manufacturing,208,0.724062879,0%
+334413,Semiconductor and Related Device Manufacturing,6086,5.25280885,1%
+334416,"Electronic Coil, Transformer, and Other Inductor Manufacturing",0,0,0%
+334417,Electronic Connector Manufacturing,370,1.596925753,0%
+334418,Printed Circuit Assembly (Electronic Assembly) Manufacturing,259,0.398361945,0%
+334419,Other Electronic Component Manufacturing,309,0.530273052,0%
+334510,Electromedical and Electrotherapeutic Apparatus Manufacturing,871,1.092175866,0%
+334511,"Search, Detection, Navigation, Guidance, Aeronautical, and Nautical System and Instrument Manufacturing",163,0.108628872,0%
+334512,"Automatic Environmental Control Manufacturing for Residential, Commercial, and Appliance Use",173,1.317531184,0%
+334513,"Instruments and Related Products Manufacturing for Measuring, Displaying, and Controlling Industrial Process Variables",241,0.528135583,0%
+334514,Totalizing Fluid Meter and Counting Device Manufacturing,622,3.200017167,0%
+334515,Instrument Manufacturing for Measuring and Testing Electricity and Electrical Signals,711,1.802824808,0%
+334516,Analytical Laboratory Instrument Manufacturing,163,0.313958731,0%
+334517,Irradiation Apparatus Manufacturing,0,0,0%
+334519,Other Measuring and Controlling Device Manufacturing,293,0.647712478,0%
+334613,Magnetic and Optical Recording Media Manufacturing,35,2.621021183,0%
+334614,"Software and Other Prerecorded Compact Disc, Tape, and Record Reproducing ",3,0.028920314,0%
+335110,Electric Lamp Bulb and Part Manufacturing,73,1.223272196,0%
+335121,Residential Electric Lighting Fixture Manufacturing,28,0.322719503,0%
+335122,"Commercial, Industrial, and Institutional Electric Lighting Fixture Manufacturing",119,0.516354526,0%
+335129,Other Lighting Equipment Manufacturing,5,0.032677878,0%
+335210,Small Electrical Appliance Manufacturing,7,0.056006639,0%
+335221,Household Cooking Appliance Manufacturing,0,0,0%
+335228,Other Major Household Appliance Manufacturing,0,0,0%
+335311,"Power, Distribution, and Specialty Transformer Manufacturing",85,0.334376937,0%
+335312,Motor and Generator Manufacturing,442,1.126808627,0%
+335313,Switchgear and Switchboard Apparatus Manufacturing,111,0.2705675,0%
+335314,Relay and Industrial Control Manufacturing,55,0.126997912,0%
+335911,Storage Battery Manufacturing,0,0,0%
+335912,Primary Battery Manufacturing,15,0.183441615,0%
+335921,Fiber Optic Cable Manufacturing,0,0,0%
+335929,Other Communication and Energy Wire Manufacturing,0,0,0%
+335931,Current-Carrying Wiring Device Manufacturing,35,0.105833388,0%
+335932,Noncurrent-Carrying Wiring Device Manufacturing,0,0,0%
+335999,All Other Miscellaneous Electrical Equipment and Component Manufacturing,379,1.056918226,0%
+336111,Automobile Manufacturing,2,0.002050508,0%
+336112,Light Truck and Utility Vehicle Manufacturing,2500,2.682338585,1%
+336120,Heavy Duty Truck Manufacturing,0,0,0%
+336211,Motor Vehicle Body Manufacturing,42,0.078444278,0%
+336212,Truck Trailer Manufacturing,29,0.069192662,0%
+336213,Motor Home Manufacturing,29,0.218470283,0%
+336214,Travel Trailer and Camper Manufacturing,0,0,0%
+336310,Motor Vehicle Gasoline Engine and Engine Parts Manufacturing,8,0.011496429,0%
+336320,Motor Vehicle Electrical and Electronic Equipment Manufacturing,130,0.171896808,0%
+336330,Motor Vehicle Steering and Suspension Components (except Spring) Manufacturing,20,0.045591779,0%
+336340,Motor Vehicle Brake System Manufacturing,2,0.007446637,0%
+336350,Motor Vehicle Transmission and Power Train Parts Manufacturing,89,0.107607543,0%
+336360,Motor Vehicle Seating and Interior Trim Manufacturing,1108,1.46341449,0%
+336370,Motor Vehicle Metal Stamping,640,0.547617657,0%
+336390,Other Motor Vehicle Parts Manufacturing,1266,0.770491856,0%
+336411,Aircraft Manufacturing,1594,0.877287783,0%
+336412,Aircraft Engine and Engine Parts Manufacturing,260,0.332227897,0%
+336413,Other Aircraft Parts and Auxiliary Equipment Manufacturing,237,0.176143079,0%
+336510,Railroad Rolling Stock Manufacturing,0,0,0%
+336611,Ship Building and Repairing,0,0,0%
+336612,Boat Building,17,0.038848585,0%
+336991,"Motorcycle, Bicycle, and Parts Manufacturing",26,0.185479855,0%
+336992,"Military Armored Vehicle, Tank, and Tank Component Manufacturing",0,0,0%
+336999,All Other Transportation Equipment Manufacturing,17,0.099477719,0%
+337110,Wood Kitchen Cabinet and Countertop Manufacturing,735,0.681894034,0%
+337121,Upholstered Household Furniture Manufacturing,78,0.108849392,0%
+337122,Nonupholstered Wood Household Furniture Manufacturing,95,0.266637473,0%
+337124,Metal Household Furniture Manufacturing,3,0.024410498,0%
+337125,Household Furniture (except Wood and Metal) Manufacturing,5,0.113001871,0%
+337127,Institutional Furniture Manufacturing,509,1.710364862,0%
+337211,Wood Office Furniture Manufacturing,5,0.02910867,0%
+337214,Office Furniture (except Wood) Manufacturing,175,0.666592097,0%
+337215,"Showcase, Partition, Shelving, and Locker Manufacturing",101,0.233278229,0%
+337910,Mattress Manufacturing,375,1.461487725,0%
+337920,Blind and Shade Manufacturing,143,1.039486672,0%
+339112,Surgical and Medical Instrument Manufacturing,851,0.675859384,0%
+339113,Surgical Appliance and Supplies Manufacturing,468,0.423233277,0%
+339114,Dental Equipment and Supplies Manufacturing,75,0.409993496,0%
+339115,Ophthalmic Goods Manufacturing,50,0.163010354,0%
+339910,Jewelry and Silverware Manufacturing ,593,1.876071868,0%
+339920,Sporting and Athletic Goods Manufacturing,189,0.413471804,0%
+339930,"Doll, Toy, and Game Manufacturing",26,0.323788494,0%
+339940,Office Supplies (except Paper) Manufacturing,40,0.288157183,0%
+339991,"Gasket, Packing, and Sealing Device Manufacturing",9,0.024811939,0%
+339992,Musical Instrument Manufacturing,125,0.8600073,0%
+339993,"Fastener, Button, Needle, and Pin Manufacturing",0,0,0%
+339994,"Broom, Brush, and Mop Manufacturing",0,0,0%
+339995,Burial Casket Manufacturing,0,0,0%
+339999,All Other Miscellaneous Manufacturing,338,0.57062155,0%
+423210,Furniture Merchant Wholesalers,735,0.93862798,0%
+423220,Home Furnishing Merchant Wholesalers,572,0.573489431,0%
+423410,Photographic Equipment and Supplies Merchant Wholesalers,69,0.379284075,0%
+423420,Office Equipment Merchant Wholesalers,1121,0.861126158,0%
+423430,Computer and Computer Peripheral Equipment and Software Merchant Wholesalers,2498,1.148044657,1%
+423440,Other Commercial Equipment Merchant Wholesalers,541,0.958607206,0%
+423450,"Medical, Dental, and Hospital Equipment and Supplies Merchant Wholesalers",4586,1.996461785,1%
+423460,Ophthalmic Goods Merchant Wholesalers,38,0.1485368,0%
+423490,Other Professional Equipment and Supplies Merchant Wholesalers,222,0.539979896,0%
+423510,Metal Service Centers and Other Metal Merchant Wholesalers,1272,0.697791807,0%
+423520,Coal and Other Mineral and Ore Whsle,3,0.059930345,0%
+423610,"Electrical Apparatus and Equipment, Wiring Supplies, and Related Equipment Merchant  Wholesalers",2170,0.885400949,0%
+423620,"Electrical and Electronic Appliance, Television, and Radio Set Merchant Wholesalers",256,0.433627909,0%
+423690,Other Electronic Parts and Equipment Merchant Wholesalers,12065,3.648568248,2%
+423810,Construction and Mining (except Oil Well) Machinery and Equipment Merchant Wholesalers,1507,1.363812693,0%
+423820,Farm and Garden Machinery and Equipment Merchant Wholesalers,358,0.275718124,0%
+423830,Industrial Machinery and Equipment Merchant Wholesalers,2889,0.635453664,1%
+423840,Industrial Supplies Merchant Wholesalers,405,0.364473183,0%
+423850,Service Establishment Equipment and Supplies Merchant Wholesalers,766,1.335262414,0%
+423860,Transportation Equipment and Supplies (except Motor Vehicle) Merchant Wholesalers,587,1.351786419,0%
+423910,Sporting and Recreational Goods and Supplies Merchant Wholesalers,368,0.514755556,0%
+423920,Toy and Hobby Goods and Supplies Merchant Wholesalers,168,0.431564213,0%
+423940,"Jewelry, Watch, Precious Stone, and Precious Metal Merchant Wholesalers",217,0.383884886,0%
+424110,Printing and Writing Paper Merchant Wholesalers,117,0.790835552,0%
+424120,Stationery and Office Supplies Merchant Wholesalers,370,0.45543528,0%
+424130,Industrial and Personal Service Paper Merchant Wholesalers,640,0.830017492,0%
+424210,Drugs and Druggists' Sundries Merchant Wholesalers,1656,0.522242595,0%
+424310,"Piece Goods, Notions, and Other Dry Goods Merchant Wholesalers",74,0.244162924,0%
+424320,Men's and Boys' Clothing and Furnishings Merchant Wholesalers,57,0.081320279,0%
+424330,"Women's, Children's, and Infants' Clothing and Accessories Merchant Wholesalers",391,0.368531128,0%
+424340,Footwear Merchant Wholesalers,12,0.037072761,0%
+424440,Poultry and Poultry Product Merchant Wholesalers,380,3.020299594,0%
+424460,Fish and Seafood Merchant Wholesalers,58,0.219874826,0%
+424470,Meat and Meat Product Merchant Wholesalers,822,1.514435425,0%
+424480,Fresh Fruit and Vegetable Merchant Wholesalers,1054,0.82420231,0%
+424510,Grain and Field Bean Merchant Wholesalers,59,0.094873903,0%
+424520,Livestock Merchant Wholesalers,19,0.245009622,0%
+424590,Other Farm Product Raw Material Merchant Wholesalers,39,0.481064634,0%
+424610,Plastics Materials and Basic Forms and Shapes Merchant Wholesalers,164,0.411878103,0%
+424690,Other Chemical and Allied Products Merchant Wholesalers,798,0.57779588,0%
+424710,Petroleum Bulk Stations and Terminals,944,1.023214695,0%
+424720,Petroleum and Petroleum Products Merchant Wholesalers (except Bulk Stations and Terminals),167,0.536714308,0%
+424820,Wine and Distilled Alcoholic Beverage Merchant Wholesalers,1449,1.429219805,0%
+424910,Farm Supplies Merchant Wholesalers,162,0.141453488,0%
+424920,"Book, Periodical, and Newspaper Merchant Wholesalers",173,0.319667469,0%
+424930,"Flower, Nursery Stock, and Florists' Supplies Merchant Wholesalers",488,0.84973225,0%
+424940,Tobacco and Tobacco Product Merchant Wholesalers,120,0.198579914,0%
+424950,"Paint, Varnish, and Supplies Merchant Wholesalers",257,1.174184705,0%
+424990,Other Miscellaneous Nondurable Goods Merchant Wholesalers,462,0.493223464,0%
+425110,Business to Business Electronic Markets,30,0.89198162,0%
+425120,Wholesale Trade Agents and Brokers,4508,1.373814772,1%
+453920,Art Dealers,109,0.520712568,0%
+454111,Electronic Shopping,3346,1.241032963,1%
+454112,Electronic Auctions,375,2.958528108,0%
+454113,Mail-Order Houses,2826,1.366881733,1%
+481111,Scheduled Passenger Air Transportation,2003,0.385097787,0%
+481112,Scheduled Freight Air Transportation,3,0.020750225,0%
+481211,Nonscheduled Chartered Passenger Air Transportation,48,0.128388764,0%
+481212,Nonscheduled Chartered Freight Air Transportation,30,0.689280619,0%
+481219,Other Nonscheduled Air Transportation,12,0.124613787,0%
+483111,Deep Sea Freight Transportation,0,0,0%
+483112,Deep Sea Passenger Transportation,0,0,0%
+483113,Coastal and Great Lakes Freight Transportation,0,0,0%
+483114,Coastal and Great Lakes Passenger Transportation,0,0,0%
+483212,Inland Water Passenger Transportation,3,0.092797501,0%
+484121,"General Freight Trucking, Long-Distance, Truckload",2622,0.434250784,1%
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",2123,0.971321897,0%
+485210,Interurban and Rural Bus Transportation,398,2.115624681,0%
+485310,Taxi Service,211,0.467335796,0%
+485320,Limousine Service,371,0.695064443,0%
+485510,Charter Bus Industry,615,1.315826226,0%
+485999,All Other Transit and Ground Passenger Transportation,232,0.796429712,0%
+486110,Pipeline Transportation of Crude Oil,64,0.349362836,0%
+486210,Pipeline Transportation of Natural Gas,853,1.995800727,0%
+486910,Pipeline Transportation of Refined Petroleum Products,58,0.551559237,0%
+487110,"Scenic and Sightseeing Transportation, Land",112,0.740885191,0%
+487210,"Scenic and Sightseeing Transportation, Water",204,1.192656669,0%
+487990,"Scenic and Sightseeing Transportation, Other",14,0.435451103,0%
+488111,Air Traffic Control,25,1.198436552,0%
+488119,Other Airport Operations,957,0.813403656,0%
+488190,Other Support Activities for Air Transportation,1750,1.667987211,0%
+488210,Support Activities for Rail Transportation,405,0.763837444,0%
+488310,Port and Harbor Operations,0,0,0%
+488320,Marine Cargo Handling,0,0,0%
+488330,Navigational Services to Shipping,0,0,0%
+488390,Other Support Activities for Water Transportation,3,0.020765555,0%
+488490,Other Support Activities for Road Transportation,115,0.266658312,0%
+488510,Freight Transportation Arrangement,1307,0.420060864,0%
+488991,Packing and Crating,72,0.352013898,0%
+488999,All Other Support Activities for Transportation,5,0.182752483,0%
+493110,General Warehousing and Storage,4247,0.514112747,1%
+493120,Refrigerated Warehousing and Storage,200,0.338255394,0%
+493130,Farm Product Warehousing and Storage,15,0.154022155,0%
+493190,Other Warehousing and Storage,383,0.520003291,0%
+511120,Periodical Publishers,407,0.324763445,0%
+511130,Book Publishers,800,1.07315733,0%
+511140,Directory and Mailing List Publishers,219,0.883354081,0%
+511191,Greeting Card Publishers,1,0.006243299,0%
+511199,All Other Publishers,228,2.742569905,0%
+511210,Software Publishers,10116,1.885494116,2%
+512110,Motion Picture and Video Production,760,0.277515522,0%
+512120,Motion Picture and Video Distribution,15,0.42118879,0%
+512132,Drive-In Motion Picture Theaters,3,0.188921574,0%
+512191,Teleproduction and Other Postproduction Services,89,0.275178118,0%
+512199,Other Motion Picture and Video Industries,20,1.272784842,0%
+512210,Record Production,3,0.216580469,0%
+512220,Integrated Record Production/Distribution,9,0.056198013,0%
+512230,Music Publishers,14,0.187769674,0%
+512240,Sound Recording Studios,87,1.38729456,0%
+512290,Other Sound Recording Industries,21,0.718945153,0%
+515210,Cable and Other Subscription Programming,75,0.117979063,0%
+517210,Wireless Telecommunications Carriers (except Satellite),2427,0.924075623,1%
+517410,Satellite Telecommunications,31,0.306877421,0%
+517919,All Other Telecommunications,326,0.820150092,0%
+518210,"Data Processing, Hosting, and Related Services",15494,2.425786607,3%
+519110,News Syndicates,19,0.219829572,0%
+519120,Libraries and Archives,32,0.09947664,0%
+519130,Internet Publishing and Broadcasting and Web Search Portals,2567,1.011408481,1%
+519190,All Other Information Services,1002,5.965589195,0%
+521110,Monetary Authorities - Central Bank,19,0.077307369,0%
+522120,Savings Institutions,4702,3.144262148,1%
+522190,Other Depository Credit Intermediation,0,0,0%
+522210,Credit Card Issuing,1623,2.648371536,0%
+522220,Sales Financing,692,0.532577796,0%
+522291,Consumer Lending,1305,1.435843896,0%
+522292,Real Estate Credit,2215,0.782479747,0%
+522293,International Trade Financing,5,0.345298918,0%
+522294,Secondary Market Financing,658,2.477622275,0%
+522298,All Other Nondepository Credit Intermediation,1519,1.817789895,0%
+522310,Mortgage and Nonmortgage Loan Brokers,787,1.605142604,0%
+522320,"Financial Transactions Processing, Reserve, and Clearinghouse Activities",3038,1.896798489,1%
+522390,Other Activities Related to Credit Intermediation,2190,1.933201122,0%
+523110,Investment Banking and Securities Dealing,241,0.213889075,0%
+523120,Securities Brokerage,3182,0.915639503,1%
+523130,Commodity Contracts Dealing,11,0.116422989,0%
+523140,Commodity Contracts Brokerage,26,0.24430264,0%
+523210,Securities and Commodity Exchanges,0,0,0%
+523910,Miscellaneous Intermediation,580,1.267277092,0%
+523920,Portfolio Management,2878,0.871681353,1%
+523930,Investment Advice,6092,4.953707865,1%
+523991,"Trust, Fiduciary, and Custody Activities",839,1.604585041,0%
+523999,Miscellaneous Financial Investment Activities,83,0.306732947,0%
+524113,Direct Life Insurance Carriers,5450,1.3769352,1%
+524114,Direct Health and Medical Insurance Carriers,4736,0.916909597,1%
+524126,Direct Property and Casualty Insurance Carriers,18163,2.875457234,4%
+524127,Direct Title Insurance Carriers,1141,1.982350459,0%
+524128,"Other Direct Insurance (except Life, Health, and Medical) Carriers",220,0.652394551,0%
+524130,Reinsurance Carriers,15,0.089532805,0%
+524291,Claims Adjusting,255,0.568267586,0%
+524298,All Other Insurance Related Activities,462,0.99013247,0%
+525910,Open-End Investment Funds,39,2.551247351,0%
+525990,Other Financial Vehicles,30,0.421048581,0%
+532112,Passenger Car Leasing,74,0.77590496,0%
+532292,Recreational Goods Rental,151,1.293177063,0%
+532411,"Commercial Air, Rail, and Water Transportation Equipment Rental and Leasing",54,0.837944014,0%
+532412,"Construction, Mining, and Forestry Machinery and Equipment Rental and Leasing",1254,1.633652361,0%
+532420,Office Machinery and Equipment Rental and Leasing,69,0.828451902,0%
+532490,Other Commercial and Industrial Machinery and Equipment Rental and Leasing,3054,2.435885461,1%
+533110,Lessors of Nonfinancial Intangible Assets (except Copyrighted Works),701,1.682503673,0%
+541199,All Other Legal Services,614,2.487924335,0%
+541214,Payroll Services,1099,0.28191213,0%
+541310,Architectural Services,2634,1.358335393,1%
+541320,Landscape Architectural Services,485,1.739152369,0%
+541330,Engineering Services,16092,1.363636374,3%
+541340,Drafting Services,130,1.147238038,0%
+541360,Geophysical Surveying and Mapping Services,80,0.599623081,0%
+541410,Interior Design Services,728,1.500046744,0%
+541420,Industrial Design Services,231,1.799056158,0%
+541430,Graphic Design Services,487,0.767824912,0%
+541490,Other Specialized Design Services,80,0.712856352,0%
+541511,Custom Computer Programming Services,21383,2.448235962,4%
+541512,Computer Systems Design Services,8348,1.139066023,2%
+541513,Computer Facilities Management Services,4479,2.906401987,1%
+541519,Other Computer Related Services,1103,0.795096099,0%
+541611,Administrative Management and General Management Consulting Services,9838,1.648221548,2%
+541612,Human Resources and Executive Search Consulting Services,977,0.647325993,0%
+541613,Marketing Consulting Services,2271,0.954403084,0%
+541614,"Process, Physical Distribution, and Logistics Consulting Services",811,0.7609086,0%
+541618,Other Management Consulting Services,486,1.443229088,0%
+541690,Other Scientific and Technical Consulting Services,3695,2.43423395,1%
+541711,Research and Development in Biotechnology,480,0.43807427,0%
+541712,"Research and Development in the Physical, Engineering, and Life Sciences (except Biotechnology)",9446,1.409203142,2%
+541720,Research and Development in the Social Sciences and Humanities,243,0.529135548,0%
+541810,Advertising Agencies,2460,1.098134464,1%
+541820,Public Relations Agencies,685,1.041688166,0%
+541830,Media Buying Agencies,12,0.046227052,0%
+541840,Media Representatives,318,1.984046959,0%
+541850,Display Advertising,310,1.00418035,0%
+541860,Direct Mail Advertising,1028,1.87633689,0%
+541870,Advertising Material Distribution Services,247,1.647226586,0%
+541890,Other Services Related to Advertising,462,0.393673636,0%
+541910,Marketing Research and Public Opinion Polling,810,0.688745415,0%
+541930,Translation and Interpretation Services,90,0.238782318,0%
+541990,"All Other Professional, Scientific, and Technical Services",697,0.685161066,0%
+551111,Offices of Bank Holding Companies,5,0.039103133,0%
+551112,Offices of Other Holding Companies,744,0.534556619,0%
+551114,"Corporate, Subsidiary, and Regional Managing Offices",34532,0.920336374,7%
+561210,Facilities Support Services,3611,1.209288402,1%
+561311,Employment Placement Agencies,2112,0.892904692,0%
+561312,Executive Search Services,776,1.867245062,0%
+561330,Professional Employer Organizations,4739,2.226988664,1%
+561421,Telephone Answering Services,888,1.742117034,0%
+561422,Telemarketing Bureaus,11826,2.561052583,2%
+561450,Credit Bureaus,528,2.125967614,0%
+561499,All Other Business Support Services,550,0.945159731,0%
+561510,Travel Agencies,1023,0.746761446,0%
+561520,Tour Operators,145,0.453798366,0%
+561591,Convention and Visitors Bureaus,80,0.675454056,0%
+561599,All Other Travel Arrangement and Reservation Services,1747,1.950383649,0%
+561910,Packaging and Labeling Services,107,0.200744322,0%
+561920,Convention and Trade Show Organizers,980,1.020746527,0%
+562112,Hazardous Waste Collection,35,0.282121198,0%
+562119,Other Waste Collection,30,0.339232918,0%
+562211,Hazardous Waste Treatment and Disposal,128,0.395950529,0%
+562213,Solid Waste Combustors and Incinerators,0,0,0%
+562219,Other Nonhazardous Waste Treatment and Disposal,39,1.098015972,0%
+562920,Materials Recovery Facilities,465,1.753879407,0%
+562998,All Other Miscellaneous Waste Management Services,6,0.039915738,0%
+611210,Junior Colleges,277,0.281635913,0%
+611310,"Colleges, Universities, and Professional Schools",12244,0.56788423,3%
+611410,Business and Secretarial Schools,423,11.33043336,0%
+611420,Computer Training,589,3.90483965,0%
+611430,Professional and Management Development Training,876,1.693632052,0%
+611512,Flight Training,172,0.971035302,0%
+611513,Apprenticeship Training,90,0.589115015,0%
+611630,Language Schools,327,1.159808725,0%
+611691,Exam Preparation and Tutoring,1690,1.332213118,0%
+611699,All Other Miscellaneous Schools and Instruction,490,0.911388065,0%
+611710,Educational Support Services,3732,2.859333693,1%
+711110,Theater Companies and Dinner Theaters,526,0.641417371,0%
+711120,Dance Companies,180,1.461245715,0%
+711130,Musical Groups and Artists,527,1.152519433,0%
+711190,Other Performing Arts Companies,82,1.04462965,0%
+711211,Sports Teams and Clubs,935,1.137891178,0%
+711212,Racetracks,354,0.688581004,0%
+711219,Other Spectator Sports,20,0.098934642,0%
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",1355,0.852169308,0%
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",640,1.751065164,0%
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",66,0.27048611,0%
+711510,"Independent Artists, Writers, and Performers",302,0.534299379,0%
+712110,Museums,799,0.712462191,0%
+712120,Historical Sites,99,0.763199633,0%
+712130,Zoos and Botanical Gardens,494,1.163126963,0%
+712190,Nature Parks and Other Similar Institutions,53,0.595478451,0%
+713110,Amusement and Theme Parks,4097,2.351028744,1%
+713120,Amusement Arcades,691,1.380886339,0%
+713210,Casinos (except Casino Hotels),2,0.001635827,0%
+713290,Other Gambling Industries,556,0.852651262,0%
+713920,Skiing Facilities,0,0,0%
+713930,Marinas,102,0.311523183,0%
+713990,All Other Amusement and Recreation Industries,2692,1.761602494,1%
+721110,Hotels (except Casino Hotels) and Motels,24998,1.368745171,5%
+721120,Casino Hotels,0,0,0%
+721191,Bed-and-Breakfast Inns,45,0.240127187,0%
+721199,All Other Traveler Accommodation,31,0.301636495,0%
+721211,RV (Recreational Vehicle) Parks and Campgrounds,103,0.405602464,0%
+721214,Recreational and Vacation Camps (except Campgrounds),69,0.24098984,0%
+721310,Rooming and Boarding Houses,254,1.762925914,0%
+813920,Professional Organizations,2078,2.02177423,0%

@@ -1,0 +1,42 @@
+#swot-container {
+  padding: 50px 40px;
+}
+
+#swot-wrapper {
+  margin: 0;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.swot-table-wrapper {
+  width: 48%;
+  margin: 20px 1%;
+}
+
+@media (max-width: 1600px) {
+  .swot-table-wrapper {
+    width: 98% !important;
+  }
+}
+
+.swot-table-wrapper th,
+.swot-table-wrapper td {
+  color: #000;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-wrap: nowrap;
+  min-height: 18px;
+  /* white-space: nowrap; */
+}
+
+.swot-table-wrapper caption {
+  color: #fff;
+  width: 100%;
+  padding: 6px 0;
+}

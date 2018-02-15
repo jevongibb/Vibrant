@@ -1,0 +1,41 @@
+<div style="position:relative;">
+
+  <div class="dropdown-wrapper">
+    <div class="dropdown-visible">
+      <div class="dropdown-text">
+        <span class="dropdown-value">Austin</span>
+        <i class="fa fa-angle-down" aria-hidden="true" style="margin-left:5px;"></i>
+      </div>
+    </div>
+    <div class="dropdown-hidden" style="visibility:hidden;">
+      <p class="dropdown-item" data-value="Austin">Austin</p>
+      <p class="dropdown-item" data-value="Tupelo">Tupelo</p>
+      <p class="dropdown-item" data-value="Detroit">Detroit</p>
+    </div>
+  </div>
+
+  <div id="trends-container">
+    <div id="trends-wrapper">
+
+      <div id="trends-bubble-wrapper">
+        <div id="trends-bubble-legend">
+          <div>
+          </div>
+        </div>
+        <div id="trends-bubble-scale">
+          <div>
+            <img src="img dump/scale.png" alt="scale">
+            <p>Size by # Employees</p>
+          </div>
+        </div>
+      </div>
+      <div id="trends-slider-wrapper">
+          <!-- <span id="min-time">1800</span>  -->
+          <input type="range" name="points" min="0" max="208" step="1" value="0" id="trends-time">
+          <!-- <span id="max-time">2008</span> -->
+      </div>
+
+      <div id="trends-table-wrapper"></div>
+    </div>
+  </div>
+</div>

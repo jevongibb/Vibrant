@@ -1,0 +1,127 @@
+NAICS,Description,Employees,Relative Size (RS),% Total
+113110,Timber Tract Operations,0,0,0%
+113210,Forest Nurseries and Gathering Forest Products,0,0,0%
+113310,Logging,35,0.056949035,0%
+114111,Finfish Fishing,0,0,0%
+114210,Hunting and Trapping,4,0.183408365,0%
+115111,Cotton Ginning,0,0,0%
+115112,"Soil Preparation, Planting, and Cultivating",5,0.037373458,0%
+115113,"Crop Harvesting, Primarily by Machine",0,0,0%
+115114,Postharvest Crop Activities (except Cotton Ginning),0,0,0%
+115115,Farm Labor Contractors and Crew Leaders,2,0.015252238,0%
+115116,Farm Management Services,8,0.128760444,0%
+115210,Support Activities for Animal Production,83,0.343765688,0%
+115310,Forestry Support Activities,3,0.020198498,0%
+211111,Crude Petroleum and Natural Gas Extraction,1327,1.057671403,0%
+211112,Natural Gas Liquid Extraction,363,2.847073246,0%
+212111,Bituminous Coal and Lignite Surface Mining,318,0.827809171,0%
+212112,Bituminous Coal Underground Mining,3,0.006499974,0%
+212113,Anthracite Mining,2,0.221027512,0%
+212221,Gold Ore Mining,0,0,0%
+212231,Lead Ore and Zinc Ore Mining,3,0.097294611,0%
+212299,All Other Metal Ore Mining,0,0,0%
+212311,Dimension Stone Mining and Quarrying,391,9.768859362,0%
+212312,Crushed and Broken Limestone Mining and Quarrying,542,1.707675586,0%
+212313,Crushed and Broken Granite Mining and Quarrying,0,0,0%
+212319,Other Crushed and Broken Stone Mining and Quarrying,71,0.879128003,0%
+212321,Construction Sand and Gravel Mining,153,0.600421899,0%
+212322,Industrial Sand Mining,0,0,0%
+212324,Kaolin and Ball Clay Mining,0,0,0%
+212325,"Clay, Ceramic, and Refractory Minerals Mining",0,0,0%
+212391,"Potash, Soda, and Borate Mineral Mining",3,0.069515248,0%
+212393,Other Chemical and Fertilizer Mineral Mining,0,0,0%
+212399,All Other Nonmetallic Mineral Mining,5,0.126990957,0%
+213111,Drilling Oil and Gas Wells,482,0.616731187,0%
+213112,Support Activities for Oil and Gas Operations,2391,0.799179834,0%
+213113,Support Activities for Coal Mining,0,0,0%
+213114,Support Activities for Metal Mining,0,0,0%
+213115,Nonmetallic Minerals Support Activity (exc Fuels),13,0.374892594,0%
+221111,Hydroelectric Power Generation,7,0.163822917,0%
+221112,Fossil Fuel Electric Power Generation,150,0.162718856,0%
+221114,Solar Electric Power Generation ,77,4.49328282,0%
+221115,Wind Electric Power Generation ,38,0.980788442,0%
+221116,Geothermal Electric Power Generation ,3,0.210804989,0%
+221118,Other Electric Power Generation ,5,0.143943318,0%
+221121,Electric Bulk Power Transmission and Control,856,5.175650967,0%
+221310,Water Supply and Irrigation Systems,423,0.984819819,0%
+221330,Steam and Air-Conditioning Supply,0,0,0%
+236210,Industrial Building Construction,268,0.255149035,0%
+237120,Oil and Gas Pipeline and Related Structures Construction,983,0.500976234,0%
+237130,Power and Communication Line and Related Structures Construction,1405,0.619771411,0%
+237990,Other Heavy and Civil Engineering Construction,11090,11.36992599,2%
+311111,Dog and Cat Food Manufacturing,15,0.043744551,0%
+311119,Other Animal Food Manufacturing,87,0.237742283,0%
+311211,Flour Milling,7,0.036948605,0%
+311212,Rice Milling,0,0,0%
+311213,Malt Manufacturing,2,0.165499501,0%
+311221,Wet Corn Milling,0,0,0%
+311224,Soybean and Other Oilseed Processing ,0,0,0%
+311225,Fats and Oils Refining and Blending,0,0,0%
+311230,Breakfast Cereal Manufacturing,0,0,0%
+311340,Nonchocolate Confectionery Manufacturing,146,0.578334729,0%
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans ,5,0.054331183,0%
+311352,Confectionery Manufacturing from Purchased Chocolate ,7,0.015689481,0%
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",2,0.004912867,0%
+311412,Frozen Specialty Food Manufacturing,382,0.540580042,0%
+311421,Fruit and Vegetable Canning,224,0.401055866,0%
+311422,Specialty Canning,3,0.020261593,0%
+311423,Dried and Dehydrated Food Manufacturing,0,0,0%
+311511,Fluid Milk Manufacturing,783,1.183482518,0%
+311513,Cheese Manufacturing,2,0.003279672,0%
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",65,0.297246582,0%
+311520,Ice Cream and Frozen Dessert Manufacturing,120,0.477226784,0%
+311611,Animal (except Poultry) Slaughtering,35,0.017350307,0%
+311612,Meat Processed from Carcasses,1430,1.148910492,0%
+311613,Rendering and Meat Byproduct Processing,136,1.14999914,0%
+311615,Poultry Processing,23,0.007833863,0%
+311710,Seafood Product Preparation and Packaging,10,0.026706995,0%
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",626,2.335644662,0%
+311821,Cookie and Cracker Manufacturing,542,1.098539089,0%
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour ",212,0.759367194,0%
+311830,Tortilla Manufacturing,214,0.910852915,0%
+311911,Roasted Nuts and Peanut Butter Manufacturing,74,0.306234182,0%
+311919,Other Snack Food Manufacturing,750,1.613138884,0%
+311920,Coffee and Tea Manufacturing,49,0.206506287,0%
+311930,Flavoring Syrup and Concentrate Manufacturing,10,0.102781565,0%
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",59,0.315632391,0%
+311942,Spice and Extract Manufacturing,454,2.043133163,0%
+311991,Perishable Prepared Food Manufacturing,725,1.185905857,0%
+311999,All Other Miscellaneous Food Manufacturing,27,0.081730826,0%
+312111,Soft Drink Manufacturing,846,1.29789874,0%
+312112,Bottled Water Manufacturing,21,0.155343619,0%
+312113,Ice Manufacturing,122,2.096450679,0%
+312120,Breweries,258,0.455737282,0%
+312130,Wineries,40,0.064961766,0%
+312140,Distilleries,198,1.455728936,0%
+312230,Tobacco Manufacturing ,35,0.200725692,0%
+313110,"Fiber, Yarn, and Thread Mills ",0,0,0%
+313210,Broadwoven Fabric Mills,378,1.604354679,0%
+313220,Narrow Fabric Mills and Schiffli Machine Embroidery,0,0,0%
+313240,Knit Fabric Mills,0,0,0%
+313310,Textile and Fabric Finishing Mills ,10,0.035973548,0%
+313320,Fabric Coating Mills,3,0.03508057,0%
+314110,Carpet and Rug Mills,28,0.073823272,0%
+314120,Curtain and Linen Mills,81,0.276633522,0%
+314910,Textile Bag and Canvas Mills ,28,0.104391205,0%
+314994,"Rope, Cordage, Twine, Tire Cord, and Tire Fabric Mills ",0,0,0%
+314999,All Other Miscellaneous Textile Product Mills,266,0.632426856,0%
+315110,Hosiery and Sock Mills,3,0.023878232,0%
+315190,Other Apparel Knitting Mills ,3,0.090962239,0%
+315210,Cut and Sew Apparel Contractors ,36,0.075103091,0%
+315220,Men�s and Boys� Cut and Sew Apparel Manufacturing ,151,0.96914457,0%
+315240,"Women�s, Girls�, and Infants� Cut and Sew Apparel Manufacturing ",23,0.078812008,0%
+315280,Other Cut and Sew Apparel Manufacturing ,13,0.123918827,0%
+315990,Apparel Accessories and Other Apparel Manufacturing ,43,0.447028211,0%
+316110,Leather and Hide Tanning and Finishing,19,0.362634205,0%
+316210,Footwear Manufacturing ,1257,8.525114508,0%
+316992,Women's Handbag and Purse Manufacturing,7,0.381547492,0%
+316998,All Other Leather Good and Allied Product Manufacturing ,96,0.78325221,0%
+321113,Sawmills,29,0.031991966,0%
+321114,Wood Preservation,12,0.089608922,0%
+321211,Hardwood Veneer and Plywood Manufacturing,0,0,0%
+321213,Engineered Wood Member (except Truss) Manufacturing,3,0.058273667,0%
+321214,Truss Manufacturing,371,1.2766675,0%
+321219,Reconstituted Wood Product Manufacturing,0,0,0%
+321911,Wood Window and Door Manufacturing,722,1.153039412,0%
+321912,"Cut Stock, Resawing Lumber, and Planing",68,0.220364939,0%
+321918,Other Millwork (including Flooring),134,0.368002457,0%

@@ -1,0 +1,179 @@
+#trends-container {
+  padding: 50px 50px;
+}
+
+#trends-wrapper {
+  margin: 0;
+  width: 100%;
+  /* display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap; */
+}
+
+#trends-bubble-wrapper {
+  height: 500px;
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#trends-bubble-scale {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#trends-bubble-scale img {
+  width: 30px;
+}
+
+#trends-bubble-scale p {
+  margin: 0;
+  font-size: 8px;
+  text-align: center;
+  width: 40px;
+}
+
+#trends-bubble-wrapper .trends-bubble-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: left;
+}
+
+#trends-bubble-wrapper .trends-bubble-tooltip p {
+  margin: 0;
+  padding: 2px 0;
+}
+
+#trends-bubble-wrapper .year.label {
+  font: 500 48px "Helvetica Neue";
+  fill: #ddd;
+  pointer-events: none;
+}
+
+#trends-bubble-wrapper .axis text {
+  fill: #aaa;
+  pointer-events: none;
+}
+
+#trends-bubble-wrapper .label-axis {
+  pointer-events: none;
+}
+
+#trends-bubble-wrapper .domain {
+  stroke-width: 0;
+}
+
+#trends-bubble-wrapper line {
+  stroke-width: 0.5px;
+  stroke: #eee;
+}
+
+#trends-bubble-wrapper .around {
+  fill: none;
+  stroke-width: 0.5px;
+  stroke: #eee;
+}
+
+#trends-bubble-wrapper .like-diagonal,
+#trends-bubble-wrapper .like-axis {
+  stroke-width: 1px;
+  stroke: #333;
+  pointer-events: none;
+}
+
+#trends-table-wrapper {
+  width: 100%;
+  margin: 20px 0;
+}
+
+#trends-table-wrapper td,
+#trends-table-wrapper th {
+  border: 0px solid #ccc;
+}
+
+#trends-table-wrapper th {
+  background: #fff;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+#trends-table-wrapper tr td:first-child {
+  border-right: 1px solid #000;
+}
+
+#trends-table-wrapper tr td:last-child {
+  border-left: 1px solid #fff;
+}
+
+#trends-bubble-legend {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+#trends-bubble-legend div {
+  position: relative
+}
+
+#trends-bubble-legend img {
+  cursor: pointer;
+  width: 20px;
+  padding: 0 10px;
+  max-height: 25px;
+}
+
+#trends-bubble-legend .trends-bubble-legend-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#trends-slider-wrapper {
+  margin: 10px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#trends-time {
+  width: 500px;
+}
