@@ -303,8 +303,8 @@
     function build(activeData) {
       d3.queue(2)
         .defer(d3.csv, `./data/${activeData}_Table.csv`)
-        .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
-        // .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
+        // .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
+        .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
         .await(ready);
       //   d3.csv(`./data/${activeData}_SWOT_${type}.csv`, function (error, data) {
       //     if (error) throw error;
@@ -328,9 +328,9 @@
         master.map((d,i) => {
           data.push({
             "Industry": d["Label"],
-            "Distance from Average": 0,
+            // "Distance from Average": 0,
             "Employees": tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
-            "Relative Size (RS)": tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
+            "Relative Size (RS)": tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : "",
             "Local Trend": d["Pct_Total"],
             "Nat’l Trend": d["Natl_Trend"]
           });

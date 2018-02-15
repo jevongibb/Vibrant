@@ -16,11 +16,11 @@
   margin: 20px 1%;
 }
 
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
   .swot-table-wrapper {
     width: 98% !important;
   }
-}
+} */
 
 .swot-table-wrapper th,
 .swot-table-wrapper td {

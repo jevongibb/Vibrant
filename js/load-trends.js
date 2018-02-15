@@ -368,9 +368,9 @@
         });
         years.sort((a, b) => a - b);
         // console.log(years, bubbleByYear);
-        // master.sort((a, b) => {
-        //   return (tableByNaics[b.naics] ? +tableByNaics[b.naics]["Relative Size (RS)"] : 0) - (tableByNaics[a.naics] ? +tableByNaics[a.naics]["Relative Size (RS)"] : 0)
-        // });
+        master.sort((a, b) => {
+          return (tableByNaics[b.naics] ? +tableByNaics[b.naics]["Employees"] : 0) - (tableByNaics[a.naics] ? +tableByNaics[a.naics]["Employees"] : 0)
+        });
         master.map((d,i) => {
           data.push({
             "Industry": d["Label"],

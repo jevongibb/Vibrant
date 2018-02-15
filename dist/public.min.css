@@ -710,11 +710,11 @@ and also iPads specifically.
   margin: 20px 1%;
 }
 
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
   .swot-table-wrapper {
     width: 98% !important;
   }
-}
+} */
 
 .swot-table-wrapper th,
 .swot-table-wrapper td {
@@ -845,6 +845,10 @@ and also iPads specifically.
   stroke-width: 1px;
   stroke: #333;
   pointer-events: none;
+}
+#trends-bubble-wrapper .like-diagonal{
+  stroke-dasharray:1, 5;
+  stroke: red;
 }
 
 #trends-table-wrapper {

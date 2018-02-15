@@ -270,9 +270,12 @@
     buildTable(activeData);
 
     function buildTable(activeData) {
+      // d3.csv(`./data/${activeData}_Master_Traded.csv`, function (error, data) {
+      //   console.log(data)
+      // });
       d3.csv(`./data/${activeData}_Table.csv`, function (error, data) {
         if (error) throw error;
-
+        
         data.sort((a, b) => +b['Employees'] - +a['Employees']); //descending
 
         var sortAscending = true;

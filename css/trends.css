@@ -102,6 +102,10 @@
   stroke: #333;
   pointer-events: none;
 }
+#trends-bubble-wrapper .like-diagonal{
+  stroke-dasharray:1, 5;
+  stroke: red;
+}
 
 #trends-table-wrapper {
   width: 100%;
