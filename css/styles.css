@@ -26,9 +26,9 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
+  /* display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; */
   background: #000;
   margin: 0;
   padding: 0;
@@ -65,7 +65,7 @@ body {
 }
 
 #container {
-  margin-top: 50px;
+  margin-top: 83px;
   position: relative;
 }
 
@@ -271,6 +271,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   z-index: 9;
+  min-height: 50px;
 }
 
 #navigation .brend {
@@ -282,6 +283,7 @@ body {
 
 #navigation .logo-wrapper {
   margin: 5px 20px 5px 10px;
+  padding-top: 5px;
 }
 
 #navigation .logo {

@@ -36,7 +36,7 @@ $(function () {
     $(document).ready(function () {
       // new WOW().init();
       resize(true);
-      loadPage({});
+      loadPage({}, true);
     });
   };
 
@@ -53,7 +53,7 @@ $(function () {
         page: linkTo
       });
     });
-    loadPage({});
+    loadPage({}, true);
   });
 
   var events = {
@@ -99,7 +99,7 @@ $(function () {
   };
 
 
-  window.loadPage = function loadPage(obj) {
+  window.loadPage = function loadPage(obj, initLoading) {
 
     var page = obj.page || getParameterByName('page', window.location.search) || "activity";
     if (page === "nolink") {
@@ -122,7 +122,7 @@ $(function () {
     }
 
 
-    if (events[page].nav === "graphs") {
+    if (events[page].nav === "graphs" && initLoading) {
       $('#navigation .link-to').removeClass('link-to-active');
       $('#navigation .link-to-' + events[page].nav).addClass('link-to-active');
       
@@ -170,8 +170,9 @@ $(function () {
 
   function resize(init) {
     // $("#footer").removeClass('footer-fixed').addClass('footer-relative');
-    let otherHeight = $("#header").height() + $("#sub-navigation-wrapper").height();// + $("#footer").height()
+    let otherHeight = $("#header").height();// + $("#sub-navigation-wrapper").height();// + $("#footer").height()
     // console.log($("#header").height(), $("#sub-navigation-wrapper").height(), $("#header").height());
+    $("#container").css('margin-top', otherHeight);
     $("#page-wrapper").css('min-height', $(window).height() - otherHeight);
   }
   $(window).on('resize', resize);
