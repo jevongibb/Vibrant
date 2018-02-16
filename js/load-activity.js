@@ -307,7 +307,7 @@
             "Description":d["Label"],
             "Employees":+d["2015"],
             "Relative Size":(+d["RS_2015"]).toFixed(2),
-            "% Total":(+d["Pct_Total"]).toFixed(0)+"%"
+            "% Total":(+d["Pct_Total"]).toFixed(3)+"%"
           });
         });
         
