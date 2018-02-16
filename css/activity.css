@@ -98,6 +98,7 @@
   line-height: normal;
   font-family: sans-serif;
   text-align: center;
+  white-space: nowrap;
 }
 
 #activity-table-wrapper {

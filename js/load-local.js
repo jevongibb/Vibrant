@@ -10,6 +10,11 @@
     run(undefined, callback);
   }
 
+  var format = d3.format(',');
+  function setNumberFormat(any){
+    return format(+any || 0) || 0;
+  }
+
   class BubbleChart {
     constructor(opts) {
       this.data = opts.data;
@@ -71,12 +76,12 @@
         .padding(0.1);
       var y = d3.scaleLinear()
         .range([0, this.height]);
-      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Relative Size (RS)"]));
+      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Relative Size"]));
 
       // Scale the range of the data in the domains
       x.domain(data.map((d) => d["Industry"]));
 
-      y.domain([d3.min(data, (d) => -d["Relative Size (RS)"]), d3.max(data, (d) => -d["Relative Size (RS)"])]);
+      y.domain([d3.min(data, (d) => -d["Relative Size"]), d3.max(data, (d) => -d["Relative Size"])]);
 
       this.container.append("line")
         .style("stroke", "#000")
@@ -106,17 +111,17 @@
       //   .enter().append("rect")
       //   .attr("class", "bar")
       //   // .attr("x", function (d) {
-      //   //   return x(d["Relative Size (RS)"]person);
+      //   //   return x(d["Relative Size"]person);
       //   // })
       //   // .attr("width", x.bandwidth())
       //   // .attr("y", function (d) {
-      //   //   return y(d["Relative Size (RS)"]);
+      //   //   return y(d["Relative Size"]);
       //   // })
-      //   // .attr("height", (d) => this.height - y(d["Relative Size (RS)"]));
-      //   .attr("y", (d) => y(Math.min(0, -d["Relative Size (RS)"])))
-      //   // .attr("y", (d) => y(Math.min(0, d["Relative Size (RS)"])))
-      //   .attr("x", (d) => x(d["Relative Size (RS)"]person))
-      //   .attr("height", (d) => Math.abs(y(d["Relative Size (RS)"])-y(0)))
+      //   // .attr("height", (d) => this.height - y(d["Relative Size"]));
+      //   .attr("y", (d) => y(Math.min(0, -d["Relative Size"])))
+      //   // .attr("y", (d) => y(Math.min(0, d["Relative Size"])))
+      //   .attr("x", (d) => x(d["Relative Size"]person))
+      //   .attr("height", (d) => Math.abs(y(d["Relative Size"])-y(0)))
       //   .attr("width", x.bandwidth());
       let padding = this.padding;
 
@@ -127,20 +132,20 @@
         .style("stroke", "#000")
         .style("stroke-width", "0")
         .style('fill', (d, i) => this.color(i))
-        .attr("cy", (d) => d["Relative Size (RS)"] > 0 ? y(Math.min(0, -d["Relative Size (RS)"])) : (y(Math.min(0, -d["Relative Size (RS)"])) + Math.abs(y(d["Relative Size (RS)"]) - y(0))))
-        // .attr("y", (d) => y(Math.min(0, d["Relative Size (RS)"])))
+        .attr("cy", (d) => d["Relative Size"] > 0 ? y(Math.min(0, -d["Relative Size"])) : (y(Math.min(0, -d["Relative Size"])) + Math.abs(y(d["Relative Size"]) - y(0))))
+        // .attr("y", (d) => y(Math.min(0, d["Relative Size"])))
         .attr("cx", (d) => x(d["Industry"]) + x.bandwidth() / 2)
-        // .attr("height", (d) => Math.abs(y(d["Relative Size (RS)"])-y(0)))
+        // .attr("height", (d) => Math.abs(y(d["Relative Size"])-y(0)))
         // .attr("width", x.bandwidth())
-        .attr("r", (d, i) => radius(d["Relative Size (RS)"]))
+        .attr("r", (d, i) => radius(d["Relative Size"]))
         .style("cursor", "pointer")
         .on("mouseover", (d) => {
-          tooltip.html(`<p>${d["Industry"]}</p><p>Relative Size: ${d["Relative Size (RS)"]}</p><p>Employees: ${d["Employees"]}</p>`);
+          tooltip.html(`<p>${d["Industry"]}</p><p>Relative Size: ${d["Relative Size"]}</p><p>Employees: ${d["Employees"]}</p>`);
           tooltip.style("visibility", "visible");
         })
         .on("mousemove", function (d) {
           // var coords = d3.mouse(this);
-          var top = d["Relative Size (RS)"] > 0 ? y(Math.min(0, -d["Relative Size (RS)"])) : (y(Math.min(0, -d["Relative Size (RS)"])) + Math.abs(y(d["Relative Size (RS)"]) - y(0)))// || (d3.event.pageY - padding.top)
+          var top = d["Relative Size"] > 0 ? y(Math.min(0, -d["Relative Size"])) : (y(Math.min(0, -d["Relative Size"])) + Math.abs(y(d["Relative Size"]) - y(0)))// || (d3.event.pageY - padding.top)
           tooltip.style("top", (top) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
         })
         .on("mouseout", () => tooltip.style("visibility", "hidden"))
@@ -220,6 +225,25 @@
       var sortAscending = true;
       var element = d3.select('#local-table-wrapper');
       element.selectAll("*").remove();
+
+      var searchBar = element.append('div');
+        searchBar.append('input')
+          .attr('placeholder', 'Search by Industry...')
+          .attr('type', 'text')
+          .attr('id', 'local-table-search')
+          .on('keyup', function () {
+            let text = this.value.trim().toLowerCase();
+            let i = 0;
+            rows.each(function (d) {
+              let el = d3.select(this);
+              const isVisible = d["Industry"].toLowerCase().indexOf(text) != -1;
+              el.style("background", i % 2 ? "#fff" : "#eee")
+                .style("display", isVisible ? "table-row" : "none");
+              if (isVisible) {
+                i++;
+              }
+            });
+          });
 
       // local-table-wrapper
       var table = element.append('table');
@@ -302,7 +326,7 @@
 
     function build(activeData) {
       d3.queue(2)
-        .defer(d3.csv, `./data/${activeData}_Table.csv`)
+        // .defer(d3.csv, `./data/${activeData}_Table.csv`)
         // .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
         .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
         .await(ready);
@@ -310,7 +334,7 @@
       //     if (error) throw error;
 
       //   });
-      function ready(error, table, master) {
+      function ready(error, master) {
         if (error) throw error;
         // console.log(table, master);
         var data = [];
@@ -319,29 +343,29 @@
             acc[cur.naics] = cur;
             return acc;
           }, {});
-        var tableByNaics = table
-          .reduce(function (acc, cur, i) {
-            acc[cur.NAICS] = cur;
-            return acc;
-          }, {});
-
+        // var tableByNaics = table
+        //   .reduce(function (acc, cur, i) {
+        //     acc[cur.NAICS] = cur;
+        //     return acc;
+        //   }, {});
+        master.sort((a, b) => +b['2015'] - +a['2015']);
         master.map((d,i) => {
           data.push({
             "Industry": d["Label"],
             // "Distance from Average": 0,
-            "Employees": tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
-            "Relative Size (RS)": tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : "",
-            "Local Trend": d["Pct_Total"],
-            "Nat’l Trend": d["Natl_Trend"]
+            "Employees": setNumberFormat(d["2015"]),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
+            "Relative Size": (+d["RS_2015"]).toFixed(2),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : "",
+            "Local Trend": (+d["Local_Trend"]).toFixed(3)+"%",
+            "Nat’l Trend": (+d["Natl_Trend"]).toFixed(3)+"%"
           });
         })
         // console.log(masterByNaics, tableByNaics);
 
-        //Industry)"]}</p><p>Relative Size: ${d["Relative Size (RS)"]}</p><p>Employees: ${d["Employees"
-        data.sort((a, b) => +b['Employees'] - +a['Employees']);
+        //Industry)"]}</p><p>Relative Size: ${d["Relative Size"]}</p><p>Employees: ${d["Employees"
+        
         buildTable(data);
 
-        data.sort((a, b) => +b['Relative Size (RS)'] - +a['Relative Size (RS)']);
+        data.sort((a, b) => +b['Relative Size'] - +a['Relative Size']);
         var bubble = data.splice(0,10).concat(data.splice(data.length-10,data.length));
         // console.log(bubble);
 //         // my data
@@ -363,12 +387,12 @@
 //         bubble = d3.csvParse(bubble);
 //         // bubble = bubble.splice(0,13);
 //         bubble.forEach(function (d) {
-//           d["Relative Size (RS)"] = +d["Relative Size (RS)"] - 15;
+//           d["Relative Size"] = +d["Relative Size"] - 15;
 //         });
-//         bubble.sort((a, b) => b["Relative Size (RS)"] - a["Relative Size (RS)"]);
+//         bubble.sort((a, b) => b["Relative Size"] - a["Relative Size"]);
         // bubble.push({
         //   "Industry": "",
-        //   "Relative Size (RS)": 0,
+        //   "Relative Size": 0,
         //   "Employees": 0
         // });
         buildBubble(bubble);

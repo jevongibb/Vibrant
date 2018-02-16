@@ -10,7 +10,11 @@
     run(undefined, callback);
   }
 
-
+  var format = d3.format(',');
+  function setNumberFormat(any){
+    return format(+any || 0) || 0;
+  }
+  
   Array.prototype.contains = function (v) {
     for (var i = 0; i < this.length; i++) {
       if (this[i] === v) return true;
@@ -155,7 +159,7 @@
         });
       // https://bl.ocks.org/mbostock/1846692
       // .text(function(d) { return d.name; })
-      // .style("font-size", function(d) { return Math.min(2 * d.r, (2 * d.r - 8) / this.getComputedTextLength() *
+      // .style("font-size", function(d) { return Math.min(2 * d.radius, (2 * d.radius - 8) / this.getComputedTextLength() * 24) + "px"; })
 
 
       var ticked = function () {
@@ -201,6 +205,7 @@
       activeData = $(this).data('value');
       $('.dropdown-value').text(activeData);
       $('.dropdown-hidden').toggleClass('visibility-visible');
+      // build(activeData);
       buildBubble(activeData);
       buildTable(activeData);
     });
@@ -266,15 +271,45 @@
       });
     }
 
-
+    // build(activeData);
+    buildBubble(activeData);
     buildTable(activeData);
+    // function build(activeData) {
+    //   d3.queue(2)
+    //     // .defer(d3.csv, `./data/${activeData}_Table.csv`)
+    //     .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
+    //     // .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
+    //     .await(ready);
 
+    //     function ready(error, master) {
+    //       if (error) throw error;
+
+    //       buildBubble(activeData);
+    //       buildTable(activeData);
+    //     }
+    // }
+
+
+    //Activity: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
     function buildTable(activeData) {
-      // d3.csv(`./data/${activeData}_Master_Traded.csv`, function (error, data) {
-      //   console.log(data)
-      // });
-      d3.csv(`./data/${activeData}_Table.csv`, function (error, data) {
+
+      // d3.csv(`./data/${activeData}_Table.csv`, function (error, data) {
+      d3.csv(`./data/${activeData}_Master_Traded.csv`, function (error, _data) {
         if (error) throw error;
+
+        var data = [];
+        
+        _data.map((d)=>{
+          d["Relative Size (RS)"] = (+d["Relative Size (RS)"]).toFixed(2);
+          d["Employees"] = setNumberFormat(d["Employees"]);
+          data.push({
+            "NAICS":d["naics"],
+            "Description":d["Label"],
+            "Employees":+d["2015"],
+            "Relative Size":(+d["RS_2015"]).toFixed(2),
+            "% Total":(+d["Pct_Total"]).toFixed(0)+"%"
+          });
+        });
         
         data.sort((a, b) => +b['Employees'] - +a['Employees']); //descending
 
@@ -324,7 +359,8 @@
             //   });
 
           });
-
+        
+        
         var table = element.append('table');
         var titles = d3.keys(data[0]);
         var headers = table.append('thead').append('tr')
@@ -392,7 +428,7 @@
       });
     }
 
-    buildBubble(activeData);
+    
 
     function buildBubble(activeData) {
 

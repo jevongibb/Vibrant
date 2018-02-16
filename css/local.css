@@ -67,7 +67,7 @@
   margin: 20px 0;
 }
 
-#local-table-wrapper td,
+/* #local-table-wrapper td,
 #local-table-wrapper th {
   border: 0px solid #ccc;
 }
@@ -84,4 +84,14 @@
 
 #local-table-wrapper tr td:last-child {
   border-left: 1px solid #fff;
+} */
+
+#local-table-search {
+  /* height: 30px; */
+  padding: 5px;
+}
+
+#local-table-search:focus,
+#local-table-search:hover {
+  outline: none;
 }

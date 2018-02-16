@@ -10,10 +10,17 @@
     run(undefined, callback);
   }
 
+  var format = d3.format(',');
+  function setNumberFormat(any){
+    return format(+any || 0) || 0;
+  }
+
   class BubbleChart {
     constructor(opts) {
       this.data = opts.data;
       this.year = opts.year || "";
+      this.datas = opts.datas;
+      this.years = opts.years || "";
       this.element = opts.element;
       this.color = d3.scaleOrdinal(d3['schemeCategory20']); //.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
@@ -51,12 +58,12 @@
         .attr("height", this.height)
         .attr('transform', `translate(${this.margin.left},${this.margin.top})`);
 
-      this.tooltip = element
-        .append("div")
-        .attr('class', 'item trends-bubble-tooltip')
-        .style("visibility", "hidden");
+      // this.tooltip = element
+      //   .append("div")
+      //   .attr('class', 'item trends-bubble-tooltip')
+      //   .style("visibility", "hidden");
       // create the other stuff
-      this.createBubbles(this.data);
+      this.createBubbles();
     }
 
     setData(newData) {
@@ -65,24 +72,27 @@
       this.draw();
     }
 
-    createBubbles(data) {
-      let tooltip = this.tooltip;
-
+    createBubbles() {
+      // let tooltip = this.tooltip;
+      let that = this;
       // console.log(data);
       // set the ranges
       var x = d3.scaleLinear()
         .range([0, this.width])
       var y = d3.scaleLinear()
         .range([this.height, 0]);
-      var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(data, (d) => +d["Relative Size (RS)"]));
+      var line = d3.line()
+        .x((d) => x(d.x))
+        .y((d) => y(d.y));
+      var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d["Relative Size"]));
       // Scale the range of the data in the domains
-      const minX = d3.min(data, (d) => d["National Trend"]);
-      const maxX = d3.max(data, (d) => d["National Trend"]);
+      const minX = d3.min(that.data, (d) => d["National Trend"]);
+      const maxX = d3.max(that.data, (d) => d["National Trend"]);
       const absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
       x.domain([-absMaxX, +absMaxX]);
 
-      const minY = d3.min(data, (d) => d["Local Trend"]);
-      const maxY = d3.max(data, (d) => d["Local Trend"]);
+      const minY = d3.min(that.data, (d) => d["Local Trend"]);
+      const maxY = d3.max(that.data, (d) => d["Local Trend"]);
       const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
       y.domain([-absMaxY, +absMaxY]);
 
@@ -126,20 +136,25 @@
         .attr('class', 'label-axis label-y-axis')
         .attr("text-anchor", "middle")
         .attr("transform", `translate(${(-this.margin.left+15)},${(this.height/2)})rotate(-90)`)
-        .text("Local Trend");
+        .text("Local Trend (% Change in # Employees)");
 
       this.container.append("text")
         .attr('class', 'label-axis label-x-axis')
         .attr("text-anchor", "middle")
         .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+15))})`)
-        .text("National Trend");
+        .text("National Trend (% Change in # Employees)");
 
       var label = this.container.append("text")
         .attr("class", "year label")
-        .attr("text-anchor", "end")
         .attr("y", this.height - 5)
         .attr("x", this.width - 5)
         .text(this.year);
+
+      var description = this.container.append("text")
+        .attr("class", "description label")
+        .attr("y", -10)
+        .attr("x", 0)
+        .text("");
 
       // let trendsWrapperPadding = d3.select("#trends-container").node().getBoundingClientRect();
       let padding = this.padding;//element.node().getBoundingClientRect();
@@ -147,8 +162,8 @@
       // if(padding && padding.top<0){
       //   padding.top=Math.abs(padding.top);
       // }
-      this.container.selectAll(".bubble")
-        .data(data)
+      var bubble = this.container.selectAll(".bubble")
+        .data(that.data)
         .enter().append("circle")
         .attr("class", "bubble")
         .style("stroke", "#000")
@@ -156,20 +171,64 @@
         .style('fill', (d, i) => this.color(i))
         .attr("cy", (d) => y(d["Local Trend"]))
         .attr("cx", (d) => x(d["National Trend"]))
-        .attr("r", (d) => radius(d["Relative Size (RS)"]))
+        .attr("r", (d) => radius(d["Relative Size"]))
         .style("cursor", "pointer")
-        .on("mouseover", (d) => {
-          tooltip.html(`<p>${d.Industry}</p><p>Relative Size: ${d["Relative Size (RS)"]}</p><p>Local Trend: ${d["Local Trend"]}</p><p>National Trend: ${d["National Trend"]}</p>`);
-          tooltip.style("visibility", "visible");
+        .on("mouseover", function (d) {
+          bubble.style('opacity',1);
+          d3.select(this).style('opacity',1);
+          description.text(d['Industry']);
+          // .style("font-size",d['Industry'].length<50 ? "18px" : "16px")
+          // .style("font-size", function(d) { 
+          //   console.log(width, this.getComputedTextLength());
+          //   return Math.min(width/24, this.getComputedTextLength()/24) + "px"; 
+          // });
+
+          // animated line - https://bl.ocks.org/shimizu/f7ef798894427a99efe5e173e003260d
+          that.container.select('.history').remove();
+          let history=[];
+          that.years.map((year)=>{
+            that.datas[year].map((c)=>{
+              if(d["Industry"]===c["Industry"]){
+                history.push({x:c["National Trend"], y:c["Local Trend"]});
+              }
+            });
+          });
+          // console.log(history);
+          // "Industry": "Local Trend": "National Trend": "Relative Size":
+          var t = d3.transition()
+            .duration(2000)
+            .ease(d3.easeLinear)
+            // .on("start", function(d){ console.log("transiton start") })
+            // .on("end", function(d){ console.log("transiton end") });
+          var path = that.container.selectAll(".history")
+            .data([history]);
+          path.enter().append("path").classed("history", true)
+            .merge(path)
+            .attr("d", line)
+            // .attr("fill", "none")
+            // .attr("stroke", "#333")
+            .attr("stroke-dasharray", function(d){ return this.getTotalLength() })
+            .attr("stroke-dashoffset", function(d){ return this.getTotalLength() })
+          that.container.selectAll(".history").transition(t)
+            .attr("stroke-dashoffset", 0)
         })
-        .on("mousemove", function (d) {
-          // var coords = d3.mouse(this);
-          // console.log(padding);/ -  - Math.abs(padding.top)
-          // ((coords[1] - Math.abs(padding.top))
-          tooltip.style("top", (y(d["Local Trend"])) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
-          // tooltip.style("top", ((d3.event.pageY-Math.abs(padding.top)) - 10) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
-        })
-        .on("mouseout", () => tooltip.style("visibility", "hidden"))
+        .on("mouseout", () => {
+          description.text("");
+          this.container.select('.history').remove();
+          bubble.style('opacity',1);
+        });
+        // .on("mouseover", (d) => {
+        //   tooltip.html(`<p>${d.Industry}</p><p>Relative Size: ${d["Relative Size"]}</p><p>Local Trend: ${d["Local Trend"]}</p><p>National Trend: ${d["National Trend"]}</p>`);
+        //   tooltip.style("visibility", "visible");
+        // })
+        // .on("mousemove", function (d) {
+        //   // var coords = d3.mouse(this);
+        //   // console.log(padding);/ -  - Math.abs(padding.top)
+        //   // ((coords[1] - Math.abs(padding.top))
+        //   tooltip.style("top", (y(d["Local Trend"])) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
+        //   // tooltip.style("top", ((d3.event.pageY-Math.abs(padding.top)) - 10) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
+        // })
+        // .on("mouseout", () => tooltip.style("visibility", "hidden"))
 
 
       this.container.append("line")
@@ -255,6 +314,25 @@
       var element = d3.select('#trends-table-wrapper');
       element.selectAll("*").remove();
 
+      var searchBar = element.append('div');
+        searchBar.append('input')
+          .attr('placeholder', 'Search by Industry...')
+          .attr('type', 'text')
+          .attr('id', 'trends-table-search')
+          .on('keyup', function () {
+            let text = this.value.trim().toLowerCase();
+            let i = 0;
+            rows.each(function (d) {
+              let el = d3.select(this);
+              const isVisible = d["Industry"].toLowerCase().indexOf(text) != -1;
+              el.style("background", i % 2 ? "#fff" : "#eee")
+                .style("display", isVisible ? "table-row" : "none");
+              if (isVisible) {
+                i++;
+              }
+            });
+          });
+
       // trends-table-wrapper
       var table = element.append('table');
       var titles = d3.keys(data[0]);
@@ -326,18 +404,20 @@
     build(activeData);
 
 
-    function buildBubble(data, year) {
+    function buildBubble(bubbleByYear, years, year) {
       const chart = new BubbleChart({
         element: d3.select('#trends-bubble-wrapper').node(),//document.querySelector('#trends-bubble-wrapper'),
-        data: data,
-        year: year
+        data: bubbleByYear[year],
+        year: year,
+        datas: bubbleByYear,
+        years: years
       });
       $(window).on('resize', () => chart.draw());
     }
 
     function build(activeData) {
       d3.queue(2)
-        .defer(d3.csv, `./data/${activeData}_Table.csv`)
+        // .defer(d3.csv, `./data/${activeData}_Table.csv`)
         .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
         // .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
         .await(ready);
@@ -345,7 +425,7 @@
       //     if (error) throw error;
 
       //   });
-      function ready(error, table, master) {
+      function ready(error, master) {
         if (error) throw error;
         // console.log(table, master);
         var data = [];
@@ -355,11 +435,11 @@
             acc[cur.naics] = cur;
             return acc;
           }, {});
-        var tableByNaics = table
-          .reduce(function (acc, cur, i) {
-            acc[cur.NAICS] = cur;
-            return acc;
-          }, {});
+        // var tableByNaics = table
+        //   .reduce(function (acc, cur, i) {
+        //     acc[cur.NAICS] = cur;
+        //     return acc;
+        //   }, {});
 
         const years = d3.keys(master[0]).filter((d) => d.indexOf("L_T_") !== -1).map((year) => {
           year = +year.replace(/[^0-9]+/g, '');
@@ -368,16 +448,14 @@
         });
         years.sort((a, b) => a - b);
         // console.log(years, bubbleByYear);
-        master.sort((a, b) => {
-          return (tableByNaics[b.naics] ? +tableByNaics[b.naics]["Employees"] : 0) - (tableByNaics[a.naics] ? +tableByNaics[a.naics]["Employees"] : 0)
-        });
+        master.sort((a, b) => +b['2015'] - +a['2015']);
         master.map((d,i) => {
           data.push({
             "Industry": d["Label"],
-            "Employees": tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
-            "Relative Size (RS)": tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
-            "Local Trend": d["Local_Trend"],
-            "Nat’l Trend": d["Natl_Trend"]
+            "Employees": setNumberFormat(d["2015"]),//tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
+            "Relative Size": (+d["RS_2015"]).toFixed(2),//tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
+            "Local Trend": (+d["Local_Trend"]).toFixed(3)+"%",
+            "Nat’l Trend": (+d["Natl_Trend"]).toFixed(3)+"%"
           });
           years.map((year) => {
             // if(bubble.length<50){
@@ -385,7 +463,7 @@
               "Industry": d["Label"],
               "Local Trend": +d["L_T_" + year] || 0, //+d["Local_Trend"],
               "National Trend": +d["N_T_" + year] || 0, //+d["Natl_Trend"],
-              "Relative Size (RS)": tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : (""+i)//(Math.random() + 1) * 5
+              "Relative Size": +d["RS_2015"],//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size"] : (""+i)//(Math.random() + 1) * 5
             });
             // }
           });
@@ -402,12 +480,12 @@
           .attr('max', years[years.length - 1])
           .on("input change", function () {
             const year = $(this).val();
-            buildBubble(bubbleByYear[year], year);
+            buildBubble(bubbleByYear, years, year);
           });
 
         buildTable(data);
 
-        buildBubble(bubbleByYear[years[0]], years[0]);
+        buildBubble(bubbleByYear, years, years[0]);
 
       }
     }

@@ -107,6 +107,7 @@
   line-height: normal;
   font-family: sans-serif;
   text-align: center;
+  white-space: nowrap;
 }
 
 #activity-table-wrapper {
@@ -199,7 +200,7 @@
   margin: 20px 0;
 }
 
-#local-table-wrapper td,
+/* #local-table-wrapper td,
 #local-table-wrapper th {
   border: 0px solid #ccc;
 }
@@ -216,6 +217,16 @@
 
 #local-table-wrapper tr td:last-child {
   border-left: 1px solid #fff;
+} */
+
+#local-table-search {
+  /* height: 30px; */
+  padding: 5px;
+}
+
+#local-table-search:focus,
+#local-table-search:hover {
+  outline: none;
 }
 * {
   margin: 0;
@@ -813,6 +824,14 @@ and also iPads specifically.
   font: 500 48px "Helvetica Neue";
   fill: #ddd;
   pointer-events: none;
+  text-anchor: end;
+}
+
+#trends-bubble-wrapper .description.label {
+  font: 500 18px "Helvetica Neue";
+  fill: #ddd;
+  pointer-events: none;
+  text-anchor: start;
 }
 
 #trends-bubble-wrapper .axis text {
@@ -824,10 +843,18 @@ and also iPads specifically.
   pointer-events: none;
 }
 
+#trends-bubble-wrapper .history {
+  pointer-events: none;
+  fill: none;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  stroke-width:1.5;
+  stroke:#888;
+}
+
 #trends-bubble-wrapper .domain {
   stroke-width: 0;
 }
-
 #trends-bubble-wrapper line {
   stroke-width: 0.5px;
   stroke: #eee;
@@ -846,16 +873,18 @@ and also iPads specifically.
   pointer-events: none;
 }
 #trends-bubble-wrapper .like-diagonal{
-  stroke-dasharray:1, 5;
+  /* stroke-dasharray:1, 5; dotted*/
+  stroke-dasharray:5, 5;/*dashed */
   stroke: red;
 }
 
 #trends-table-wrapper {
   width: 100%;
   margin: 20px 0;
+  /* margin: 20px 50px; */
 }
 
-#trends-table-wrapper td,
+/* #trends-table-wrapper td,
 #trends-table-wrapper th {
   border: 0px solid #ccc;
 }
@@ -864,15 +893,15 @@ and also iPads specifically.
   background: #fff;
   color: #000;
   border-bottom: 1px solid #000;
-}
+} */
 
-#trends-table-wrapper tr td:first-child {
+/* #trends-table-wrapper tr td:first-child {
   border-right: 1px solid #000;
 }
 
 #trends-table-wrapper tr td:last-child {
   border-left: 1px solid #fff;
-}
+} */
 
 #trends-bubble-legend {
   position: absolute;
@@ -915,6 +944,7 @@ and also iPads specifically.
   line-height: normal;
   font-family: sans-serif;
   text-align: center;
+  white-space: nowrap;
 }
 
 #trends-slider-wrapper {
@@ -929,4 +959,14 @@ and also iPads specifically.
 
 #trends-time {
   width: 500px;
+}
+
+#trends-table-search {
+  /* height: 30px; */
+  padding: 5px;
+}
+
+#trends-table-search:focus,
+#trends-table-search:hover {
+  outline: none;
 }
