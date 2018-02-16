@@ -176,12 +176,6 @@
       //   .attr("y", this.height+5)
       //   .attr("x", -26)
       //   .text("<-1.5");
-      this.container.append("line")
-        .attr('class', 'more-than-y-max')
-        .attr("x1", x(-0.02))
-        .attr("x2", x(0.02))
-        .attr("y1", y(1.47))
-        .attr("y2", y(1.53));
       this.container.append("circle")
         .attr('class', 'more-than-y-max')
         .style('fill', '#fff')
@@ -189,6 +183,12 @@
         .attr("cx", x(0))
         .attr("cy", y(1.52))
         .attr("r", 2);
+      this.container.append("line")
+        .attr('class', 'more-than-y-max')
+        .attr("x1", x(-0.02))
+        .attr("x2", x(0.02))
+        .attr("y1", y(1.47))
+        .attr("y2", y(1.53));
       this.container.append("line")
         .attr('class', 'more-than-y-max')
         .attr("x1", x(-0.02))
