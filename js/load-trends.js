@@ -171,25 +171,36 @@
         .attr("y", 5)
         .attr("x", -22.5)
         .text(">1.5");
-
-      this.container.append("text")
-        .attr("class", "less-than-y-min")
-        .attr("y", this.height+5)
-        .attr("x", -26)
-        .text("<-1.5");
-      
+      // this.container.append("text")
+      //   .attr("class", "less-than-y-min")
+      //   .attr("y", this.height+5)
+      //   .attr("x", -26)
+      //   .text("<-1.5");
       this.container.append("line")
         .attr('class', 'more-than-y-max')
         .attr("x1", x(-0.02))
         .attr("x2", x(0.02))
         .attr("y1", y(1.47))
         .attr("y2", y(1.53));
+      this.container.append("circle")
+        .attr('class', 'more-than-y-max')
+        .style('fill', '#fff')
+        .style('stroke-width', '0')
+        .attr("cx", x(0))
+        .attr("cy", y(1.52))
+        .attr("r", 2);
       this.container.append("line")
-        .attr('class', 'less-than-y-min')
+        .attr('class', 'more-than-y-max')
         .attr("x1", x(-0.02))
         .attr("x2", x(0.02))
-        .attr("y1", y(-1.53))
-        .attr("y2", y(-1.47));
+        .attr("y1", y(1.51))
+        .attr("y2", y(1.57));
+      // this.container.append("line")
+      //   .attr('class', 'less-than-y-min')
+      //   .attr("x1", x(-0.02))
+      //   .attr("x2", x(0.02))
+      //   .attr("y1", y(-1.53))
+      //   .attr("y2", y(-1.47));
 
       var label = this.container.append("text")
         .attr("class", "year label")
