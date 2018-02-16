@@ -828,12 +828,13 @@ and also iPads specifically.
 }
 
 #trends-bubble-wrapper .description.label {
-  font: 500 18px "Helvetica Neue";
+  font: 500 24px "Helvetica Neue";
   fill: #ddd;
   pointer-events: none;
   text-anchor: start;
 }
-
+#trends-bubble-wrapper text.more-than-y-max,
+#trends-bubble-wrapper text.less-than-y-min,
 #trends-bubble-wrapper .axis text {
   fill: #aaa;
   pointer-events: none;
@@ -843,7 +844,15 @@ and also iPads specifically.
   pointer-events: none;
 }
 
-#trends-bubble-wrapper .history {
+#trends-bubble-wrapper .background-history {
+  pointer-events: none;
+  fill: none;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+  stroke-width:1.5;
+  stroke:#eee;
+}
+#trends-bubble-wrapper .animated-history {
   pointer-events: none;
   fill: none;
   stroke-linejoin:round;
@@ -865,7 +874,8 @@ and also iPads specifically.
   stroke-width: 0.5px;
   stroke: #eee;
 }
-
+#trends-bubble-wrapper line.less-than-y-min,
+#trends-bubble-wrapper line.more-than-y-max,
 #trends-bubble-wrapper .like-diagonal,
 #trends-bubble-wrapper .like-axis {
   stroke-width: 1px;

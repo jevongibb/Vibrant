@@ -15,6 +15,16 @@
     return format(+any || 0) || 0;
   }
 
+  function getTextWidth(text, font) {
+    // re-use canvas object for better performance
+    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    var context = canvas.getContext("2d");
+    context.font = font || '24px "Helvetica Neue"';
+    var metrics = context.measureText(text);
+    return metrics.width;
+  }
+// console.log(getTextWidth("hello there!", "bold 12pt arial"));
+
   class BubbleChart {
     constructor(opts) {
       this.data = opts.data;
@@ -75,6 +85,7 @@
     }
 
     createBubbles() {
+      let maxY = 1.6;
       // let tooltip = this.tooltip;
       let that = this;
       // console.log(data);
@@ -85,7 +96,15 @@
         .range([this.height, 0]);
       var line = d3.line()
         .x((d) => x(d.x))
-        .y((d) => y(d.y));
+        .y((d) => {
+          if(d.y>maxY){
+            return y(maxY);
+          } else if(d.y<-maxY){
+            return y(-maxY);
+          }else{
+            return y(d.y);
+          }
+        });
       var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d["Relative Size"]));
       
       // Scale the range of the data in the domains
@@ -96,7 +115,8 @@
       // const minY = d3.min(that.data, (d) => d["Local Trend"]);
       // const maxY = d3.max(that.data, (d) => d["Local Trend"]);
       // const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
-      y.domain([-this.absMaxY, +this.absMaxY]);
+      // y.domain([-this.absMaxY, +this.absMaxY]);
+      y.domain([-1.6, +1.6])
 
       const absMin = Math.min(this.absMaxY, this.absMaxX);
 
@@ -145,6 +165,31 @@
         .attr("text-anchor", "middle")
         .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+15))})`)
         .text("National Trend (% Change in # Employees)");
+      
+      this.container.append("text")
+        .attr("class", "more-than-y-max")
+        .attr("y", 5)
+        .attr("x", -22.5)
+        .text(">1.5");
+
+      this.container.append("text")
+        .attr("class", "less-than-y-min")
+        .attr("y", this.height+5)
+        .attr("x", -26)
+        .text("<-1.5");
+      
+      this.container.append("line")
+        .attr('class', 'more-than-y-max')
+        .attr("x1", x(-0.02))
+        .attr("x2", x(0.02))
+        .attr("y1", y(1.47))
+        .attr("y2", y(1.53));
+      this.container.append("line")
+        .attr('class', 'less-than-y-min')
+        .attr("x1", x(-0.02))
+        .attr("x2", x(0.02))
+        .attr("y1", y(-1.53))
+        .attr("y2", y(-1.47));
 
       var label = this.container.append("text")
         .attr("class", "year label")
@@ -171,14 +216,24 @@
         .style("stroke", "#000")
         .style("stroke-width", "0")
         .style('fill', (d, i) => this.color(i))
-        .attr("cy", (d) => y(d["Local Trend"]))
+        .attr("cy", (d) => {
+          if(d["Local Trend"]>maxY){
+            return y(maxY);
+          } else if(d["Local Trend"]<-maxY){
+            return y(-maxY);
+          }else{
+            return y(d["Local Trend"]);
+          }
+        })
         .attr("cx", (d) => x(d["National Trend"]))
         .attr("r", (d) => radius(d["Relative Size"]))
         .style("cursor", "pointer")
         .on("mouseover", function (d) {
           bubble.style('opacity',1);
           d3.select(this).style('opacity',1);
-          description.text(d['Industry']);
+          const textWidth = getTextWidth(d['Industry']) || (that.width+1);
+          // console.log(textWidth);
+          description.text(textWidth < that.width ? d['Industry'] : d['Industry'].substring(0,38)+"...");
           // .style("font-size",d['Industry'].length<50 ? "18px" : "16px")
           // .style("font-size", function(d) { 
           //   console.log(width, this.getComputedTextLength());
@@ -186,7 +241,7 @@
           // });
 
           // animated line - https://bl.ocks.org/shimizu/f7ef798894427a99efe5e173e003260d
-          that.container.select('.history').remove();
+          that.container.selectAll('.history').remove();
           let history=[];
           that.years.map((year)=>{
             that.datas[year].map((c)=>{
@@ -196,27 +251,33 @@
             });
           });
           // console.log(history);
+          that.container.append("path")
+            .data([history])
+            .classed("history background-history", true)
+            .attr("d", line);
+
           // "Industry": "Local Trend": "National Trend": "Relative Size":
           var t = d3.transition()
-            .duration(2000)
+            .duration(1000)
             .ease(d3.easeLinear)
             // .on("start", function(d){ console.log("transiton start") })
             // .on("end", function(d){ console.log("transiton end") });
-          var path = that.container.selectAll(".history")
+            // that.container.selectAll(".history").append("path").classed("history-background", true)
+          var path = that.container.selectAll(".animated-history")
             .data([history]);
-          path.enter().append("path").classed("history", true)
+          path.enter().append("path").classed("history animated-history", true)
             .merge(path)
             .attr("d", line)
             // .attr("fill", "none")
             // .attr("stroke", "#333")
             .attr("stroke-dasharray", function(d){ return this.getTotalLength() })
             .attr("stroke-dashoffset", function(d){ return this.getTotalLength() })
-          that.container.selectAll(".history").transition(t)
+          that.container.selectAll(".animated-history").transition(t)
             .attr("stroke-dashoffset", 0)
         })
         .on("mouseout", () => {
           description.text("");
-          this.container.select('.history').remove();
+          this.container.selectAll('.history').remove();
           bubble.style('opacity',1);
         });
         // .on("mouseover", (d) => {
