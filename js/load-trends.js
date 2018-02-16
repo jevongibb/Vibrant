@@ -21,6 +21,8 @@
       this.year = opts.year || "";
       this.datas = opts.datas;
       this.years = opts.years || "";
+      this.absMaxX = opts.absMaxX || 1;
+      this.absMaxY = opts.absMaxY || 1;
       this.element = opts.element;
       this.color = d3.scaleOrdinal(d3['schemeCategory20']); //.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
@@ -85,18 +87,18 @@
         .x((d) => x(d.x))
         .y((d) => y(d.y));
       var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d["Relative Size"]));
+      
       // Scale the range of the data in the domains
-      const minX = d3.min(that.data, (d) => d["National Trend"]);
-      const maxX = d3.max(that.data, (d) => d["National Trend"]);
-      const absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
-      x.domain([-absMaxX, +absMaxX]);
+      // const minX = d3.min(that.data, (d) => d["National Trend"]);
+      // const maxX = d3.max(that.data, (d) => d["National Trend"]);
+      // const absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
+      x.domain([-this.absMaxX, +this.absMaxX]);
+      // const minY = d3.min(that.data, (d) => d["Local Trend"]);
+      // const maxY = d3.max(that.data, (d) => d["Local Trend"]);
+      // const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
+      y.domain([-this.absMaxY, +this.absMaxY]);
 
-      const minY = d3.min(that.data, (d) => d["Local Trend"]);
-      const maxY = d3.max(that.data, (d) => d["Local Trend"]);
-      const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
-      y.domain([-absMaxY, +absMaxY]);
-
-      const absMin = Math.min(absMaxY, absMaxX);
+      const absMin = Math.min(this.absMaxY, this.absMaxX);
 
       // add the x Axis
       this.container.append("g")
@@ -404,13 +406,15 @@
     build(activeData);
 
 
-    function buildBubble(bubbleByYear, years, year) {
+    function buildBubble(bubbleByYear, years, year, absMaxX, absMaxY) {
       const chart = new BubbleChart({
         element: d3.select('#trends-bubble-wrapper').node(),//document.querySelector('#trends-bubble-wrapper'),
         data: bubbleByYear[year],
         year: year,
         datas: bubbleByYear,
-        years: years
+        years: years,
+        absMaxX: absMaxX,
+        absMaxY: absMaxY
       });
       $(window).on('resize', () => chart.draw());
     }
@@ -430,6 +434,8 @@
         // console.log(table, master);
         var data = [];
         var bubbleByYear = {};
+        var absMaxX = 0;
+        var absMaxY = 0;
         var masterByNaics = master
           .reduce(function (acc, cur, i) {
             acc[cur.naics] = cur;
@@ -473,6 +479,12 @@
 
         years.map((year) => {
           bubbleByYear[year] = bubbleByYear[year].splice(0, 50);
+          let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
+          let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
+          absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
+          let minY = d3.min(bubbleByYear[year], (d) => d["Local Trend"]);
+          let maxY = d3.max(bubbleByYear[year], (d) => d["Local Trend"]);
+          absMaxY = Math.max(absMaxY, Math.max(Math.abs(minY), Math.abs(maxY)));
         });
 
         $("#trends-time")
@@ -480,12 +492,12 @@
           .attr('max', years[years.length - 1])
           .on("input change", function () {
             const year = $(this).val();
-            buildBubble(bubbleByYear, years, year);
+            buildBubble(bubbleByYear, years, year, absMaxX, absMaxY);
           });
 
         buildTable(data);
 
-        buildBubble(bubbleByYear, years, years[0]);
+        buildBubble(bubbleByYear, years, years[0], absMaxX, absMaxY);
 
       }
     }
