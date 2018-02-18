@@ -496,7 +496,7 @@
     function buildBubble(_data) {
 
       var width = $('#activity-bubble-wrapper').width() || 960,
-        height = $('#activity-bubble-wrapper').height() || 430,
+        height = $('#activity-bubble-wrapper').height() || 550,
         padding = 1.5, // separation between same-color nodes
         clusterPadding = 6, // separation between different-color nodes
         maxRadius = 12;

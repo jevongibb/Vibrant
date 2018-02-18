@@ -19,7 +19,7 @@
     constructor(opts) {
       this.data = opts.data;
       this.element = opts.element;
-      this.color = d3.scaleOrdinal(d3['schemeCategory20']); //.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+      this.color = range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
     }
 
