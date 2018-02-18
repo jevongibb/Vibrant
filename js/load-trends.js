@@ -36,7 +36,7 @@
       this.absMaxX = opts.absMaxX || 0;
       this.absMaxY = opts.absMaxY || 0;
       this.element = opts.element;
-      //this.color = d3.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+      this.color = d3.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
     }
 
@@ -107,7 +107,7 @@
             return y(d.y);
           }
         });
-      var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d["Relative Size"]));
+      var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d["Employees"]));
 
       // Scale the range of the data in the domains
       // const minX = d3.min(that.data, (d) => d["National Trend"]);
@@ -246,7 +246,7 @@
           }
         })
         .attr("cx", (d) => x(d["National Trend"]))
-        .attr("r", (d) => radius(d["Relative Size"]))
+        .attr("r", (d) => radius(d["Employees"]))
         .style("cursor", "pointer")
         .on("mouseover", function (d) {
           bubble.style('opacity', 1);
