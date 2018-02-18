@@ -131,7 +131,7 @@
         .attr("class", "bubble")
         .style("stroke", "#000")
         .style("stroke-width", "0")
-        .style('fill', (d, i) => this.color(i))
+        .style('fill', (d, i) => d['Color'] || this.color(i))
         .attr("cy", (d) => d["Relative Size"] > 0 ? y(Math.min(0, -d["Relative Size"])) : (y(Math.min(0, -d["Relative Size"])) + Math.abs(y(d["Relative Size"]) - y(0))))
         // .attr("y", (d) => y(Math.min(0, d["Relative Size"])))
         .attr("cx", (d) => x(d["Industry"]) + x.bandwidth() / 2)
@@ -247,7 +247,7 @@
 
       // local-table-wrapper
       var table = element.append('table');
-      var titles = d3.keys(data[0]);
+      var titles = d3.keys(data[0]).filter((d)=>d!=='Color');
       var headers = table.append('thead').append('tr')
         .selectAll('th')
         .data(titles).enter()
@@ -329,12 +329,13 @@
         // .defer(d3.csv, `./data/${activeData}_Table.csv`)
         // .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
         .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
+        .defer(d3.csv, `./data/color_legend.csv`)
         .await(ready);
       //   d3.csv(`./data/${activeData}_SWOT_${type}.csv`, function (error, data) {
       //     if (error) throw error;
 
       //   });
-      function ready(error, master) {
+      function ready(error, master, colors) {
         if (error) throw error;
         // console.log(table, master);
         var data = [];
@@ -343,20 +344,21 @@
             acc[cur.naics] = cur;
             return acc;
           }, {});
-        // var tableByNaics = table
-        //   .reduce(function (acc, cur, i) {
-        //     acc[cur.NAICS] = cur;
-        //     return acc;
-        //   }, {});
+        var colorsByGroup = colors
+          .reduce(function (acc, cur, i) {
+            acc[cur.Group] = cur;
+            return acc;
+          }, {});
         master.sort((a, b) => +b['2015'] - +a['2015']);
         master.map((d,i) => {
           data.push({
+            "Color":  colorsByGroup[d.naics[0]].Color || "gray",
             "Industry": d["Label"],
             // "Distance from Average": 0,
             "Employees": setNumberFormat(d["2015"]),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
             "Relative Size": (+d["RS_2015"]).toFixed(2),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : "",
-            "Local Trend": (+d["Local_Trend"]).toFixed(3)+"%",
-            "Nat’l Trend": (+d["Natl_Trend"]).toFixed(3)+"%"
+            "Local Trend": (+d["Local_Trend"]*100).toFixed(2)+"%",
+            "Nat’l Trend": (+d["Natl_Trend"]*100).toFixed(2)+"%"
           });
         })
         // console.log(masterByNaics, tableByNaics);
@@ -367,34 +369,7 @@
 
         data.sort((a, b) => +b['Relative Size'] - +a['Relative Size']);
         var bubble = data.splice(0,10).concat(data.splice(data.length-10,data.length));
-        // console.log(bubble);
-//         // my data
-//         var bubble = `salesperson,sales
-// Bob,33
-// Robin,12
-// Anne,41
-// Mark,16
-// Joe,59
-// Eve,38
-// Karen,21
-// Kirsty,25
-// Chris,30
-// Lisa,47
-// Tom,5
-// Stacy,20
-// Charles,13
-// Mary,29`;
-//         bubble = d3.csvParse(bubble);
-//         // bubble = bubble.splice(0,13);
-//         bubble.forEach(function (d) {
-//           d["Relative Size"] = +d["Relative Size"] - 15;
-//         });
-//         bubble.sort((a, b) => b["Relative Size"] - a["Relative Size"]);
-        // bubble.push({
-        //   "Industry": "",
-        //   "Relative Size": 0,
-        //   "Employees": 0
-        // });
+
         buildBubble(bubble);
 
       }

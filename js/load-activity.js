@@ -149,6 +149,10 @@
         .style("cursor", "default")
         .style("pointer-events", "none")
         // .text((d) => d.text)
+        // .call(wrap, 50)
+        // .each(function(d,i){
+        //   wrap(d3.select(this), d.radius);
+        // });
         // .style("font-size", function(d) { return Math.min(2 * d.radius, (2 * d.radius - 8) / this.getComputedTextLength() * 24) + "px"; })
         .text((d) => {
           let arr = d.text.split(" ");
@@ -161,6 +165,67 @@
       // .text(function(d) { return d.name; })
       // .style("font-size", function(d) { return Math.min(2 * d.radius, (2 * d.radius - 8) / this.getComputedTextLength() * 24) + "px"; })
 
+      function wrap (text, width) {
+        // console.log(width);
+        text.each(function() {
+          var breakChars = ['/', '&', '-'],
+            text = d3.select(this),
+            textContent = text.text(),
+            spanContent;
+          breakChars.forEach(char => {
+            // Add a space after each break char for the function to use to determine line breaks
+            textContent = textContent.replace(char, char + ' ');
+          });
+          var words = textContent.split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            x = text.attr('x'),
+            y = text.attr('y'),
+            dy = parseFloat(text.attr('dy') || 0),
+            tspan = text.text(null).append('tspan').attr('x', x).attr('y', y).attr('dy', dy + 'em');
+          while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(' '));
+            if (tspan.node().getComputedTextLength() > width) {
+              line.pop();
+              spanContent = line.join(' ');
+              breakChars.forEach(char => {
+                // Remove spaces trailing breakChars that were added above
+                spanContent = spanContent.replace(char + ' ', char);
+              });
+              tspan.text(spanContent);
+              line = [word];
+              tspan = text.append('tspan').attr('x', x).attr('y', y).attr('dy', ++lineNumber * lineHeight + dy + 'em').text(word);
+            }
+          }
+        });
+      }
+
+      // function wrap(text, width) {
+      //   text.each(function() {
+      //     var text = d3.select(this),
+      //         words = text.text().split(/\s+/).reverse(),
+      //         word,
+      //         line = [],
+      //         lineNumber = 0,
+      //         lineHeight = 1.1, // ems
+      //         y = text.attr("y"),
+      //         dy = parseFloat(text.attr("dy")),
+      //         tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+      //     while (word = words.pop()) {
+      //       line.push(word);
+      //       tspan.text(line.join(" "));
+      //       if (tspan.node().getComputedTextLength() > width) {
+      //         line.pop();
+      //         tspan.text(line.join(" "));
+      //         line = [word];
+      //         tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+      //       }
+      //     }
+      //   });
+      // }
 
       var ticked = function () {
         link
@@ -205,9 +270,9 @@
       activeData = $(this).data('value');
       $('.dropdown-value').text(activeData);
       $('.dropdown-hidden').toggleClass('visibility-visible');
-      // build(activeData);
-      buildBubble(activeData);
-      buildTable(activeData);
+      build(activeData);
+      // buildBubble(activeData);
+      // buildTable(activeData);
     });
 
     // or semantic ui
@@ -271,31 +336,29 @@
       });
     }
 
-    // build(activeData);
-    buildBubble(activeData);
-    buildTable(activeData);
-    // function build(activeData) {
-    //   d3.queue(2)
-    //     // .defer(d3.csv, `./data/${activeData}_Table.csv`)
-    //     .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
-    //     // .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
-    //     .await(ready);
+    build(activeData);
 
-    //     function ready(error, master) {
-    //       if (error) throw error;
+    function build(activeData) {
+      d3.queue(2)
+        // .defer(d3.csv, `./data/${activeData}_Table.csv`)
+        .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
+        // .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
+        .await(ready);
 
-    //       buildBubble(activeData);
-    //       buildTable(activeData);
-    //     }
-    // }
+        function ready(error, master) {
+          if (error) throw error;
+
+          buildBubble(master);
+          buildTable(master);
+        }
+    }
 
 
     //Activity: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
-    function buildTable(activeData) {
-
+    function buildTable(_data) {
       // d3.csv(`./data/${activeData}_Table.csv`, function (error, data) {
-      d3.csv(`./data/${activeData}_Master_Traded.csv`, function (error, _data) {
-        if (error) throw error;
+      // d3.csv(`./data/${activeData}_Master_Traded.csv`, function (error, _data) {
+      //   if (error) throw error;
 
         var data = [];
         
@@ -305,13 +368,13 @@
           data.push({
             "NAICS":d["naics"],
             "Description":d["Label"],
-            "Employees":+d["2015"],
+            "Employees":setNumberFormat(+d["2015"]),
             "Relative Size":(+d["RS_2015"]).toFixed(2),
-            "% Total":(+d["Pct_Total"]).toFixed(3)+"%"
+            "% Total":(+d["Pct_Total"]*100).toFixed(2)+"%"
           });
         });
         
-        data.sort((a, b) => +b['Employees'] - +a['Employees']); //descending
+        data.sort((a, b) => +(b['Employees'].replace(/[^0-9]+/g, '')) - +(a['Employees'].replace(/[^0-9]+/g, ''))); //descending
 
         var sortAscending = true;
         var element = d3.select('#activity-table-wrapper');
@@ -425,12 +488,12 @@
           .append('td')
           .attr('data-th', (d)=> d.name)
           .text((d) => d.value);
-      });
+      // });
     }
 
     
 
-    function buildBubble(activeData) {
+    function buildBubble(_data) {
 
       var width = $('#activity-bubble-wrapper').width() || 960,
         height = $('#activity-bubble-wrapper').height() || 430,
@@ -438,18 +501,25 @@
         clusterPadding = 6, // separation between different-color nodes
         maxRadius = 12;
 
+      var data=[];
+      _data.map((d)=>{
+        data.push({
+          text:d["Label"],
+          size:+d["2015"],
+          group:d["Group"],
+        });
+      });
       // var color = d3.scale.ordinal()
       //   .range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
 
 
-      d3.text(`./data/${activeData}_Bubbles.csv`, function (error, text) {
-        if (error) throw error;
-        var colNames = "text,size,group\n" + text;
-        var data = d3.csvParse(colNames);
-
-        data.forEach(function (d) {
-          d.size = +d.size;
-        });
+      // d3.text(`./data/${activeData}_Bubbles.csv`, function (error, text) {
+      //   if (error) throw error;
+        // var colNames = "text,size,group\n" + text;
+        // var data = d3.csvParse(colNames);
+        // data.forEach(function (d) {
+        //   d.size = +d.size;
+        // });
 
 
         //unique cluster/group id's
@@ -542,7 +612,7 @@
             });
           };
         }
-      });
+      // });
 
 
     }
