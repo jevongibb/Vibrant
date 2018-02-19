@@ -107,7 +107,7 @@
             return y(d.y);
           }
         });
-      var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d["Employees"]));
+      var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d.radius));
 
       // Scale the range of the data in the domains
       // const minX = d3.min(that.data, (d) => d["National Trend"]);
@@ -246,7 +246,7 @@
           }
         })
         .attr("cx", (d) => x(d["National Trend"]))
-        .attr("r", (d) => radius(d["Employees"]))
+        .attr("r", (d) => radius(d.radius))
         .style("cursor", "pointer")
         .on("mouseover", function (d) {
           bubble.style('opacity', 1);
@@ -425,7 +425,7 @@
 
       // trends-table-wrapper
       var table = element.append('table');
-      var titles = d3.keys(data[0]);
+      var titles = d3.keys(data[0]).filter(d=>d!=="bubbleByYear");
       var headers = table.append('thead').append('tr')
         .selectAll('th')
         .data(titles).enter()
@@ -594,46 +594,54 @@
 
         years.sort((a, b) => a - b);
         // console.log(years, bubbleByYear);
-        master.sort((a, b) => +b['2015'] - +a['2015']);
+        master.sort((a, b) => +b['2015'] - +a['2015']);//for bable
         master.map((d, i) => {
+          let obj = {};
+          years.map((year) => {
+            obj.year = {};
+            if (year == handleYear) {
+              // console.log(d.naics[0], colorsByGroup);
+              obj.year = {
+                "color": colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
+                "Industry": d["Label"],
+                "Local Trend": +d["Local_Trend"] || 0, //+d["Local_Trend"],
+                "National Trend": +d["Natl_Trend"] || 0, //+d["Natl_Trend"],
+                "radius": +d["2020"],
+
+                "Employees": +d["2015"],
+                "Relative Size": +d["RS_2015"], //tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size"] : (""+i)//(Math.random() + 1) * 5
+                "Nat’l Trend": +d["Natl_Trend"] || 0
+              };
+              // return;
+            } else {
+              obj.year = {
+                "color": colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
+                "Industry": d["Label"],
+                "Local Trend": +d["L_T_" + year] || 0, //+d["Local_Trend"],
+                "National Trend": +d["N_T_" + year] || 0, //+d["Natl_Trend"],
+                "radius": +d["2020"],
+
+                "Employees": +d["2015"],
+                "Relative Size": +d["RS_2015"], //tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size"] : (""+i)//(Math.random() + 1) * 5
+                "Nat’l Trend": +d["Natl_Trend"] || 0
+              };
+            }
+            bubbleByYear[year].push(obj.year)
+          });
+
           data.push({
+            // "bubbleByYear": obj,
             "Industry": d["Label"],
             "Employees": setNumberFormat(d["2015"]), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
             "Relative Size": (+d["RS_2015"]).toFixed(2), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
             "Local Trend": (+d["Local_Trend"] * 100).toFixed(2) + "%",
             "Nat’l Trend": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
           });
-          years.map((year) => {
-            if (year === handleYear) {
-              // console.log(d.naics[0], colorsByGroup);
-              bubbleByYear[year].push({
-                "color": colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
-                "Industry": d["Label"],
-                "Local Trend": +d["Local_Trend"] || 0, //+d["Local_Trend"],
-                "National Trend": +d["Natl_Trend"] || 0, //+d["Natl_Trend"],
-                "Relative Size": +d["RS_2015"], //tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size"] : (""+i)//(Math.random() + 1) * 5
-
-                "Employees": +d["2015"],
-                "Nat’l Trend": +d["Natl_Trend"] || 0,
-              });
-              return;
-            }
-            // if(bubble.length<50){
-            bubbleByYear[year].push({
-              "color": colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
-              "Industry": d["Label"],
-              "Local Trend": +d["L_T_" + year] || 0, //+d["Local_Trend"],
-              "National Trend": +d["N_T_" + year] || 0, //+d["Natl_Trend"],
-              "Relative Size": +d["RS_2015"], //tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size"] : (""+i)//(Math.random() + 1) * 5
-
-              "Employees": +d["2015"],
-              "Nat’l Trend": +d["Natl_Trend"] || 0
-            });
-            // }
-          });
         });
+        
+        // data.sort((a, b) => +b['Employees'].replace(/[^0-9]+/g, '') - +a['Employees'].replace(/[^0-9]+/g, ''));//for table
         // data.sort((a, b) => +(b['Employees'].replace(/[^0-9]+/g, '')) - +(a['Employees'].replace(/[^0-9]+/g, '')));
-        // console.log(masterByNaics, tableByNaics);
+        // console.log(data, bubbleByYear);
 
         years.map((year) => {
           let bubbleByYearSliced = bubbleByYear[year].slice(0, 50);
