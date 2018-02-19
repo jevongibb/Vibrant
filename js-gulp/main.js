@@ -95,6 +95,14 @@ $(function () {
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
+    },
+    "network": {
+      page: "network",
+      nav: "graphs",
+      event: window.loadNetwork,
+      nextAjax: function () {
+        loadingWrapper.addClass("hidden");
+      }
     }
   };
 

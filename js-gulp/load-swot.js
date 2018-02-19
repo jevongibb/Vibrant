@@ -12,7 +12,7 @@
 
 
   function run(data, callback) {
-    var activeData = 'Austin';
+    var activeCity = 'Austin';
     var color = {
       strengths: {
         caption: "#4472c4",
@@ -41,23 +41,23 @@
       // $(this).find('.fa').toggleClass('fa-angle-down').toggleClass('fa-angle-up');
     });
     $('.dropdown-item').off().on('click', function () {
-      activeData = $(this).data('value');
-      $('.dropdown-value').text(activeData);
+      activeCity = $(this).data('value');
+      $('.dropdown-value').text(activeCity);
       $('.dropdown-hidden').toggleClass('visibility-visible');
-      buildTable(activeData, "strengths");
-      buildTable(activeData, "weaknesses");
-      buildTable(activeData, "opportunities");
-      buildTable(activeData, "threats");
+      buildTable(activeCity, "strengths");
+      buildTable(activeCity, "weaknesses");
+      buildTable(activeCity, "opportunities");
+      buildTable(activeCity, "threats");
     });
 
 
-    buildTable(activeData, "strengths");
-    buildTable(activeData, "weaknesses");
-    buildTable(activeData, "opportunities");
-    buildTable(activeData, "threats");
+    buildTable(activeCity, "strengths");
+    buildTable(activeCity, "weaknesses");
+    buildTable(activeCity, "opportunities");
+    buildTable(activeCity, "threats");
 
-    function buildTable(activeData, type) {
-      d3.csv(`./data/${activeData}_SWOT_${type}.csv`, function (error, data) {
+    function buildTable(activeCity, type) {
+      d3.csv(`./data/${activeCity}_SWOT_${type}.csv`, function (error, data) {
         if (error) throw error;
 
         // data.sort((a, b) => +b['Employees'] - +a['Employees']); //descending

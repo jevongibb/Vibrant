@@ -206,7 +206,7 @@
 
 
   function run(data, callback) {
-    var activeData = 'Austin';
+    var activeCity = 'Austin';
 
 
     $('.dropdown-visible').off().on('click', function () {
@@ -214,10 +214,10 @@
       // $(this).find('.fa').toggleClass('fa-angle-down').toggleClass('fa-angle-up');
     });
     $('.dropdown-item').off().on('click', function () {
-      activeData = $(this).data('value');
-      $('.dropdown-value').text(activeData);
+      activeCity = $(this).data('value');
+      $('.dropdown-value').text(activeCity);
       $('.dropdown-hidden').toggleClass('visibility-visible');
-      build(activeData);
+      build(activeCity);
     });
 
 
@@ -313,7 +313,7 @@
     }
 
 
-    build(activeData);
+    build(activeCity);
 
 
     function buildBubble(data) {
@@ -324,14 +324,14 @@
       $(window).on('resize', () => chart.draw());
     }
 
-    function build(activeData) {
+    function build(activeCity) {
       d3.queue(2)
-        // .defer(d3.csv, `./data/${activeData}_Table.csv`)
-        // .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
-        .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
+        // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
+        // .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
+        .defer(d3.csv, `./data/${activeCity}_Master_Local.csv`)
         .defer(d3.csv, `./data/color_legend.csv`)
         .await(ready);
-      //   d3.csv(`./data/${activeData}_SWOT_${type}.csv`, function (error, data) {
+      //   d3.csv(`./data/${activeCity}_SWOT_${type}.csv`, function (error, data) {
       //     if (error) throw error;
 
       //   });

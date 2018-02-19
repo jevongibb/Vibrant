@@ -228,6 +228,12 @@
 #local-table-search:hover {
   outline: none;
 }
+#network-container {
+  padding: 50px 50px;
+}
+#network-wrapper{
+  padding-top:20px;
+}
 * {
 padding: 0px;
 margin: 0px;

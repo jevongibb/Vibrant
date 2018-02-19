@@ -307,19 +307,19 @@
 
 
   function run(data, callback) {
-    var activeData = 'Austin';
+    var activeCity = 'Austin';
 
     $('.dropdown-visible').off().on('click', function () {
       $('.dropdown-hidden').toggleClass('visibility-visible');
       // $(this).find('.fa').toggleClass('fa-angle-down').toggleClass('fa-angle-up');
     });
     $('.dropdown-item').off().on('click', function () {
-      activeData = $(this).data('value');
-      $('.dropdown-value').text(activeData);
+      activeCity = $(this).data('value');
+      $('.dropdown-value').text(activeCity);
       $('.dropdown-hidden').toggleClass('visibility-visible');
-      build(activeData);
-      // buildBubble(activeData);
-      // buildTable(activeData);
+      build(activeCity);
+      // buildBubble(activeCity);
+      // buildTable(activeCity);
     });
 
     // or semantic ui
@@ -383,12 +383,12 @@
       });
     }
 
-    build(activeData);
+    build(activeCity);
 
-    function build(activeData) {
+    function build(activeCity) {
       d3.queue(2)
-        // .defer(d3.csv, `./data/${activeData}_Table.csv`)
-        .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
+        // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
+        .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
         .defer(d3.csv, `./data/color_legend.csv`)
         .await(ready);
 
@@ -403,8 +403,8 @@
 
     //Activity: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
     function buildTable(_data) {
-      // d3.csv(`./data/${activeData}_Table.csv`, function (error, data) {
-      // d3.csv(`./data/${activeData}_Master_Traded.csv`, function (error, _data) {
+      // d3.csv(`./data/${activeCity}_Table.csv`, function (error, data) {
+      // d3.csv(`./data/${activeCity}_Master_Traded.csv`, function (error, _data) {
       //   if (error) throw error;
 
         var data = [];
@@ -566,7 +566,7 @@
       //   .range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
 
 
-      // d3.text(`./data/${activeData}_Bubbles.csv`, function (error, text) {
+      // d3.text(`./data/${activeCity}_Bubbles.csv`, function (error, text) {
       //   if (error) throw error;
         // var colNames = "text,size,group\n" + text;
         // var data = d3.csvParse(colNames);
