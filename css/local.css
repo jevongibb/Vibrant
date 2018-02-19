@@ -95,3 +95,46 @@
 #local-table-search:hover {
   outline: none;
 }
+
+
+
+#local-bubble-legend {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 50px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+#local-bubble-legend div {
+  position: relative
+}
+
+#local-bubble-legend img {
+  cursor: pointer;
+  width: 20px;
+  padding: 0 10px;
+  max-height: 25px;
+}
+
+#local-bubble-legend .local-bubble-legend-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
