@@ -143,6 +143,7 @@
           }));
 
       node.append("text")
+        .attr("class","first-row")
         .attr("dy", ".3em")
         .style("fill", "white")
         .style("text-anchor", "middle")
@@ -157,53 +158,73 @@
         .text((d) => {
           let arr = d.text.split(" ");
           if (arr[0].length > d.radius / 3) {
+            d.isFirstRow = false;
             return "";
           }
-          return d.text.substring(0, d.radius / 3)
+          d.isFirstRow = true;
+          return d.text.substring(0, d.radius / 3);
         });
       // https://bl.ocks.org/mbostock/1846692
       // .text(function(d) { return d.name; })
       // .style("font-size", function(d) { return Math.min(2 * d.radius, (2 * d.radius - 8) / this.getComputedTextLength() * 24) + "px"; })
 
-      function wrap (text, width) {
-        // console.log(width);
-        text.each(function() {
-          var breakChars = ['/', '&', '-'],
-            text = d3.select(this),
-            textContent = text.text(),
-            spanContent;
-          breakChars.forEach(char => {
-            // Add a space after each break char for the function to use to determine line breaks
-            textContent = textContent.replace(char, char + ' ');
-          });
-          var words = textContent.split(/\s+/).reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.1, // ems
-            x = text.attr('x'),
-            y = text.attr('y'),
-            dy = parseFloat(text.attr('dy') || 0),
-            tspan = text.text(null).append('tspan').attr('x', x).attr('y', y).attr('dy', dy + 'em');
-          while (word = words.pop()) {
-            line.push(word);
-            tspan.text(line.join(' '));
-            if (tspan.node().getComputedTextLength() > width) {
-              line.pop();
-              spanContent = line.join(' ');
-              breakChars.forEach(char => {
-                // Remove spaces trailing breakChars that were added above
-                spanContent = spanContent.replace(char + ' ', char);
-              });
-              tspan.text(spanContent);
-              line = [word];
-              tspan = text.append('tspan').attr('x', x).attr('y', y).attr('dy', ++lineNumber * lineHeight + dy + 'em').text(word);
-            }
+      node.append("text")
+        .attr("class","second-row")
+        .attr("dy", ".3em")
+        .style("fill", "white")
+        .style("text-anchor", "middle")
+        .style("cursor", "default")
+        .style("pointer-events", "none")
+        .text((d) => {
+          let arr = d.text.split(" ");
+          if (arr[0].length > d.radius / 3) {
+            d.isSecondRow = false;
+            return "";
           }
+          d.isSecondRow = true;
+          return d.text.substring(d.radius / 3, 2*d.radius / 3);
         });
-      }
 
-      // function wrap(text, width) {
+
+      // function wrap (text, width) {//+
+      //   // console.log(width);
+      //   text.each(function() {
+      //     var breakChars = ['/', '&', '-'],
+      //       text = d3.select(this),
+      //       textContent = text.text(),
+      //       spanContent;
+      //     breakChars.forEach(char => {
+      //       // Add a space after each break char for the function to use to determine line breaks
+      //       textContent = textContent.replace(char, char + ' ');
+      //     });
+      //     var words = textContent.split(/\s+/).reverse(),
+      //       word,
+      //       line = [],
+      //       lineNumber = 0,
+      //       lineHeight = 1.1, // ems
+      //       x = text.attr('x'),
+      //       y = text.attr('y'),
+      //       dy = parseFloat(text.attr('dy') || 0),
+      //       tspan = text.text(null).append('tspan').attr('x', x).attr('y', y).attr('dy', dy + 'em');
+      //     while (word = words.pop()) {
+      //       line.push(word);
+      //       tspan.text(line.join(' '));
+      //       if (tspan.node().getComputedTextLength() > width) {
+      //         line.pop();
+      //         spanContent = line.join(' ');
+      //         breakChars.forEach(char => {
+      //           // Remove spaces trailing breakChars that were added above
+      //           spanContent = spanContent.replace(char + ' ', char);
+      //         });
+      //         tspan.text(spanContent);
+      //         line = [word];
+      //         tspan = text.append('tspan').attr('x', x).attr('y', y).attr('dy', ++lineNumber * lineHeight + dy + 'em').text(word);
+      //       }
+      //     }
+      //   });
+      // }
+
+      // function wrap(text, width) {//-
       //   text.each(function() {
       //     var text = d3.select(this),
       //         words = text.text().split(/\s+/).reverse(),
@@ -229,27 +250,41 @@
 
       var ticked = function () {
 
-        node
-          // .attr("transform", (d) => {
-          //   d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
-          //   d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
-          //   return `translate(${d.x},${d.y})`;
-          // }) // not good - jumping
-        .select("circle")
-        // .attr("cx", (d) => d.x)
-        // .attr("cy", (d) => d.y);
-        .attr("cx", (d) => {
-          // console.log(d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x)));
-          return d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
-        })
-        .attr("cy", (d) => {
-          return d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
+        // node
+        //   // .attr("transform", (d) => {
+        //   //   d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
+        //   //   d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
+        //   //   return `translate(${d.x},${d.y})`;
+        //   // }) // not good - jumping
+        // .select("circle")
+        // // .attr("cx", (d) => d.x)
+        // // .attr("cy", (d) => d.y);
+        // .attr("cx", (d) => {
+        //   // console.log(d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x)));
+        //   return d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
+        // })
+        // .attr("cy", (d) => {
+        //   return d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
+        // });
+
+        node.each(function(d){
+          let el = d3.select(this);
+          d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
+          d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
+          el.select("circle")
+          .attr("cx", d.x)
+          .attr("cy", d.y);
+          el.select(".first-row")
+          .attr("x", d.x)
+          .attr("y", d.isSecondRow ? d.y-6 : d.y);
+          el.select(".second-row")
+          .attr("x", d.x)
+          .attr("y", d.isSecondRow ? d.y+6 : d.y);
         });
 
-        node
-        .select("text")
-        .attr("x", (d) => d.x)
-        .attr("y", (d) => d.y);
+        // node.select("text")
+        // .attr("x", (d) => d.x)
+        // .attr("y", (d) => d.y);
 
         link
           .attr("x1", (d) => d.source.x)
