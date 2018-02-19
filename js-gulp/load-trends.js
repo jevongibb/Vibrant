@@ -36,7 +36,7 @@
       this.absMaxX = opts.absMaxX || 0;
       this.absMaxY = opts.absMaxY || 0;
       this.element = opts.element;
-      this.color = d3.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+      this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);//d3.range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
     }
 
@@ -556,13 +556,13 @@
       d3.queue(2)
         // .defer(d3.csv, `./data/${activeData}_Table.csv`)
         .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
-        .defer(d3.csv, `./data/color_legend.csv`)
+        // .defer(d3.csv, `./data/color_legend.csv`)
         .await(ready);
       //   d3.csv(`./data/${activeData}_SWOT_${type}.csv`, function (error, data) {
       //     if (error) throw error;
 
       //   });
-      function ready(error, master, colors) {
+      function ready(error, master) {//, colors
         if (error) throw error;
         // console.log(table, master);
         var data = [];
@@ -575,11 +575,13 @@
             acc[cur.naics] = cur;
             return acc;
           }, {});
-        var colorsByGroup = colors
-          .reduce(function (acc, cur, i) {
-            acc[cur.Group] = cur;
-            return acc;
-          }, {});
+
+        // var colorsByGroup = colors
+        //   .reduce(function (acc, cur, i) {
+        //     acc[cur.Group] = cur;
+        //     return acc;
+        //   }, {});
+        var colorsByGroup = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
 
         let years = d3.keys(master[0]).filter((d) => d.indexOf("L_T_") !== -1).map((year) => {
           year = +year.replace(/[^0-9]+/g, '');
@@ -605,7 +607,7 @@
             if (year === handleYear) {
               // console.log(d.naics[0], colorsByGroup);
               bubbleByYear[year].push({
-                "Color": colorsByGroup[d.naics[0]].Color || "gray",
+                "Color": colorsByGroup([+d.Group]) || "gray",//colorsByGroup[d.naics[0]].Color
                 "Industry": d["Label"],
                 "Local Trend": +d["Local_Trend"] || 0, //+d["Local_Trend"],
                 "National Trend": +d["Natl_Trend"] || 0, //+d["Natl_Trend"],
@@ -618,7 +620,7 @@
             }
             // if(bubble.length<50){
             bubbleByYear[year].push({
-              "Color": colorsByGroup[d.naics[0]].Color || "gray",
+              "Color": colorsByGroup([+d.Group]) || "gray",//colorsByGroup[+d.naics[0]].Color
               "Industry": d["Label"],
               "Local Trend": +d["L_T_" + year] || 0, //+d["Local_Trend"],
               "National Trend": +d["N_T_" + year] || 0, //+d["Natl_Trend"],

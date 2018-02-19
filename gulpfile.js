@@ -9,8 +9,8 @@ var babel  = require('gulp-babel');
 const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('js', function() {
-  return gulp.src(['js/*.js'])
-  .pipe(concat('./js/main.js'))
+  return gulp.src(['js-gulp/*.js'])
+  .pipe(concat('./js-gulp/main.js'))
   .pipe(babel({
     "presets": ["es2015"]
   }))
@@ -32,7 +32,7 @@ gulp.task('css', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['js/*.js'], ['js']);
+  gulp.watch(['js-gulp/*.js'], ['js']);
   gulp.watch(['css/*.css'], ['css']);
 });
 
