@@ -156,13 +156,50 @@
         // });
         // .style("font-size", function(d) { return Math.min(2 * d.radius, (2 * d.radius - 8) / this.getComputedTextLength() * 24) + "px"; })
         .text((d) => {
+          d.secondRow = "";
           let arr = d.text.split(" ");
-          if (arr[0].length > d.radius / 3) {
-            d.isFirstRow = false;
-            return "";
+          if (arr[3] && arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length + 1 + arr[3].length) < d.radius / 3) {
+            d.isFirstRow = true;
+            arr.map((c,i)=>{
+              if (i>3) {
+                d.secondRow = d.secondRow + " " + c;
+              }
+            });
+            d.secondRow = d.secondRow.trim();
+            return arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3];//d.text.substring(0, d.radius / 3);
           }
-          d.isFirstRow = true;
-          return d.text.substring(0, d.radius / 3);
+          if (arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length) < d.radius / 3) {
+            d.isFirstRow = true;
+            arr.map((c,i)=>{
+              if (i>2) {
+                d.secondRow = d.secondRow + " " + c;
+              }
+            });
+            d.secondRow = d.secondRow.trim();
+            return arr[0] + " " + arr[1] + " " + arr[2];//d.text.substring(0, d.radius / 3);
+          }
+          if (arr[1] && (arr[0].length + 1 + arr[1].length) < d.radius / 3) {
+            d.isFirstRow = true;
+            arr.map((c,i)=>{
+              if (i>1) {
+                d.secondRow = d.secondRow + " " + c;
+              }
+            });
+            d.secondRow = d.secondRow.trim();
+            return arr[0] + " " + arr[1];//d.text.substring(0, d.radius / 3);
+          }
+          if (arr[0].length < d.radius / 3) {
+            d.isFirstRow = true;
+            arr.map((c,i)=>{
+              if (i>1) {
+                d.secondRow = d.secondRow + " " + c;
+              }
+            });
+            d.secondRow = d.secondRow.trim();
+            return arr[0];
+          }
+          d.isFirstRow = false;
+          return "";
         });
       // https://bl.ocks.org/mbostock/1846692
       // .text(function(d) { return d.name; })
@@ -176,13 +213,28 @@
         .style("cursor", "default")
         .style("pointer-events", "none")
         .text((d) => {
-          let arr = d.text.split(" ");
-          if (arr[0].length > d.radius / 3) {
-            d.isSecondRow = false;
-            return "";
+          let arr = d.secondRow.split(" ");
+          if (d.isFirstRow && arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length) < d.radius / 3) {
+            d.isSecondRow = true;
+            return arr[0] + " " + arr[1] + " " + arr[2];//d.text.substring(0, d.radius / 3);
           }
-          d.isSecondRow = true;
-          return d.text.substring(d.radius / 3, 2*d.radius / 3);
+          if (d.isFirstRow && arr[1] && (arr[0].length + 1 + arr[1].length) < d.radius / 3) {
+            d.isSecondRow = true;
+            return arr[0] + " " + arr[1];//d.text.substring(0, d.radius / 3);
+          }
+          if (d.isFirstRow && arr[0].length < d.radius / 3) {
+            d.isSecondRow = true;
+            return arr[0];
+          }
+          d.isSecondRow = false;
+          return "";
+          // let arr = d.text.split(" ");
+          // if (arr[0].length > d.radius / 3) {
+          //   d.isSecondRow = false;
+          //   return "";
+          // }
+          // d.isSecondRow = true;
+          // return d.text.substring(d.radius / 3, 2*d.radius / 3);
         });
 
 
