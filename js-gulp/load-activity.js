@@ -74,7 +74,7 @@
     }
     //testing - https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03
     createBubbles(data) {//https://bl.ocks.org/HarryStevens/f636199a46fc4b210fbca3b1dc4ef372
-      let tooltip = this.tooltip;
+      var that = this;
       var simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id((d) => d.index))
         .force("collide", d3.forceCollide((d) => d.radius + 1).iterations(12))
@@ -113,21 +113,21 @@
         .style("fill", (d) => d.color)
         .style("cursor", "pointer")
         .on("mouseover", (d) => {
-          tooltip.text(d.text);
-          tooltip.style("visibility", "visible");
+          that.tooltip.text(d.text);
+          that.tooltip.style("visibility", "visible");
         })
         .on("mousemove", function (d) {
           if(padding.top<=0){
-            tooltip.style("top", (d.y) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
+            that.tooltip.style("top", (d.y) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
           } else {
-            tooltip.style("top", ((d3.event.pageY - padding.top) - 10) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
+            that.tooltip.style("top", ((d3.event.pageY - padding.top) - 10) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
           }
         })
-        .on("mouseout", () => tooltip.style("visibility", "hidden"))
+        .on("mouseout", () => that.tooltip.style("visibility", "hidden"))
         .call(d3.drag()
           .on("start", (d) => {
             if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-            tooltip.style("visibility", "hidden");
+            that.tooltip.style("visibility", "hidden");
             d.fx = d.x;
             d.fy = d.y;
           })
@@ -137,7 +137,7 @@
           })
           .on("end", (d) => {
             if (!d3.event.active) simulation.alphaTarget(0);
-            tooltip.style("visibility", "visible");
+            that.tooltip.style("visibility", "visible");
             d.fx = null;
             d.fy = null;
           }));
@@ -228,22 +228,34 @@
       // }
 
       var ticked = function () {
-        link
-          .attr("x1", (d) => d.source.x)
-          .attr("y1", (d) => d.source.y)
-          .attr("x2", (d) => d.target.x)
-          .attr("y2", (d) => d.target.y);
 
         node
-          // .attr("transform", (d) => `translate(${d.x},${d.y})`) // not good - jumping
+          // .attr("transform", (d) => {
+          //   d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
+          //   d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
+          //   return `translate(${d.x},${d.y})`;
+          // }) // not good - jumping
         .select("circle")
-        .attr("cx", (d) => d.x)
-        .attr("cy", (d) => d.y);
+        // .attr("cx", (d) => d.x)
+        // .attr("cy", (d) => d.y);
+        .attr("cx", (d) => {
+          // console.log(d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x)));
+          return d.x = Math.max(d.radius, Math.min(that.width - d.radius, d.x));
+        })
+        .attr("cy", (d) => {
+          return d.y = Math.max(d.radius, Math.min(that.height - d.radius, d.y));
+        });
 
         node
         .select("text")
         .attr("x", (d) => d.x)
         .attr("y", (d) => d.y);
+
+        link
+          .attr("x1", (d) => d.source.x)
+          .attr("y1", (d) => d.source.y)
+          .attr("x2", (d) => d.target.x)
+          .attr("y2", (d) => d.target.y);
       }
 
       simulation
