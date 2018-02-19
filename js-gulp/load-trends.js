@@ -602,10 +602,10 @@
             if (year == handleYear) {
               // console.log(d.naics[0], colorsByGroup);
               obj.year = {
-                "color": colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
+                "color": colorsByGroup[d.Group].Hex || "gray",
                 "Industry": d["Label"],
-                "Local Trend": +d["Local_Trend"] || 0, //+d["Local_Trend"],
-                "National Trend": +d["Natl_Trend"] || 0, //+d["Natl_Trend"],
+                "Local Trend": +d["Local_Trend"] || 0,
+                "National Trend": +d["Natl_Trend"] || 0,
                 "radius": +d["2020"],
 
                 "Employees": +d["2015"],
@@ -615,7 +615,7 @@
               // return;
             } else {
               obj.year = {
-                "color": colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
+                "color": colorsByGroup[d.Group].Hex || "gray",//colorsByGroup([+d.Group])
                 "Industry": d["Label"],
                 "Local Trend": +d["L_T_" + year] || 0, //+d["Local_Trend"],
                 "National Trend": +d["N_T_" + year] || 0, //+d["Natl_Trend"],

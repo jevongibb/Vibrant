@@ -404,7 +404,7 @@
         master.sort((a, b) => +b['2015'] - +a['2015']);
         master.map((d,i) => {
           data.push({
-            "color":  colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
+            "color":  colorsByGroup[d.Group].Hex || "gray",//colorsByGroup([+d.Group])
             "Industry": d["Label"],
             // "Distance from Average": 0,
             "Employees": setNumberFormat(d["2015"]),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
