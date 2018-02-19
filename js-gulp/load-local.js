@@ -19,7 +19,7 @@
     constructor(opts) {
       this.data = opts.data;
       this.element = opts.element;
-      this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+      // this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
     }
 
@@ -131,7 +131,7 @@
         .attr("class", "bubble")
         .style("stroke", "#000")
         .style("stroke-width", "0")
-        .style('fill', (d, i) => d['Color'] || this.color(i))
+        .style('fill', (d, i) => d.color)
         .attr("cy", (d) => d["Relative Size"] > 0 ? y(Math.min(0, -d["Relative Size"])) : (y(Math.min(0, -d["Relative Size"])) + Math.abs(y(d["Relative Size"]) - y(0))))
         // .attr("y", (d) => y(Math.min(0, d["Relative Size"])))
         .attr("cx", (d) => x(d["Industry"]) + x.bandwidth() / 2)
@@ -247,7 +247,7 @@
 
       // local-table-wrapper
       var table = element.append('table');
-      var titles = d3.keys(data[0]).filter((d)=>d!=='Color');
+      var titles = d3.keys(data[0]).filter((d)=>d!=='color');
       var headers = table.append('thead').append('tr')
         .selectAll('th')
         .data(titles).enter()
@@ -329,13 +329,13 @@
         // .defer(d3.csv, `./data/${activeData}_Table.csv`)
         // .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
         .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
-        // .defer(d3.csv, `./data/color_legend.csv`)
+        .defer(d3.csv, `./data/color_legend.csv`)
         .await(ready);
       //   d3.csv(`./data/${activeData}_SWOT_${type}.csv`, function (error, data) {
       //     if (error) throw error;
 
       //   });
-      function ready(error, master) {//, colors
+      function ready(error, master, colors) {
         if (error) throw error;
         // console.log(table, master);
         var data = [];
@@ -344,16 +344,16 @@
             acc[cur.naics] = cur;
             return acc;
           }, {});
-        // var colorsByGroup = colors
-        //   .reduce(function (acc, cur, i) {
-        //     acc[cur.Group] = cur;
-        //     return acc;
-        //   }, {});
-        var colorsByGroup = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+        var colorsByGroup = colors
+          .reduce(function (acc, cur, i) {
+            acc[cur.Group] = cur;
+            return acc;
+          }, {});
+        // var colorsByGroup = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
         master.sort((a, b) => +b['2015'] - +a['2015']);
         master.map((d,i) => {
           data.push({
-            "Color":  colorsByGroup([+d.Group]) || "gray",//colorsByGroup[d.naics[0]].Color
+            "color":  colorsByGroup[d.naics[0]].Hex || "gray",//colorsByGroup([+d.Group])
             "Industry": d["Label"],
             // "Distance from Average": 0,
             "Employees": setNumberFormat(d["2015"]),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",

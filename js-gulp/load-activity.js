@@ -26,7 +26,7 @@
     constructor(opts) {
       this.data = opts.data;
       this.element = opts.element;
-      this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+      // this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
     }
 
@@ -110,7 +110,7 @@
       let padding = this.padding;
       node.append("circle")
         .attr("r", (d) => d.radius || 0)
-        .style("fill", (d) => this.color(d.cluster))
+        .style("fill", (d) => d.color)
         .style("cursor", "pointer")
         .on("mouseover", (d) => {
           tooltip.text(d.text);
@@ -342,13 +342,13 @@
       d3.queue(2)
         // .defer(d3.csv, `./data/${activeData}_Table.csv`)
         .defer(d3.csv, `./data/${activeData}_Master_Traded.csv`)
-        // .defer(d3.csv, `./data/${activeData}_Master_Local.csv`)
+        .defer(d3.csv, `./data/color_legend.csv`)
         .await(ready);
 
-        function ready(error, master) {
+        function ready(error, master, colors) {
           if (error) throw error;
 
-          buildBubble(master);
+          buildBubble(master, colors);
           buildTable(master);
         }
     }
@@ -493,7 +493,13 @@
 
     
 
-    function buildBubble(_data) {
+    function buildBubble(_data, colors) {
+      // this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]); => this.color(d.cluster)
+      var colorsByGroup = colors
+          .reduce(function (acc, cur, i) {
+            acc[cur.Group] = cur;
+            return acc;
+          }, {});
 
       var width = $('#activity-bubble-wrapper').width() || 960,
         height = $('#activity-bubble-wrapper').height() || 550,
@@ -540,10 +546,12 @@
           nodes.push(create_nodes(data, i));
         }
 
+
         function create_nodes(data, node_counter) {
           var i = cs.indexOf(data[node_counter].group),
             r = Math.sqrt((i + 1) / m * -Math.log(Math.random())) * maxRadius,
             d = {
+              color: colorsByGroup[i].Hex,
               cluster: i,
               index: node_counter,
               radius: data[node_counter].size * .002,
