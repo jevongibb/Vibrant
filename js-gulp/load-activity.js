@@ -157,7 +157,7 @@
         // .style("font-size", function(d) { return Math.min(2 * d.radius, (2 * d.radius - 8) / this.getComputedTextLength() * 24) + "px"; })
         .text((d) => {
           d.secondRow = "";
-          let arr = d.text.split(" ");
+          let arr = d.text.trim().split(" ");
           if (arr[3] && arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length + 1 + arr[3].length) < d.radius / 3) {
             d.isFirstRow = true;
             arr.map((c,i)=>{
@@ -165,7 +165,6 @@
                 d.secondRow = d.secondRow + " " + c;
               }
             });
-            d.secondRow = d.secondRow.trim();
             return arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3];//d.text.substring(0, d.radius / 3);
           }
           if (arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length) < d.radius / 3) {
@@ -175,7 +174,6 @@
                 d.secondRow = d.secondRow + " " + c;
               }
             });
-            d.secondRow = d.secondRow.trim();
             return arr[0] + " " + arr[1] + " " + arr[2];//d.text.substring(0, d.radius / 3);
           }
           if (arr[1] && (arr[0].length + 1 + arr[1].length) < d.radius / 3) {
@@ -185,7 +183,6 @@
                 d.secondRow = d.secondRow + " " + c;
               }
             });
-            d.secondRow = d.secondRow.trim();
             return arr[0] + " " + arr[1];//d.text.substring(0, d.radius / 3);
           }
           if (arr[0].length < d.radius / 3) {
@@ -195,7 +192,6 @@
                 d.secondRow = d.secondRow + " " + c;
               }
             });
-            d.secondRow = d.secondRow.trim();
             return arr[0];
           }
           d.isFirstRow = false;
@@ -213,7 +209,7 @@
         .style("cursor", "default")
         .style("pointer-events", "none")
         .text((d) => {
-          let arr = d.secondRow.split(" ");
+          let arr = d.secondRow.trim().split(" ");
           if (d.isFirstRow && arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length) < d.radius / 3) {
             d.isSecondRow = true;
             return arr[0] + " " + arr[1] + " " + arr[2];//d.text.substring(0, d.radius / 3);

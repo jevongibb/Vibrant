@@ -178,7 +178,7 @@ $(function () {
 
   function resize(init) {
     // $("#footer").removeClass('footer-fixed').addClass('footer-relative');
-    let otherHeight = $("#header").height();// + $("#sub-navigation-wrapper").height();// + $("#footer").height()
+    const otherHeight = $("#header").height();// + $("#sub-navigation-wrapper").height();// + $("#footer").height()
     // console.log($("#header").height(), $("#sub-navigation-wrapper").height(), $("#header").height());
     $("#container").css('margin-top', otherHeight);
     $("#page-wrapper").css('min-height', $(window).height() - otherHeight);
