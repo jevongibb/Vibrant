@@ -76,7 +76,7 @@
         .padding(0.1);
       var y = d3.scaleLinear()
         .range([0, this.height]);
-      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Employees"].replace(/[^0-9]+/g, '')));
+      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Employees"].replace(/[^-0-9]+/g, '')));
 
       // Scale the range of the data in the domains
       x.domain(data.map((d) => d["Industry"]));
@@ -137,7 +137,7 @@
         .attr("cx", (d) => x(d["Industry"]) + x.bandwidth() / 2)
         // .attr("height", (d) => Math.abs(y(d["Relative Size"])-y(0)))
         // .attr("width", x.bandwidth())
-        .attr("r", (d, i) => radius(d["Employees"].replace(/[^0-9#]+/g, '')))
+        .attr("r", (d, i) => radius(d["Employees"].replace(/[^-0-9#]+/g, '')))
         .style("cursor", "pointer")
         .on("mouseover", (d) => {
           tooltip.html(`<p>${d["Industry"]}</p><p>Relative Size: ${d["Relative Size"]}</p><p>Employees: ${d["Employees"]}</p>`);
@@ -319,7 +319,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +((a[d]+"").replace(/[^0-9]+/g, '')) - +((b[d]+"").replace(/[^0-9]+/g, '')));
+              rows.sort((a, b) => +((a[d]+"").replace(/[^-0-9]+/g, '')) - +((b[d]+"").replace(/[^-0-9]+/g, '')));
             }
             sortAscending = false;
             this.className = 'aes';
@@ -336,7 +336,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +((b[d]+"").replace(/[^0-9]+/g, '')) - +((a[d]+"").replace(/[^0-9]+/g, '')));
+              rows.sort((a, b) => +((b[d]+"").replace(/[^-0-9]+/g, '')) - +((a[d]+"").replace(/[^-0-9]+/g, '')));
             }
             sortAscending = true;
             this.className = 'des';
