@@ -442,7 +442,7 @@
       d3.queue(2)
         // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
         .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
-        .defer(d3.csv, `./data/color_legend.csv`)
+        .defer(d3.csv, `./data/color_legend2.csv`) //linked to color_legend2 to show you the issue
         .await(ready);
 
         function ready(error, master, colors) {
