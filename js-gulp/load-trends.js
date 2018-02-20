@@ -149,13 +149,13 @@
         .attr("class", "x-axis axis")
         .attr("transform", `translate(0,${this.height})`)
         // .attr("transform", `translate(0,${y(0) || this.height})`)
-        .call(d3.axisBottom(x).tickSize(-this.height));
+        .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d)=>d*100+"%"));
 
       // add the y Axis
       this.container.append("g")
         // .attr("transform", `translate(${x(0) || 0},0)`)
         .attr("class", "y-axis axis")
-        .call(d3.axisLeft(y).tickSize(-this.width));
+        .call(d3.axisLeft(y).tickSize(-this.width).tickFormat((d)=>d*100+"%"));
 
       this.container.append("rect")
         .attr('class', 'around')
@@ -181,21 +181,21 @@
       this.container.append("text")
         .attr('class', 'label-axis label-y-axis')
         .attr("text-anchor", "middle")
-        .attr("transform", `translate(${(-this.margin.left+15)},${(this.height/2)})rotate(-90)`)
+        .attr("transform", `translate(${(-this.margin.left+10)},${(this.height/2)})rotate(-90)`)
         .text("Local Trend (% Change in # Employees)");
 
       this.container.append("text")
         .attr('class', 'label-axis label-x-axis')
         .attr("text-anchor", "middle")
-        .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+15))})`)
+        .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+10))})`)
         .text("National Trend (% Change in # Employees)");
 
       if (this.absMaxY > 1.5 && this.year != 2020) {
         this.container.append("text")
           .attr("class", "more-than-y-max")
           .attr("y", 5)
-          .attr("x", -22.5)
-          .text(">1.5");
+          .attr("x", -33.5)
+          .text(">150%");
         // this.container.append("text")
         //   .attr("class", "less-than-y-min")
         //   .attr("y", this.height+5)
