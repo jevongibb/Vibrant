@@ -68,6 +68,9 @@ $(function () {
       page: "activity",
       nav: "graphs",
       event: window.loadActivity,
+      prevAjax: function() {
+        $("#page-wrapper").css('height', "inherit");
+      },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
@@ -76,6 +79,9 @@ $(function () {
       page: "trends",
       nav: "graphs",
       event: window.loadTrends,
+      prevAjax: function() {
+        $("#page-wrapper").css('height', "inherit");
+      },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
@@ -84,6 +90,9 @@ $(function () {
       page: "local",
       nav: "graphs",
       event: window.loadLocal,
+      prevAjax: function() {
+        $("#page-wrapper").css('height', "inherit");
+      },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
@@ -92,6 +101,9 @@ $(function () {
       page: "swot",
       nav: "graphs",
       event: window.loadSwot,
+      prevAjax: function() {
+        $("#page-wrapper").css('height', "inherit");
+      },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
@@ -100,6 +112,7 @@ $(function () {
       page: "network",
       nav: "graphs",
       event: window.loadNetwork,
+      prevAjax: undefined,
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
@@ -158,9 +171,9 @@ $(function () {
     // d3.select("#page-wrapper").selectAll("*").remove();
     $('#page-wrapper').empty().load(events[page].page + ".html", function (d) { //.replace(/[^0-9#]+/g, '');
 
-      if ($.isFunction(events[page].callback)) {
-        events[page].callback();
-      }
+      // if ($.isFunction(events[page].callback)) {
+      //   events[page].callback();
+      // }
 
       if ($.isFunction(events[page].prevAjax)) {
         events[page].prevAjax();
@@ -179,9 +192,10 @@ $(function () {
   function resize(init) {
     // $("#footer").removeClass('footer-fixed').addClass('footer-relative');
     const otherHeight = $("#header").height();// + $("#sub-navigation-wrapper").height();// + $("#footer").height()
+    const height = $(window).height() - otherHeight + "px";
     // console.log($("#header").height(), $("#sub-navigation-wrapper").height(), $("#header").height());
     $("#container").css('margin-top', otherHeight);
-    $("#page-wrapper").css('min-height', $(window).height() - otherHeight);
+    $("#page-wrapper").css('min-height', height).css('height', "inherit");
   }
   $(window).on('resize', resize);
 
