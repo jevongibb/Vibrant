@@ -26,7 +26,7 @@
     constructor(opts) {
       this.data = opts.data;
       this.element = opts.element;
-      // this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
+      this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
       this.draw();
     }
 
@@ -110,7 +110,13 @@
       let padding = this.padding;
       node.append("circle")
         .attr("r", (d) => d.radius || 0)
-        .style("fill", (d) => d.color)
+        .style("fill", (d) => {
+          // d._color = this.color(d.cluster);
+          // if(d._color!=d.color){
+          //   console.log(d);
+          // }
+          return this.color(d.cluster) || d.color;
+        })
         .style("cursor", "pointer")
         .on("mouseover", (d) => {
           that.tooltip.text(d.text);
@@ -141,7 +147,7 @@
             d.fx = null;
             d.fy = null;
           }));
-
+      
       node.append("text")
         .attr("class","first-row")
         .attr("dy", ".3em")

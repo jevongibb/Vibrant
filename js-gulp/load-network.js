@@ -35,7 +35,7 @@
       var w = $(window);
       el.append("iframe")
         .attr("width", Math.floor($(window).width()) || "100%")
-        .attr("height", height+"px")
+        .attr("height", Math.floor(height)+"px")
         .attr("src", activeCity.toLowerCase()+".html");
     }
 
