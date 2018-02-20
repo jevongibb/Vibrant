@@ -71,6 +71,12 @@
         .attr("width", this.width)
         .attr("height", this.height)
         .attr('transform', `translate(${this.margin.left},${this.margin.top})`);
+      
+      this.clip = svg.append('defs').append('clipPath')
+        .attr('id', 'line-clip')
+        .append('rect')
+        .attr('width', this.width)
+        .attr('height', this.height);
 
       // this.tooltip = element
       //   .append("div")
@@ -124,7 +130,19 @@
         y.domain([-this.absMaxY, this.absMaxY])
       }
 
-      const absMin = Math.min(this.absMaxY, this.absMaxX);
+      let absMin = Math.min(this.absMaxY, this.absMaxX);
+      
+      // console.log(this.year)
+      if (this.year == 2020) {//handleYear
+        x.domain([-0.1*this.absMaxX, +0.1*this.absMaxX]);
+        if (this.absMaxY > 1.5) {
+          y.domain([-0.3*1.6, 0.3*1.6]);
+          absMin = Math.min(0.3*1.6, 0.1*this.absMaxX);
+        } else {
+          y.domain([-0.3*this.absMaxY, 0.3*this.absMaxY]);
+          absMin = Math.min(0.3*this.absMaxY, 0.1*this.absMaxX);
+        }
+      }
 
       // add the x Axis
       this.container.append("g")
@@ -172,7 +190,7 @@
         .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+15))})`)
         .text("National Trend (% Change in # Employees)");
 
-      if (this.absMaxY > 1.5) {
+      if (this.absMaxY > 1.5 && this.year != 2020) {
         this.container.append("text")
           .attr("class", "more-than-y-max")
           .attr("y", 5)
@@ -208,6 +226,8 @@
         //   .attr("x2", x(0.02))
         //   .attr("y1", y(-1.53))
         //   .attr("y2", y(-1.47));
+      } else {
+
       }
 
 
@@ -276,6 +296,7 @@
           // console.log(history);
           that.container.append("path")
             .data([history])
+            .attr('clip-path', 'url(#line-clip)')
             .classed("history background-history", true)
             .attr("d", line);
 
@@ -291,6 +312,7 @@
           path.enter().append("path").classed("history animated-history", true)
             .merge(path)
             .attr("d", line)
+            .attr('clip-path', 'url(#line-clip)')
             // .attr("fill", "none")
             // .attr("stroke", "#333")
             .attr("stroke-dasharray", function (d) {
