@@ -210,6 +210,11 @@
         .style("pointer-events", "none")
         .text((d) => {
           let arr = d.secondRow.trim().split(" ");
+          // console.log(arr);
+          if (arr.length===1 && arr[0]==='') {
+            d.isSecondRow = false;
+            return "";
+          }
           if (d.isFirstRow && arr[2] && arr[1] && (arr[0].length + 1 + arr[1].length + 1 + arr[2].length) < d.radius / 3) {
             d.isSecondRow = true;
             return arr[0] + " " + arr[1] + " " + arr[2];//d.text.substring(0, d.radius / 3);

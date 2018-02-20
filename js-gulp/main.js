@@ -69,7 +69,7 @@ $(function () {
       nav: "graphs",
       event: window.loadActivity,
       prevAjax: function() {
-        $("#page-wrapper").css('height', "inherit");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -80,7 +80,7 @@ $(function () {
       nav: "graphs",
       event: window.loadTrends,
       prevAjax: function() {
-        $("#page-wrapper").css('height', "inherit");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -91,7 +91,7 @@ $(function () {
       nav: "graphs",
       event: window.loadLocal,
       prevAjax: function() {
-        $("#page-wrapper").css('height', "inherit");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -102,7 +102,7 @@ $(function () {
       nav: "graphs",
       event: window.loadSwot,
       prevAjax: function() {
-        $("#page-wrapper").css('height', "inherit");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
