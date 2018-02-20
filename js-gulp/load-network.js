@@ -27,16 +27,16 @@
     const height = $(window).height() - otherHeight;
     $("#page-wrapper").addClass('no-min-height').css('height', height);
 
-    build(activeCity); 
+    build(activeCity);
 
-    function build(activeCity){
+    function build(activeCity) {
       var el = d3.select("#network-wrapper");
       el.selectAll("*").remove();
       var w = $(window);
       el.append("iframe")
         .attr("width", Math.floor($(window).width()) || "100%")
-        .attr("height", Math.floor(height)+"px")
-        .attr("src", activeCity.toLowerCase()+".html");
+        .attr("height", Math.floor(height) + "px")
+        .attr("src", activeCity.toLowerCase() + ".html");
     }
 
     if ($.isFunction(callback)) {

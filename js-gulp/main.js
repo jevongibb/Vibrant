@@ -68,7 +68,7 @@ $(function () {
       page: "activity",
       nav: "graphs",
       event: window.loadActivity,
-      prevAjax: function() {
+      prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
@@ -79,7 +79,7 @@ $(function () {
       page: "trends",
       nav: "graphs",
       event: window.loadTrends,
-      prevAjax: function() {
+      prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
@@ -90,7 +90,7 @@ $(function () {
       page: "local",
       nav: "graphs",
       event: window.loadLocal,
-      prevAjax: function() {
+      prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
@@ -101,7 +101,7 @@ $(function () {
       page: "swot",
       nav: "graphs",
       event: window.loadSwot,
-      prevAjax: function() {
+      prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
       },
       nextAjax: function () {
@@ -146,7 +146,7 @@ $(function () {
     if (events[page].nav === "graphs" && initLoading) {
       $('#navigation .link-to').removeClass('link-to-active');
       $('#navigation .link-to-' + events[page].nav).addClass('link-to-active');
-      
+
       // d3.select("#sub-navigation-wrapper").selectAll("*").remove();
       $('#sub-navigation-wrapper').empty().load("graphs_nav.html", function (d) {
         $('#sub-navigation-wrapper .link-to').removeClass('link-to-active');
@@ -191,7 +191,7 @@ $(function () {
 
   function resize(init) {
     // $("#footer").removeClass('footer-fixed').addClass('footer-relative');
-    const otherHeight = $("#header").height();// + $("#sub-navigation-wrapper").height();// + $("#footer").height()
+    const otherHeight = $("#header").height(); // + $("#sub-navigation-wrapper").height();// + $("#footer").height()
     const height = $(window).height() - otherHeight + "px";
     // console.log($("#header").height(), $("#sub-navigation-wrapper").height(), $("#header").height());
     $("#container").css('margin-top', otherHeight);
