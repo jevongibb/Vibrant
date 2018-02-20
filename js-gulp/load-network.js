@@ -27,7 +27,7 @@
     const height = $(window).height() - otherHeight;
     $("#page-wrapper").addClass('no-min-height').css('height', height);
 
-    build(activeCity);
+    build(activeCity); 
 
     function build(activeCity){
       var el = d3.select("#network-wrapper");
