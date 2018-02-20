@@ -194,7 +194,7 @@
           if (arr[0].length < d.radius / 3) {
             d.isFirstRow = true;
             arr.map((c,i)=>{
-              if (i>1) {
+              if (i>=1) {
                 d.secondRow = d.secondRow + " " + c;
               }
             });

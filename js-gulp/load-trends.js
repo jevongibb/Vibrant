@@ -149,7 +149,7 @@
         .attr("class", "x-axis axis")
         .attr("transform", `translate(0,${this.height})`)
         // .attr("transform", `translate(0,${y(0) || this.height})`)
-        .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d)=>d*100+"%"));
+        .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d)=>d*100+"%"));//https://bl.ocks.org/mbostock/9764126
 
       // add the y Axis
       this.container.append("g")
