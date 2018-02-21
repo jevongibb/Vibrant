@@ -11,7 +11,8 @@
   }
 
   var format = d3.format(',');
-  function setNumberFormat(any){
+
+  function setNumberFormat(any) {
     return format(+any || 0) || 0;
   }
 
@@ -76,7 +77,7 @@
         .padding(0.1);
       var y = d3.scaleLinear()
         .range([0, this.height]);
-      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Employees"].replace(/[^0-9]+/g, '')));
+      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Employees"].replace(/[^-0-9]+/g, '')));
 
       // Scale the range of the data in the domains
       x.domain(data.map((d) => d["Industry"]));
@@ -137,7 +138,7 @@
         .attr("cx", (d) => x(d["Industry"]) + x.bandwidth() / 2)
         // .attr("height", (d) => Math.abs(y(d["Relative Size"])-y(0)))
         // .attr("width", x.bandwidth())
-        .attr("r", (d, i) => radius(d["Employees"].replace(/[^0-9#]+/g, '')))
+        .attr("r", (d, i) => radius(d["Employees"].replace(/[^-0-9#]+/g, '')))
         .style("cursor", "pointer")
         .on("mouseover", (d) => {
           tooltip.html(`<p>${d["Industry"]}</p><p>Relative Size: ${d["Relative Size"]}</p><p>Employees: ${d["Employees"]}</p>`);
@@ -145,7 +146,7 @@
         })
         .on("mousemove", function (d) {
           // var coords = d3.mouse(this);
-          var top = d["Relative Size"] > 0 ? y(Math.min(0, -d["Relative Size"])) : (y(Math.min(0, -d["Relative Size"])) + Math.abs(y(d["Relative Size"]) - y(0)))// || (d3.event.pageY - padding.top)
+          var top = d["Relative Size"] > 0 ? y(Math.min(0, -d["Relative Size"])) : (y(Math.min(0, -d["Relative Size"])) + Math.abs(y(d["Relative Size"]) - y(0))) // || (d3.event.pageY - padding.top)
           tooltip.style("top", (top) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
         })
         .on("mouseout", () => tooltip.style("visibility", "hidden"))
@@ -278,27 +279,27 @@
       element.selectAll("*").remove();
 
       var searchBar = element.append('div');
-        searchBar.append('input')
-          .attr('placeholder', 'Search by Industry...')
-          .attr('type', 'text')
-          .attr('id', 'local-table-search')
-          .on('keyup', function () {
-            let text = this.value.trim().toLowerCase();
-            let i = 0;
-            rows.each(function (d) {
-              let el = d3.select(this);
-              const isVisible = d["Industry"].toLowerCase().indexOf(text) != -1;
-              el.style("background", i % 2 ? "#fff" : "#eee")
-                .style("display", isVisible ? "table-row" : "none");
-              if (isVisible) {
-                i++;
-              }
-            });
+      searchBar.append('input')
+        .attr('placeholder', 'Search by Industry...')
+        .attr('type', 'text')
+        .attr('id', 'local-table-search')
+        .on('keyup', function () {
+          let text = this.value.trim().toLowerCase();
+          let i = 0;
+          rows.each(function (d) {
+            let el = d3.select(this);
+            const isVisible = d["Industry"].toLowerCase().indexOf(text) != -1;
+            el.style("background", i % 2 ? "#fff" : "#eee")
+              .style("display", isVisible ? "table-row" : "none");
+            if (isVisible) {
+              i++;
+            }
           });
+        });
 
       // local-table-wrapper
       var table = element.append('table');
-      var titles = d3.keys(data[0]).filter((d)=>d!=='color');
+      var titles = d3.keys(data[0]).filter((d) => d !== 'color');
       var headers = table.append('thead').append('tr')
         .selectAll('th')
         .data(titles).enter()
@@ -319,7 +320,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +((a[d]+"").replace(/[^0-9]+/g, '')) - +((b[d]+"").replace(/[^0-9]+/g, '')));
+              rows.sort((a, b) => +((a[d] + "").replace(/[^-0-9]+/g, '')) - +((b[d] + "").replace(/[^-0-9]+/g, '')));
             }
             sortAscending = false;
             this.className = 'aes';
@@ -336,7 +337,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +((b[d]+"").replace(/[^0-9]+/g, '')) - +((a[d]+"").replace(/[^0-9]+/g, '')));
+              rows.sort((a, b) => +((b[d] + "").replace(/[^-0-9]+/g, '')) - +((a[d] + "").replace(/[^-0-9]+/g, '')));
             }
             sortAscending = true;
             this.className = 'des';
@@ -402,25 +403,25 @@
           }, {});
         // var colorsByGroup = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
         master.sort((a, b) => +b['2015'] - +a['2015']);
-        master.map((d,i) => {
+        master.map((d, i) => {
           data.push({
-            "color":  colorsByGroup[d.Group].Hex || "gray",//colorsByGroup([+d.Group])
+            "color": colorsByGroup[d.Group].Hex || "gray", //colorsByGroup([+d.Group])
             "Industry": d["Label"],
             // "Distance from Average": 0,
-            "Employees": setNumberFormat(d["2015"]),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
-            "Relative Size": (+d["RS_2015"]).toFixed(2),//tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : "",
-            "Local Trend": (+d["Local_Trend"]*100).toFixed(2)+"%",
-            "Nat’l Trend": (+d["Natl_Trend"]*100).toFixed(2)+"%"
+            "Employees": setNumberFormat(d["2015"]), //tableByNaics[d.naics] ? +tableByNaics[d.naics]["Employees"] : "",
+            "Relative Size": (+d["RS_2015"]).toFixed(2), //tableByNaics[d.naics] ? +tableByNaics[d.naics]["Relative Size (RS)"] : "",
+            "Local Trend": (+d["Local_Trend"] * 100).toFixed(2) + "%",
+            "Nat’l Trend": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
           });
         })
         // console.log(masterByNaics, tableByNaics);
 
         //Industry)"]}</p><p>Relative Size: ${d["Relative Size"]}</p><p>Employees: ${d["Employees"
-        
+
         buildTable(data);
 
         data.sort((a, b) => +b['Relative Size'] - +a['Relative Size']);
-        var bubble = data.splice(0,10).concat(data.splice(data.length-10,data.length));
+        var bubble = data.splice(0, 10).concat(data.splice(data.length - 10, data.length));
 
         buildBubble(bubble);
 

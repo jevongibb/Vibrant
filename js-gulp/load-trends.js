@@ -72,6 +72,12 @@
         .attr("height", this.height)
         .attr('transform', `translate(${this.margin.left},${this.margin.top})`);
 
+      this.clip = svg.append('defs').append('clipPath')
+        .attr('id', 'line-clip')
+        .append('rect')
+        .attr('width', this.width)
+        .attr('height', this.height);
+
       // this.tooltip = element
       //   .append("div")
       //   .attr('class', 'item trends-bubble-tooltip')
@@ -124,20 +130,32 @@
         y.domain([-this.absMaxY, this.absMaxY])
       }
 
-      const absMin = Math.min(this.absMaxY, this.absMaxX);
+      let absMin = Math.min(this.absMaxY, this.absMaxX);
+
+      // console.log(this.year)
+      if (this.year == 2020) { //handleYear
+        x.domain([-0.1 * this.absMaxX, +0.1 * this.absMaxX]);
+        if (this.absMaxY > 1.5) {
+          y.domain([-0.3 * 1.6, 0.3 * 1.6]);
+          absMin = Math.min(0.3 * 1.6, 0.1 * this.absMaxX);
+        } else {
+          y.domain([-0.3 * this.absMaxY, 0.3 * this.absMaxY]);
+          absMin = Math.min(0.3 * this.absMaxY, 0.1 * this.absMaxX);
+        }
+      }
 
       // add the x Axis
       this.container.append("g")
         .attr("class", "x-axis axis")
         .attr("transform", `translate(0,${this.height})`)
         // .attr("transform", `translate(0,${y(0) || this.height})`)
-        .call(d3.axisBottom(x).tickSize(-this.height));
+        .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d) => d * 100 + "%")); //https://bl.ocks.org/mbostock/9764126
 
       // add the y Axis
       this.container.append("g")
         // .attr("transform", `translate(${x(0) || 0},0)`)
         .attr("class", "y-axis axis")
-        .call(d3.axisLeft(y).tickSize(-this.width));
+        .call(d3.axisLeft(y).tickSize(-this.width).tickFormat((d) => d * 100 + "%"));
 
       this.container.append("rect")
         .attr('class', 'around')
@@ -163,21 +181,21 @@
       this.container.append("text")
         .attr('class', 'label-axis label-y-axis')
         .attr("text-anchor", "middle")
-        .attr("transform", `translate(${(-this.margin.left+15)},${(this.height/2)})rotate(-90)`)
+        .attr("transform", `translate(${(-this.margin.left+10)},${(this.height/2)})rotate(-90)`)
         .text("Local Trend (% Change in # Employees)");
 
       this.container.append("text")
         .attr('class', 'label-axis label-x-axis')
         .attr("text-anchor", "middle")
-        .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+15))})`)
+        .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+10))})`)
         .text("National Trend (% Change in # Employees)");
 
-      if (this.absMaxY > 1.5) {
+      if (this.absMaxY > 1.5 && this.year != 2020) {
         this.container.append("text")
           .attr("class", "more-than-y-max")
           .attr("y", 5)
-          .attr("x", -22.5)
-          .text(">1.5");
+          .attr("x", -33.5)
+          .text(">150%");
         // this.container.append("text")
         //   .attr("class", "less-than-y-min")
         //   .attr("y", this.height+5)
@@ -208,6 +226,8 @@
         //   .attr("x2", x(0.02))
         //   .attr("y1", y(-1.53))
         //   .attr("y2", y(-1.47));
+      } else {
+
       }
 
 
@@ -276,6 +296,7 @@
           // console.log(history);
           that.container.append("path")
             .data([history])
+            .attr('clip-path', 'url(#line-clip)')
             .classed("history background-history", true)
             .attr("d", line);
 
@@ -291,6 +312,7 @@
           path.enter().append("path").classed("history animated-history", true)
             .merge(path)
             .attr("d", line)
+            .attr('clip-path', 'url(#line-clip)')
             // .attr("fill", "none")
             // .attr("stroke", "#333")
             .attr("stroke-dasharray", function (d) {
@@ -425,7 +447,7 @@
 
       // trends-table-wrapper
       var table = element.append('table');
-      var titles = d3.keys(data[0]).filter(d=>d!=="bubbleByYear");
+      var titles = d3.keys(data[0]).filter(d => d !== "bubbleByYear");
       var headers = table.append('thead').append('tr')
         .selectAll('th')
         .data(titles).enter()
@@ -457,9 +479,9 @@
                 });
               });
             } else {
-              rows.sort((a, b) => +(a[d].replace(/[^0-9]+/g, '')) - +(b[d].replace(/[^0-9]+/g, '')));
+              rows.sort((a, b) => +(a[d].replace(/[^-0-9]+/g, '')) - +(b[d].replace(/[^-0-9]+/g, '')));
               bubbleObj.years.map((year) => {
-                bubbleObj.bubbleByYear[year].sort((a, b) => +((a[d] + '').replace(/[^0-9]+/g, '')) - +((b[d] + '').replace(/[^0-9]+/g, '')));
+                bubbleObj.bubbleByYear[year].sort((a, b) => +((a[d] + '').replace(/[^-0-9]+/g, '')) - +((b[d] + '').replace(/[^-0-9]+/g, '')));
               });
             }
             sortAscending = false;
@@ -488,9 +510,9 @@
                 });
               });
             } else {
-              rows.sort((a, b) => +(b[d].replace(/[^0-9]+/g, '')) - +(a[d].replace(/[^0-9]+/g, '')));
+              rows.sort((a, b) => +(b[d].replace(/[^-0-9]+/g, '')) - +(a[d].replace(/[^-0-9]+/g, '')));
               bubbleObj.years.map((year) => {
-                bubbleObj.bubbleByYear[year].sort((a, b) => +((b[d] + '').replace(/[^0-9]+/g, '')) - +((a[d] + '').replace(/[^0-9]+/g, '')));
+                bubbleObj.bubbleByYear[year].sort((a, b) => +((b[d] + '').replace(/[^-0-9]+/g, '')) - +((a[d] + '').replace(/[^-0-9]+/g, '')));
               });
             }
             sortAscending = true;
@@ -584,7 +606,7 @@
         // var colorsByGroup = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
 
         let years = d3.keys(master[0]).filter((d) => d.indexOf("L_T_") !== -1).map((year) => {
-          year = +year.replace(/[^0-9]+/g, '');
+          year = +year.replace(/[^-0-9]+/g, '');
           bubbleByYear[year] = [];
           return year;
         });
@@ -594,7 +616,7 @@
 
         years.sort((a, b) => a - b);
         // console.log(years, bubbleByYear);
-        master.sort((a, b) => +b['2015'] - +a['2015']);//for bable
+        master.sort((a, b) => +b['2015'] - +a['2015']); //for bable
         master.map((d, i) => {
           let obj = {};
           years.map((year) => {
@@ -615,7 +637,7 @@
               // return;
             } else {
               obj.year = {
-                "color": colorsByGroup[d.Group].Hex || "gray",//colorsByGroup([+d.Group])
+                "color": colorsByGroup[d.Group].Hex || "gray", //colorsByGroup([+d.Group])
                 "Industry": d["Label"],
                 "Local Trend": +d["L_T_" + year] || 0, //+d["Local_Trend"],
                 "National Trend": +d["N_T_" + year] || 0, //+d["Natl_Trend"],
@@ -638,7 +660,7 @@
             "Nat’l Trend": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
           });
         });
-        
+
         // data.sort((a, b) => +b['Employees'].replace(/[^0-9]+/g, '') - +a['Employees'].replace(/[^0-9]+/g, ''));//for table
         // data.sort((a, b) => +(b['Employees'].replace(/[^0-9]+/g, '')) - +(a['Employees'].replace(/[^0-9]+/g, '')));
         // console.log(data, bubbleByYear);
