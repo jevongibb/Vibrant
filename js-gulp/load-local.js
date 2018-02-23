@@ -77,7 +77,7 @@
         .padding(0.1);
       var y = d3.scaleLinear()
         .range([0, this.height]);
-      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Employees"].replace(/[^-0-9]+/g, '')));
+      var radius = d3.scaleLinear().range([5, 25]).domain(d3.extent(data, (d) => +d["Employees"].replace(/[^-.0-9]+/g, '')));
 
       // Scale the range of the data in the domains
       x.domain(data.map((d) => d["Industry"]));
@@ -320,7 +320,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +((a[d] + "").replace(/[^-0-9]+/g, '')) - +((b[d] + "").replace(/[^-0-9]+/g, '')));
+              rows.sort((a, b) => +((a[d] + "").replace(/[^-.0-9]+/g, '')) - +((b[d] + "").replace(/[^-.0-9]+/g, '')));
             }
             sortAscending = false;
             this.className = 'aes';
@@ -337,7 +337,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +((b[d] + "").replace(/[^-0-9]+/g, '')) - +((a[d] + "").replace(/[^-0-9]+/g, '')));
+              rows.sort((a, b) => +((b[d] + "").replace(/[^-.0-9]+/g, '')) - +((a[d] + "").replace(/[^-.0-9]+/g, '')));
             }
             sortAscending = true;
             this.className = 'des';

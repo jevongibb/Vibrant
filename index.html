@@ -16,6 +16,7 @@
   <link href="./css/network.css" rel="stylesheet" type="text/css">
   <link href="./css/swot.css" rel="stylesheet" type="text/css">
   <link href="./css/trends.css" rel="stylesheet" type="text/css">
+  <link href="./css/landing.css" rel="stylesheet" type="text/css">
   <!-- <link href="./css/tablet.css" rel="stylesheet" type="text/css"> -->
 </head>
 
@@ -26,10 +27,10 @@
       <nav id="navigation">
         <p class="brend">VIBRANT</p>
         <div class="logo-wrapper">
-          <img src="img/logo_white.png" alt="logo" class="logo">
+          <a href="/?page=" data-link-to=""><img src="img/logo_white.png" alt="logo" class="logo"></a>
         </div>
         <p>
-          <a href="#" class="link-to link-to-graphs" data-link-to="nolink">Graphs</a>
+          <a href="#" class="link-to link-to-graphs" data-link-to="activity">Graphs</a>
         </p>
         <p>
           <a href="#" class="link-to" data-link-to="nolink">Blog</a>
@@ -38,7 +39,25 @@
           <a href="#" class="link-to" data-link-to="nolink">Contact</a>
         </p>
       </nav>
-      <div id="sub-navigation-wrapper"></div>
+      <div id="sub-navigation-wrapper">
+        <nav id="sub-navigation">
+          <p>
+            <a href="#" class="link-to link-to-activity" data-link-to="activity">Activity</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-trends" data-link-to="trends">Trends</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-network" data-link-to="network">Network</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-local" data-link-to="local">Local</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-swot" data-link-to="swot">SWOT</a>
+          </p>
+        </nav>
+      </div>
     </div>
 
     <main id="container">
@@ -62,7 +81,7 @@
     </main>
 
     <div id="footer">
-      <p>© 2018, Vibrant</p>
+      <p>© 2017, DevGPS</p>
     </div>
 
     <script src="./lib/jquery.v3.min.js"></script>
@@ -74,6 +93,7 @@
     <script src="./js-gulp/load-network.js"></script>
     <script src="./js-gulp/load-swot.js"></script>
     <script src="./js-gulp/load-trends.js"></script>
+    <script src="./js-gulp/load-landing.js"></script>
     <script src="./js-gulp/main.js"></script>
 
 </html>

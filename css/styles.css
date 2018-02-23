@@ -5,8 +5,9 @@
 
 html,
 body {
-  font-family: monospace;
+  /* font-family: monospace; */
   font: 14px/1.4 Georgia, Serif;
+	font-family: sans-serif;
   margin: 0px;
   /* overflow-x: hidden; */
 }
@@ -273,7 +274,8 @@ body {
   align-items: center;
   flex-wrap: wrap;
   z-index: 9;
-  min-height: 45px;
+  min-height: 50px;
+  /* height: 50px; */
 }
 
 #navigation .brend {
@@ -295,19 +297,22 @@ body {
 
 #navigation .link-to {
   margin: 5px 30px 5px 10px;
-  padding: 0;
   font-size: 18px;
   color: #fff;
   text-decoration: none;
-  border-bottom: solid 1.5px transparent;
+  /* border-bottom: solid 1.5px transparent; */
+  border: 1.5px solid transparent;
   display: inline;
   padding-bottom: 2px;
   text-decoration: none;
+  /* padding: 0; */
+  padding: 2px 10px;
 }
 
 #navigation .link-to:hover,
 #navigation .link-to-active {
-  border-bottom: solid 1.5px #ffffff;
+  /* border-bottom: solid 1.5px #ffffff; */
+  border: 1.5px solid #ffffff;
 /* transition: all 0.5s ease; */
 }
 /* sub-navigation */
@@ -333,14 +338,14 @@ body {
   font-size: 14px;
   color: #000;
   text-decoration: none;
-  border-bottom: solid 1px transparent;
+  border-bottom: 1px solid transparent;
   display: inline;
   padding-bottom: 2px;
   text-decoration: none;
 }
 #sub-navigation .link-to:hover,
 #sub-navigation .link-to-active {
-  border-bottom: solid 1px #000;
+  border-bottom: 1px solid #000;
   /* transition: all 0.5s ease; */
 }
 

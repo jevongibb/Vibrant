@@ -230,15 +230,20 @@ margin-bottom:20px;
 display: none;
 }
 
+#mainpanel *{
+	z-index:1000;
+}
+
 #mainpanel {
-margin-top: 10px;
-margin-left: 25px;
+/* margin-top: 10px;
+margin-left: 25px; */
 background:#fff;
 background-color:rgba(255,255,255,0.8);
 border:1px solid #ccc;
-z-index:20;
+z-index:1000;
 position:fixed;
-top:0;
+top:10px;
+left:25px;
 }
 
 #mainpanel .b1 {

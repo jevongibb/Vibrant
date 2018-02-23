@@ -481,7 +481,7 @@
         });
       });
 
-      data.sort((a, b) => +(b['Employees'].replace(/[^-0-9]+/g, '')) - +(a['Employees'].replace(/[^-0-9]+/g, ''))); //descending
+      data.sort((a, b) => +(b['Employees'].replace(/[^-.0-9]+/g, '')) - +(a['Employees'].replace(/[^-.0-9]+/g, ''))); //descending
 
       var sortAscending = true;
       var element = d3.select('#activity-table-wrapper');
@@ -553,7 +553,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +(a[d].replace(/[^-0-9]+/g, '')) - +(b[d].replace(/[^-0-9]+/g, '')));
+              rows.sort((a, b) => +(a[d].replace(/[^-.0-9]+/g, '')) - +(b[d].replace(/[^-.0-9]+/g, '')));
             }
             sortAscending = false;
             this.className = 'aes';
@@ -570,7 +570,7 @@
                 return 0; //default return value (no sorting)
               });
             } else {
-              rows.sort((a, b) => +(b[d].replace(/[^-0-9]+/g, '')) - +(a[d].replace(/[^-0-9]+/g, '')));
+              rows.sort((a, b) => +(b[d].replace(/[^-.0-9]+/g, '')) - +(a[d].replace(/[^-.0-9]+/g, '')));
             }
             sortAscending = true;
             this.className = 'des';

@@ -64,12 +64,26 @@ $(function () {
     // },
     // "blog": {},
     // "contact": {},
+    "landing": {
+      page: "landing",
+      nav: undefined,
+      event: window.loadLanding,
+      prevAjax: function() {
+        $('#sub-navigation').addClass("hidden");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $("#container").css('margin-top', "50px");
+        loadingWrapper.addClass("hidden");
+      },
+      nextAjax: undefined
+    },
     "activity": {
       page: "activity",
       nav: "graphs",
       event: window.loadActivity,
       prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -81,6 +95,8 @@ $(function () {
       event: window.loadTrends,
       prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -92,6 +108,8 @@ $(function () {
       event: window.loadLocal,
       prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -103,6 +121,8 @@ $(function () {
       event: window.loadSwot,
       prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
@@ -112,17 +132,44 @@ $(function () {
       page: "network",
       nav: "graphs",
       event: window.loadNetwork,
-      prevAjax: undefined,
+      prevAjax: function() {
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
+      },
       nextAjax: function () {
         loadingWrapper.addClass("hidden");
       }
     }
   };
 
+  // if (events[page].nav === "graphs" && initLoading) {
+  // $('#navigation .link-to').removeClass('link-to-active');
+  // $('#navigation .link-to-' + events[page].nav).addClass('link-to-active');
+
+  // d3.select("#sub-navigation-wrapper").selectAll("*").remove();
+  // $('#sub-navigation-wrapper').empty().load("graphs_nav.html", function (d) {
+  // $('#sub-navigation-wrapper .link-to').removeClass('link-to-active');
+  // $('#sub-navigation-wrapper .link-to-' + page).addClass('link-to-active');
+  $('#sub-navigation-wrapper .link-to').off().on("click", function (event) {
+    event.stopPropagation();
+    event.preventDefault();
+    let linkTo = $(this).data('link-to');
+    if (linkTo === "nolink") {
+      return;
+    }
+    $('#sub-navigation-wrapper .link-to').removeClass('link-to-active');
+    $('#sub-navigation-wrapper .link-to-' + linkTo).addClass('link-to-active');
+    loadPage({
+      page: linkTo
+    });
+  });
+  resize(false);
+  // });
+  // }
 
   window.loadPage = function loadPage(obj, initLoading) {
 
-    var page = obj.page || getParameterByName('page', window.location.search) || "activity";
+    var page = obj.page || getParameterByName('page', window.location.search) || "landing";
     if (page === "nolink") {
       return;
     }
@@ -130,7 +177,7 @@ $(function () {
 
     page = page.replace("#", "").replace(/[^a-zA-Z]+/g, '');
     if (!events[page]) {
-      window.open(window.location.origin + "?page=activity", '_self');
+      window.open(window.location.origin + "?page=", '_self');
       return;
     }
 
@@ -142,30 +189,14 @@ $(function () {
       return;
     }
 
+    // console.log(initLoading);
 
-    if (events[page].nav === "graphs" && initLoading) {
-      $('#navigation .link-to').removeClass('link-to-active');
-      $('#navigation .link-to-' + events[page].nav).addClass('link-to-active');
-
-      // d3.select("#sub-navigation-wrapper").selectAll("*").remove();
-      $('#sub-navigation-wrapper').empty().load("graphs_nav.html", function (d) {
-        $('#sub-navigation-wrapper .link-to').removeClass('link-to-active');
-        $('#sub-navigation-wrapper .link-to-' + page).addClass('link-to-active');
-        $('#sub-navigation-wrapper .link-to').off().on("click", function (event) {
-          event.stopPropagation();
-          event.preventDefault();
-          let linkTo = $(this).data('link-to');
-          if (linkTo === "nolink") {
-            return;
-          }
-          $('#sub-navigation-wrapper .link-to').removeClass('link-to-active');
-          $('#sub-navigation-wrapper .link-to-' + linkTo).addClass('link-to-active');
-          loadPage({
-            page: linkTo
-          });
-        });
-        resize(false);
-      });
+    $('#navigation .link-to').removeClass('link-to-active');
+    $('#navigation .link-to-' + events[page].nav).addClass('link-to-active');
+    $('#sub-navigation-wrapper .link-to').removeClass('link-to-active');
+    $('#sub-navigation-wrapper .link-to-' + page).addClass('link-to-active');
+    if (initLoading) {
+      resize(false);
     }
 
     // d3.select("#page-wrapper").selectAll("*").remove();

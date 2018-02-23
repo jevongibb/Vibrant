@@ -1,0 +1,57 @@
+#landing{
+
+}
+
+#landing .splash{
+  width:100%;
+}
+
+#landing .title{
+  text-align: center;
+  font-size: 28px;
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+#landing-container{
+  padding: 10px 50px;
+}
+
+#landing #counties-img{
+  width:100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.big-tittle{
+
+}
+
+.small-tittle{
+  font-weight: normal;
+}
+
+#cities-img-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.city-img-wrapper {
+  width: 33.3%;
+  padding: 10px 50px;
+}
+
+.city-img {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+.city-img img{
+  width: 100%;
+}
+.city-img p{
+  font-size: 16px;
+}

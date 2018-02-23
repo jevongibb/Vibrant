@@ -479,9 +479,9 @@
                 });
               });
             } else {
-              rows.sort((a, b) => +(a[d].replace(/[^-0-9]+/g, '')) - +(b[d].replace(/[^-0-9]+/g, '')));
+              rows.sort((a, b) => +(a[d].replace(/[^-.0-9]+/g, '')) - +(b[d].replace(/[^-.0-9]+/g, '')));
               bubbleObj.years.map((year) => {
-                bubbleObj.bubbleByYear[year].sort((a, b) => +((a[d] + '').replace(/[^-0-9]+/g, '')) - +((b[d] + '').replace(/[^-0-9]+/g, '')));
+                bubbleObj.bubbleByYear[year].sort((a, b) => +((a[d] + '').replace(/[^-.0-9]+/g, '')) - +((b[d] + '').replace(/[^-.0-9]+/g, '')));
               });
             }
             sortAscending = false;
@@ -510,9 +510,9 @@
                 });
               });
             } else {
-              rows.sort((a, b) => +(b[d].replace(/[^-0-9]+/g, '')) - +(a[d].replace(/[^-0-9]+/g, '')));
+              rows.sort((a, b) => +(b[d].replace(/[^-.0-9]+/g, '')) - +(a[d].replace(/[^-.0-9]+/g, '')));
               bubbleObj.years.map((year) => {
-                bubbleObj.bubbleByYear[year].sort((a, b) => +((b[d] + '').replace(/[^-0-9]+/g, '')) - +((a[d] + '').replace(/[^-0-9]+/g, '')));
+                bubbleObj.bubbleByYear[year].sort((a, b) => +((b[d] + '').replace(/[^-.0-9]+/g, '')) - +((a[d] + '').replace(/[^-.0-9]+/g, '')));
               });
             }
             sortAscending = true;
@@ -584,6 +584,7 @@
       //     if (error) throw error;
 
       //   });
+      
       function ready(error, master, colors) {
         if (error) throw error;
         // console.log(table, master);
@@ -606,7 +607,7 @@
         // var colorsByGroup = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
 
         let years = d3.keys(master[0]).filter((d) => d.indexOf("L_T_") !== -1).map((year) => {
-          year = +year.replace(/[^-0-9]+/g, '');
+          year = +year.replace(/[^-.0-9]+/g, '');
           bubbleByYear[year] = [];
           return year;
         });
