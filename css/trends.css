@@ -79,6 +79,7 @@
   pointer-events: none;
   text-anchor: start;
 }
+
 #trends-bubble-wrapper text.more-than-y-max,
 #trends-bubble-wrapper text.less-than-y-min,
 #trends-bubble-wrapper .axis text {
@@ -93,23 +94,25 @@
 #trends-bubble-wrapper .background-history {
   pointer-events: none;
   fill: none;
-  stroke-linejoin:round;
-  stroke-linecap:round;
-  stroke-width:1.5;
-  stroke:#eee;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 1.5;
+  stroke: #eee;
 }
+
 #trends-bubble-wrapper .animated-history {
   pointer-events: none;
   fill: none;
-  stroke-linejoin:round;
-  stroke-linecap:round;
-  stroke-width:1.5;
-  stroke:#888;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 1.5;
+  stroke: #888;
 }
 
 #trends-bubble-wrapper .domain {
   stroke-width: 0;
 }
+
 #trends-bubble-wrapper line {
   stroke-width: 0.5px;
   stroke: #eee;
@@ -120,6 +123,7 @@
   stroke-width: 0.5px;
   stroke: #eee;
 }
+
 #trends-bubble-wrapper line.less-than-y-min,
 #trends-bubble-wrapper line.more-than-y-max,
 #trends-bubble-wrapper .like-diagonal,
@@ -128,9 +132,11 @@
   stroke: #333;
   pointer-events: none;
 }
-#trends-bubble-wrapper .like-diagonal{
+
+#trends-bubble-wrapper .like-diagonal {
   /* stroke-dasharray:1, 5; dotted*/
-  stroke-dasharray:5, 5;/*dashed */
+  stroke-dasharray: 5, 5;
+  /*dashed */
   stroke: red;
 }
 

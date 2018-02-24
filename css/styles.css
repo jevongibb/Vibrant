@@ -7,13 +7,15 @@ html,
 body {
   /* font-family: monospace; */
   font: 14px/1.4 Georgia, Serif;
-	font-family: sans-serif;
+  font-family: sans-serif;
   margin: 0px;
   /* overflow-x: hidden; */
 }
-#wrapper{
+
+#wrapper {
   overflow-x: hidden;
 }
+
 .hidden {
   display: none !important;
 }
@@ -283,6 +285,7 @@ body {
   font-size: 18px;
   margin: 5px 20px 5px 10px;
   padding: 0;
+  cursor: default;
 }
 
 #navigation .logo-wrapper {
@@ -313,8 +316,9 @@ body {
 #navigation .link-to-active {
   /* border-bottom: solid 1.5px #ffffff; */
   border: 1.5px solid #ffffff;
-/* transition: all 0.5s ease; */
+  /* transition: all 0.5s ease; */
 }
+
 /* sub-navigation */
 
 #sub-navigation {
@@ -343,6 +347,7 @@ body {
   padding-bottom: 2px;
   text-decoration: none;
 }
+
 #sub-navigation .link-to:hover,
 #sub-navigation .link-to-active {
   border-bottom: 1px solid #000;

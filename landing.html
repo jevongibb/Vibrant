@@ -25,18 +25,37 @@
       <p>We define
         <span class="city"></span> using the counties below:</p>
       <br>
-      <img alt="counties" id="counties-img">
+      <div id="counties-img-wrapper">
+        <img alt="counties" id="counties-img">
+      </div>
       <br>
       <div id="under-counties-text">[different text for each city] This text is about (city)…</div>
       <br>
 
       <div>
         <br>
-        <h1 class="center big-tittle">What <span class="city"></span> does</h1>
+        <h1 class="center big-tittle">What
+          <span class="city"></span> does</h1>
         <h3 class="center small-tittle">Number of Employees by Industry</h3>
-        <div id="landing-activity-bubble-wrapper"></div>
-        <br>
-        <div id="landing-activity-table-wrapper"></div>
+        <div id="landing-activity" style="position:relative;">
+          <!-- <div id="activity-container"> -->
+            <div id="activity-wrapper">
+              <div id="activity-bubble-wrapper">
+                <div id="activity-bubble-legend">
+                  <div>
+                  </div>
+                </div>
+                <div id="activity-bubble-scale">
+                  <div>
+                    <img src="img dump/scale.png" alt="scale">
+                    <p>Size by # Employees</p>
+                  </div>
+                </div>
+              </div>
+              <div id="activity-table-wrapper"></div>
+            </div>
+          <!-- </div> -->
+        </div>
         <br>
         <div id="under-activity-text">[different text for each city] This text is about (city)…</div>
         <br>
@@ -44,11 +63,31 @@
 
       <div>
         <br>
-        <h1 class="center big-tittle">How <span class="city"></span> is changing</h1>
+        <h1 class="center big-tittle">How
+          <span class="city"></span> is changing</h1>
         <h3 class="center small-tittle">Percent Change in Number of Employees by Industry Over Time</h3>
-        <div id="landing-trends-bubble-wrapper"></div>
-        <br>
-        <div id="landing-trends-table-wrapper"></div>
+        <div id="landing-trends" style="position:relative;">
+          <!-- <div id="trends-container"> -->
+            <div id="trends-wrapper">
+              <div id="trends-bubble-wrapper">
+                <div id="trends-bubble-legend">
+                  <div>
+                  </div>
+                </div>
+                <div id="trends-bubble-scale">
+                  <div>
+                    <img src="img dump/scale.png" alt="scale">
+                    <p>Size by # Employees</p>
+                  </div>
+                </div>
+              </div>
+              <div id="trends-slider-wrapper">
+                <input type="range" name="points" min="0" max="208" step="1" value="0" id="trends-time">
+              </div>
+              <div id="trends-table-wrapper"></div>
+            </div>
+          <!-- </div> -->
+        </div>
         <br>
         <div id="under-trends-text">[different text for each city] This text is about (city)…</div>
         <br>
@@ -56,9 +95,27 @@
 
       <div>
         <br>
-        <h1 class="center big-tittle">How <span class="city"></span>’s industries relate to each other</h1>
+        <h1 class="center big-tittle">How
+          <span class="city"></span>’s industries relate to each other</h1>
         <h3 class="center small-tittle">A network map that positions industries and clusters based on similarity</h3>
-        <div id="landing-network-wrapper"></div>
+        <div id="landing-network-wrapper" style="position:relative;">
+          <button id="local-view">Local view</button>
+          <button id="national-view">National view</button>
+          <!-- <div id="network-container"> -->
+            <div id="network-bubble-legend">
+              <div>
+              </div>
+            </div>
+            <div id="network-bubble-scale">
+              <div>
+                <img src="img dump/scale.png" alt="scale">
+                <p>Size by # Employees</p>
+              </div>
+            </div>
+            <div id="network-wrapper">
+            </div>
+          <!-- </div> -->
+        </div>
         <br>
         <div id="under-network-text">[different text for each city] This text is about (city)…</div>
         <br>
@@ -66,11 +123,28 @@
 
       <div>
         <br>
-        <h1 class="center big-tittle">How <span class="city"></span>’s local industries compare to what we would expect</h1>
+        <h1 class="center big-tittle">How
+          <span class="city"></span>’s local industries compare to what we would expect</h1>
         <h3 class="center small-tittle">Difference in number of employees from the average size nationally</h3>
-        <div id="landing-local-bubble-wrapper"></div>
-        <br>
-        <div id="landing-local-table-wrapper"></div>
+        <div id="landing-local" style="position:relative;">
+          <!-- <div id="local-container"> -->
+            <div id="local-wrapper">
+              <div id="local-bubble-wrapper">
+                <div id="local-bubble-legend">
+                  <div>
+                  </div>
+                </div>
+                <div id="local-bubble-scale">
+                  <div>
+                    <img src="img dump/scale.png" alt="scale">
+                    <p>Size by # Employees</p>
+                  </div>
+                </div>
+              </div>
+              <div id="local-table-wrapper"></div>
+            </div>
+          <!-- </div> -->
+        </div>
         <br>
         <div id="under-local-text">[different text for each city] This text is about (city)…</div>
         <br>
@@ -78,14 +152,24 @@
 
       <div>
         <br>
-        <h1 class="center big-tittle">Positive and negative trends for <span class="city"></span>’s economy</h1>
+        <h1 class="center big-tittle">Positive and negative trends for
+          <span class="city"></span>’s economy</h1>
         <h3 class="center small-tittle">Comparing predictions based on historical data and network analysis</h3>
-        <div id="landing-swot-wrapper"></div>
+        <div id="landing-swot-wrapper" style="position:relative;">
+          <!-- <div id="swot-container"> -->
+            <div id="swot-wrapper">
+              <div id="swot-strengths-wrapper" class="swot-table-wrapper"></div>
+              <div id="swot-weaknesses-wrapper" class="swot-table-wrapper"></div>
+              <div id="swot-opportunities-wrapper" class="swot-table-wrapper"></div>
+              <div id="swot-threats-wrapper" class="swot-table-wrapper"></div>
+            </div>
+          <!-- </div> -->
+        </div>
         <br>
         <div id="under-swot-text">[different text for each city] This text is about (city)…</div>
         <br>
       </div>
-      
+
       <br>
       <div id="bottom-all-cities-text">[this text will be the same for every city]</div>
     </div>
