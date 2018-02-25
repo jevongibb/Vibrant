@@ -28,10 +28,10 @@
     $("#page-wrapper").addClass('no-min-height').css('height', height);
 
 
-    new BubbleLegend({
-      element: d3.select('#network-bubble-legend div'), //.node(),
-      class: "network-bubble-legend-tooltip"
-    });
+    // new BubbleLegend({
+    //   element: d3.select('#network-bubble-legend div'), //.node(),
+    //   class: "network-bubble-legend-tooltip"
+    // });
 
 
 
@@ -48,10 +48,10 @@
       // $("#network-wrapper").on('load', function(){
       //   //your code (will be called once iframe is done loading)
       //   ---console.log('load 1');
-      // })
-      // .ready(function(){
-      //   //your code (will be called once iframe is done loading)
-      //   +++console.log('load 2');
+      // });
+      // $("#network-wrapper").ready(function(){
+        //your code (will be called once iframe is done loading)
+        // +++console.log('load 2');
       // });
     }
 
