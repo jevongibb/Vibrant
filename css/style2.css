@@ -238,7 +238,7 @@ display: none;
 /* margin-top: 10px;
 margin-left: 25px; */
 background:#fff;
-background-color:rgba(255,255,255,0.8);
+background-color:rgba(255,255,255,1.0);
 border:1px solid #ccc;
 z-index:1000;
 position:fixed;
