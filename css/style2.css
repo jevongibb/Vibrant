@@ -24,11 +24,13 @@ html,body {
 	font-size: 12px;
 	font-family: sans-serif;
 	line-height:1.25em;
+	overflow: hidden;
 }
 
 .sigma-parent {
 	position: relative;
 	height: 100%;
+	overflow: hidden;
 }
 
 .sigma-expand {
@@ -46,6 +48,7 @@ html,body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	overflow: hidden;
 }
 
 canvas#sigma_bg_1 {

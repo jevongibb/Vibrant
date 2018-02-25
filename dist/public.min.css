@@ -521,11 +521,13 @@ html,body {
 	font-size: 12px;
 	font-family: sans-serif;
 	line-height:1.25em;
+	overflow: hidden;
 }
 
 .sigma-parent {
 	position: relative;
 	height: 100%;
+	overflow: hidden;
 }
 
 .sigma-expand {
@@ -542,6 +544,7 @@ html,body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	overflow: hidden;
 }
 
 canvas#sigma_bg_1 {
@@ -734,7 +737,7 @@ display: none;
 /* margin-top: 10px;
 margin-left: 25px; */
 background:#fff;
-background-color:rgba(255,255,255,0.8);
+background-color:rgba(255,255,255,1.0);
 border:1px solid #ccc;
 z-index:1000;
 position:fixed;
@@ -1318,10 +1321,10 @@ body {
   /* height: 50px; */
 }
 
-#navigation .brend {
+#navigation .brand {
   color: #fff;
   font-size: 18px;
-  margin: 5px 20px 5px 10px;
+  margin: 5px 10px 5px 10px;
   padding: 0;
   cursor: default;
 }
@@ -1337,7 +1340,7 @@ body {
 }
 
 #navigation .link-to {
-  margin: 5px 30px 5px 10px;
+  margin: 5px 20px 5px 10px;
   font-size: 18px;
   color: #fff;
   text-decoration: none;

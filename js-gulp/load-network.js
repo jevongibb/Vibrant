@@ -23,8 +23,8 @@
       $('.dropdown-hidden').toggleClass('visibility-visible');
       build(activeCity);
     });
-    const otherHeight = $("#header").outerHeight(true) + $("#footer").outerHeight(true);
-    const height = $(window).height() - otherHeight;
+    // const otherHeight = $("#header").outerHeight(true);// + $("#footer").outerHeight(true);
+    const height = $(window).height() - $("#header").outerHeight(true) + 5;
     $("#page-wrapper").addClass('no-min-height').css('height', height);
 
 
