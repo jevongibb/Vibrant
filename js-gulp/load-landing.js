@@ -31,6 +31,7 @@
               .on("click", function () {
                 $("#landing-content").removeClass("hidden");
                 $(".city").text(d.city);
+                $("#under-counties-text").text(d.underCountiesText);
                 d3.select("#counties-img").attr("src", `./img/Counties_${d.city}.gif`);
                 loadContent(d.city);
               });
