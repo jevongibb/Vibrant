@@ -236,8 +236,8 @@ class TrendsBubble {
       .data(that.data)
       .enter().append("circle")
       .attr("class", "bubble")
-      .style("stroke", "#000")
-      .style("stroke-width", "0")
+      .style("stroke", "#565352")
+      .style("stroke-width", "1")
       .style('fill', (d, i) => d.color)
       .attr("cy", (d) => {
         if (d["Local Trend"] > maxY) {
@@ -256,7 +256,7 @@ class TrendsBubble {
         d3.select(this).style('opacity', 1);
         const textWidth = getTextWidth(d['Industry']) || (that.width + 1);
         // console.log(textWidth);
-        description.text(textWidth < that.width ? d['Industry'] : d['Industry'].substring(0, 38) + "...");
+        description.text(textWidth < that.width ? d['Industry'] : d['Industry'].substring(0, 65) + "...");
         // .style("font-size",d['Industry'].length<50 ? "18px" : "16px")
         // .style("font-size", function(d) { 
         //   console.log(width, this.getComputedTextLength());

@@ -32,6 +32,12 @@
                 $("#landing-content").removeClass("hidden");
                 $(".city").text(d.city);
                 $("#under-counties-text").text(d.underCountiesText);
+                $("#under-activity-text").text(d.underActivityText);
+                $("#under-trends-text").text(d.underTrendsText);
+                $("#under-network-text").text(d.underNetworkText);
+                $("#above-local-text").text(d.aboveLocalText);
+                $("#under-local-text").text(d.underLocalText);
+                $("#under-swot-text").text(d.underSWOTText);
                 d3.select("#counties-img").attr("src", `./img/Counties_${d.city}.gif`);
                 loadContent(d.city);
               });

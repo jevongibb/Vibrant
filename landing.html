@@ -3,33 +3,36 @@
   <div id="landing-container">
     <h1 class="title">Strengthening communities by improving productivity,<br> opportunity, and the connections between us all.
     </h1>
-    <p>How does a community create inclusive economic growth? Many people are trying to answer this question as their communities
-      experience increased inequality and stagnant incomes. Increased productivity – output per working hour – is an obvious
+    <br>
+    <p>How does a community create inclusive economic growth? Increased productivity – output per working hour – is an obvious
       part of the answer. Increased opportunity – measured in terms of absolute and relative economic mobility – plays a
-      less obvious, but equally important role. To increase productivity and opportunity, though, we need to understand how
-      communities might grow, and how individuals relate to that growth.</p>
+      less obvious, <a href="http://www.equality-of-opportunity.org/">but equally important role</a>. To increase productivity and opportunity, though, we need to understand how communities might grow, and how to position individuals for success.</p>
     <br>
-    <p>Vibrant Networks uses network analysis and basic machine learning to understand how individuals combine to create companies,
-      how companies combine to create industries, industries create clusters, clusters create networks, and how networks
-      relate to each other.</p>
+    <p>To do this, we need to know <b>what a commmunity does</b> (in terms of economy), <b>how that is changing, what could come next, and how we can leverage that information</b>. Vibrant Networks helps by using network analysis and basic machine learning to understand how individuals combine to create companies, how companies combine to create industries, industries create clusters, clusters create networks, and how networks relate to each other. If the picture below does not make sense already, please be patient - it will.</p>
     <br>
-    <div id="more-text">[more text]</div>
+    <p><img src="img/progression.png" alt="Progression from Individuals to Global Networks" id="progression"></p>
+    <br>
+    <div id="more-text">To understand how this works, choose one of the three regions below. Don’t worry, you can come back and try the others later – they are each very unique. You can also click "Graphs" above to see the visualizations without accompanying text.</div>
     <br>
     <div id="cities-img-wrapper">
     </div>
     <br>
 
     <div id="landing-content" class="hidden">
-      <div id="top-all-cities-text">[this text will be the same for every city]</div>
+      <div id="top-all-cities-text">
+        <p>Each region is more than just a city, or even a county. The US government groups regions into <a href="img/region_types.gif" target="_blank">Statistical and Economic Areas</a>. These are either too big, too small, or do not include enough of the country. Academics typically use much more helpful units, called <a href="img/cz_map.png" target="_blank">Commuting Zones</a>, that group counties into the regions where their populations tend to work. Unfortunately, the most recent Community Zone data is from 2000, and changes since 2000 cause them to do an imperfect job of reflecting current regions.</p><br>
+        <p>In turn, I display these visualizations using custom regions as defined by economic development practitioners, and I'm still thinking about how to solve this problem. For the record, I let the computer group counties by Commuting Zones while it learned from the data.</p>
+</div>
       <br>
-      <p>We define
+      <p>I define
         <span class="city"></span> using the counties below:</p>
       <br>
       <div id="counties-img-wrapper">
         <img alt="counties" id="counties-img">
       </div>
       <br>
-      <div id="under-counties-text">[different text for each city] This text is about (city)…</div>
+      <p>After defining the region, the next step is to learn what <span class="city"></span> does. To do this, we look at employment data to see the industries active in the region. First, we sort the industries into “Traded” and “Local”, as defined by <a href="https://clustermapping.us/sites/default/files/files/page/Categorization%20of%20Traded%20and%20Local%20Industries%20in%20the%20US%20Economy.pdf" target="_blank">Michael Porter</a>. Traded industries, such as most manufacturers, create goods or services locally and sell them externally. They bring money into the region. Local industries, such as restaurants and auto mechanics, create locally and sell locally. They circulate money within the region, or possibly extract it to corporate headquarters in other areas. Both Traded and Local industries are important. Local account for most of a region’s jobs, but Traded drives the economy. Without Traded, the Local jobs will start to disappear. The opposite is less true. Also, activity in Local industries should be similar everywhere, while activity in Traded industries should be different. Traded industries better define a region.</p><br>
+      <div id="under-counties-text"></div>
       <br>
 
       <div>
@@ -57,7 +60,10 @@
           <!-- </div> -->
         </div>
         <br>
-        <div id="under-activity-text">[different text for each city] This text is about (city)…</div>
+        <p>Now that we know what <span class="city"></span> does, next we need to learn how that has changed and how it might change in the future. Industries shrink and grow. By looking at data over time, we can identify trends. The data below shows the change in employment from 2006 to 2015, and then generates an estimate for how industries might change through 2020. The size of the circles reflects number of employees, and the axes measure how much the industry is shrinking or growing (in percent change).</p><br>
+        <p>The dashed red line compares the local trend with the national trend. Circles above the line indicate a more positive local trend and possibly some sort of competitive advantage, while circles below the line might indicate competitive disadvantage. Economic development practitioners can talk with their industries to identify the causes for this situation. In turn, they can build upon their strengths and either improve or hedge against their weaknesses.</p><br>
+        <p>Use the scroll bar beneath the graph to move from year to year. When you hover over a circle, the industry name appears above the graph and the industry's trend path - how it changes from 2006 to 2020 - appears as a line. Note that the scale changes for year 2020 - it is much smaller, because we lose the big swings from year to year when making a prediction for average change in the future.</p><br>
+        <div id="under-activity-text"></div>
         <br>
       </div>
 
@@ -89,7 +95,12 @@
           <!-- </div> -->
         </div>
         <br>
-        <div id="under-trends-text">[different text for each city] This text is about (city)…</div>
+        <p>Now we understand what <span class="city"></span> does, how that has changed, and how it might change in the future. That part of the analysis was easy. What if we want to put those industry-level trends in context? What if we want to diversify into other industries? The next part is where the massive computing power of data analytics helps. We need to understand how every industry relates to every other industry.</p><br>
+        <p>To do this, we divide the country into commuting zones, treat each commuting zone like a network, and look at four factors: (1) how the quantity of employment in one industry affects the quantity of employment in other industries; (2) how the quantity of establishments/companies in one industry affects the quantity of establishments in other industries; (3) the similarity of occupations employed by industries; and (4) the similarity in inputs and outputs that are consumed and produced by industries.  For a human, this would be like trying to boil the ocean. For a computer, this is easy.</p><br>
+        <p>We take all this information and create a network map. First, we bring back the circles from earlier that represent <span class="city"></span>’s activity, and we turn them into nodes. We “light up” the circles/nodes where <span class="city"></span> has a Relative Size greater than 0.5 - the other nodes are gray - and we size every node by the number of employees in the industry. The distance between industries indicates their similarity. A connection means that the two industries are very similar.</p><br>
+        <p>Because this graph attempts to visualize a 675-dimension matrix in 2 dimensions, some of the industries might seem closer of further from "similar" industries than they should. Nevertheless, by only looking at the data from above, we see industries group into clusters. Of note, I do not color code by cluster. Once we group clusters into networks, it becomes less necessary to isolate them into discrete units. Instead, I used 9 colors that the human eye can easily identify and linked them to the 9 single-digit NAICS categories.</p><br>
+        <p>You can zoom into parts of the map by clicking the zoom icons. You can click on nodes to see their connections, and to see other data such as number of employees, average salary, and growth trends for the industry. You can also toggle between the "Local View", which only lights up nodes with Relative Size greater than 0.5 and scales the nodes using local employment numbers, and the "National View", which lights up all nodes and scales the nodes using national employment numbers.</p><br>
+        <div id="under-trends-text"></div>
         <br>
       </div>
 
@@ -117,8 +128,10 @@
           <!-- </div> -->
         </div>
         <br>
-        <div id="under-network-text">[different text for each city] This text is about (city)…</div>
+        <div id="under-network-text"></div>
         <br>
+        <p>Despite all this discussion of Traded industries, we have not forgotten the important Local industries. As mentioned before, these provide the majority of jobs. Also, sometimes the unique characteristics of a region turn a Local industry into a Traded industry. For these reasons, we need to check how the employment activity in Local industries compares to what we would expect. Because these industries should grow or shrink relative to the number of employees in the region, we expect that they should have a Relatize Size around 1. The visualization below shows the Top 10 and Bottom 10 industries above/below an RS of 1.</p><br>
+        <div id="above-local-text"></div>
       </div>
 
       <div>
@@ -146,7 +159,10 @@
           <!-- </div> -->
         </div>
         <br>
-        <div id="under-local-text">[different text for each city] This text is about (city)…</div>
+        <p>At this point, we have a massive amount of information. Again, we put computers’ massive power to good use and compute potential economic impact of trends. We make the computer use a SWOT analysis that many people will find familiar. We think about Strengths and Weaknesses as positive and negative trends based upon historical employment data. These are simple linear projections of “what is likely to happen”.</p><br>
+        <p>Next, we think about Opportunities and Threats using network analysis rather than linear projections. Remember, the network analysis looks at much more than historical data. It looks at co-location trends, employees’ skills, and inputs/outputs. This measure is about “what could happen”, as compared to “what is likely to happen”. We take the network analysis, compare it to the linear projections, and show where the computer thinks industries trends might be more positive or negative than the linear projections.</p>
+
+        <div id="under-local-text"></div>
         <br>
       </div>
 
@@ -166,12 +182,12 @@
           <!-- </div> -->
         </div>
         <br>
-        <div id="under-swot-text">[different text for each city] This text is about (city)…</div>
+        <div id="under-swot-text">Text</div>
         <br>
       </div>
 
       <br>
-      <div id="bottom-all-cities-text">[this text will be the same for every city]</div>
+      <div id="bottom-all-cities-text"><p>[this text will be the same for every city]</p></div>
     </div>
   </div>
 

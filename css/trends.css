@@ -74,8 +74,8 @@
 }
 
 #trends-bubble-wrapper .description.label {
-  font: 500 24px "Helvetica Neue";
-  fill: #ddd;
+  font: 500 18px "Helvetica Neue";
+  fill: #000;
   pointer-events: none;
   text-anchor: start;
 }
