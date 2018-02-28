@@ -668,6 +668,9 @@ sigma.classes.EventDispatcher = function () {
             bg: d,
             bg2: g
         };
+//         this.p={labelColor:"default",defaultLabelColor:"#000",labelHoverBGColor:"default",defaultHoverLabelBGColor:"#fff",
+// labelHoverShadow:!0,labelHoverShadowColor:"#000",labelHoverColor:"default",defaultLabelHoverColor:"#000",labelActiveBGColor:"default",defaultActiveLabelBGColor:"#fff",labelActiveShadow:!0,labelActiveShadowColor:"#000",labelActiveColor:"default",defaultLabelActiveColor:"#000",labelSize:"fixed",defaultLabelSize:12,labelSizeRatio:2,labelThreshold:6,font:"Arial",hoverFont:"",activeFont:"",fontStyle:"",hoverFontStyle:"",activeFontStyle:"",edgeColor:"source",defaultEdgeColor:"#aaa",defaultEdgeType:"line",
+// defaultNodeColor:"#aaa",nodeHoverColor:"node",defaultNodeHoverColor:"#fff",nodeActiveColor:"node",defaultNodeActiveColor:"#fff",borderSize:0,nodeBorderColor:"node",defaultNodeBorderColor:"#fff",edgesSpeed:200,nodesSpeed:200,labelsSpeed:200};
         this.p = {
             labelColor: "default",
             defaultLabelColor: "#fff",

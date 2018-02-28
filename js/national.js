@@ -44,12 +44,18 @@ Object.size = function(obj) {
 };
 
 function initSigma(config) {
-	var data=config.data
-	
+	var data=config.data;
 	var drawProps, graphProps,mouseProps;
-	if (config.sigma && config.sigma.drawingProperties) 
-		drawProps=config.sigma.drawingProperties;
-	else
+	if (config.sigma && config.sigma.drawingProperties) {
+        drawProps=config.sigma.drawingProperties;
+        // console.log(drawProps);
+        drawProps.edgeColor = "default";//need for using own edge color
+        drawProps.defaultEdgeColor = "#848281";//fixed sigma.min.js
+        drawProps.borderSize = 0.5;//Something other than 0
+        drawProps.nodeBorderColor = "default";//exactly like this
+        drawProps.defaultNodeBorderColor = "#565352";//Any color of your choice
+        drawProps.defaultBorderView = "always";//added inside sigma.min.js, apply the default color to all nodes always (normal+hover)
+    }else{
 		drawProps={
         defaultLabelColor: "#000",
         defaultLabelSize: 14,
@@ -58,11 +64,13 @@ function initSigma(config) {
         defaultLabelHoverColor: "#fff",
         labelThreshold: 10,
         defaultEdgeType: "curve",
+        edgeColor:'default',
+        defaultEdgeColor:'red',//'#848281',
         hoverFontStyle: "bold",
         fontStyle: "bold",
         activeFontStyle: "bold"
     };
-    
+    }
     if (config.sigma && config.sigma.graphProperties)	
     	graphProps=config.sigma.graphProperties;
     else
@@ -207,7 +215,7 @@ function configSigmaElements(config) {
     // Node hover behaviour
     if (config.features.hoverBehavior == "dim") {
 
-		var greyColor = '#ccc';
+		var greyColor = '#ccc';//'#000';
 		sigInst.bind('overnodes',function(event){
 		var nodes = event.content;
 		var neighbors = {};
