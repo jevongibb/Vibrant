@@ -41,7 +41,9 @@ class ActivityTable {
     var sortAscending = true;
 
     element.selectAll("*").remove();
-
+    // var tooltip = element.append('div')
+    //   .attr('class', 'information-tooltip')
+    //   .style("visibility", "hidden");
     var searchBar = element.append('div');
     searchBar.append('input')
       .attr('placeholder', 'Search by Description...')
@@ -64,11 +66,41 @@ class ActivityTable {
 
     var table = element.append('table');
     var titles = d3.keys(data[0]);
+    var tooltip = d3.select(".information-tooltip");
     var headers = table.append('thead').append('tr')
       .selectAll('th')
       .data(titles).enter()
       .append('th')
-      .text((d) => d)
+      // .html((d) => d)
+      .each(function (d) {
+        if (d == "Relative Size") {
+          var el = d3.select(this);
+          el.append("span").text(d).style("white-space","nowrap");
+          el.append("img")
+            .attr("src", "images/information.png")
+            .attr("alt", "information")
+            .attr("class", "information")
+            .on("mouseover", function () {
+              var box = d3.select(this).node().getBoundingClientRect();
+              var tooltipNode = tooltip.node();
+              const tooltipWidth = $(tooltipNode).outerWidth(true);
+              const tooltipHeight = $(tooltipNode).outerHeight(true);
+              const width = $(window).width();
+              let w = ((d3.event.pageX || box.left) + 10);
+              if ((w + tooltipWidth / 2) > width) {
+                w = width - tooltipWidth - 10;
+              } else {
+                w = w - tooltipWidth / 2;
+              }
+              let h = ((d3.event.pageY || box.top) - 15) - tooltipHeight;
+              tooltip.style("top", h + "px").style("left", w + "px");
+              tooltip.style("visibility", "visible");
+            })
+            .on("mouseout", () => tooltip.style("visibility", "hidden"));
+        } else {
+          d3.select(this).text(d);
+        }
+      })
       .on('click', function (d, i) {
         headers.attr('class', 'header');
         if (sortAscending) {

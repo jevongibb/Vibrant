@@ -233,6 +233,7 @@ $(function () {
     // console.log($("#header").height(), $("#sub-navigation-wrapper").height(), $("#header").height());
     $("#container").css('margin-top', otherHeight);
     $("#page-wrapper").css('min-height', height).css('height', "inherit");
+    $(".information-tooltip").css('left', 0).css('top', 0);
   }
   $(window).on('resize', resize);
 

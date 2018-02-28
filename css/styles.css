@@ -24,6 +24,30 @@ body {
   visibility: visible !important;
 }
 
+img.information{
+  height: 15px;
+  margin: 0 0 0 5px;
+  cursor:pointer;
+}
+
+.information-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 14px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+  width: 300px;
+  /* height: 135px; */
+}
 #header {
   width: 100%;
   min-height: 50px;

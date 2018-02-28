@@ -3,7 +3,7 @@
 }
 
 #activity-wrapper {
-  margin: 0;
+  margin-top: 10px;
   width: 100%;
   /* display: flex;
   justify-content: start;
@@ -112,6 +112,7 @@
 
 #activity-table-wrapper {
   margin: 20px 0;
+  position: relative;
 }
 
 #activity-table-search {
@@ -220,6 +221,14 @@
 #local-view:focus,
 #national-view:focus {
   outline: none;
+}
+
+#progression {
+  height: 190px;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 #local-container {
   padding: 50px 50px;
@@ -1104,6 +1113,30 @@ body {
   visibility: visible !important;
 }
 
+img.information{
+  height: 15px;
+  margin: 0 5px;
+  cursor:pointer;
+}
+
+.information-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 14px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+  width: 300px;
+  /* height: 135px; */
+}
 #header {
   width: 100%;
   min-height: 50px;
@@ -1693,8 +1726,8 @@ and also iPads specifically.
 }
 
 #trends-bubble-wrapper .description.label {
-  font: 500 24px "Helvetica Neue";
-  fill: #ddd;
+  font: 500 18px "Helvetica Neue";
+  fill: #000;
   pointer-events: none;
   text-anchor: start;
 }

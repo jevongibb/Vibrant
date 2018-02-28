@@ -103,6 +103,7 @@
 
 #activity-table-wrapper {
   margin: 20px 0;
+  position: relative;
 }
 
 #activity-table-search {
