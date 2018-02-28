@@ -86,6 +86,8 @@ $(function () {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
+        // window.scrollBy(0,0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -99,6 +101,7 @@ $(function () {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -112,6 +115,7 @@ $(function () {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -125,6 +129,7 @@ $(function () {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -137,6 +142,7 @@ $(function () {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     }
