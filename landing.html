@@ -9,11 +9,11 @@
       less obvious, <a href="http://www.equality-of-opportunity.org/">but equally important role</a>. To increase productivity and opportunity, though, we need to understand how communities might grow, and how to position individuals for success.</p>
     <br>
     <p>To do this, we need to know <b>what a commmunity does</b> (in terms of economy), <b>how that is changing, what could come next, and how we can leverage that information</b>. Vibrant Networks helps by using network analysis and basic machine learning to understand how individuals combine to create companies, how companies combine to create industries, industries create clusters, clusters create networks, and how networks relate to each other. If the picture below does not make sense already, please be patient - it will.</p>
-    <br>
+    <br><br><br>
     <p><img src="img/progression.png" alt="Progression from Individuals to Global Networks" id="progression"></p>
-    <br>
+    <br><br><br>
     <div id="more-text">To understand how this works, choose one of the three regions below. Don’t worry, you can come back and try the others later – they are each very unique. You can also click "Graphs" above to see the visualizations without accompanying text.</div>
-    <br>
+    <br><br>
     <div id="cities-img-wrapper">
     </div>
     <br>
@@ -100,7 +100,8 @@
         <p>We take all this information and create a network map. First, we bring back the circles from earlier that represent <span class="city"></span>’s activity, and we turn them into nodes. We “light up” the circles/nodes where <span class="city"></span> has a Relative Size greater than 0.5 - the other nodes are gray - and we size every node by the number of employees in the industry. The distance between industries indicates their similarity. A connection means that the two industries are very similar.</p><br>
         <p>Because this graph attempts to visualize a 675-dimension matrix in 2 dimensions, some of the industries might seem closer of further from "similar" industries than they should. Nevertheless, by only looking at the data from above, we see industries group into clusters. Of note, I do not color code by cluster. Once we group clusters into networks, it becomes less necessary to isolate them into discrete units. Instead, I used 9 colors that the human eye can easily identify and linked them to the 9 single-digit NAICS categories.</p><br>
         <p>You can zoom into parts of the map by clicking the zoom icons. You can click on nodes to see their connections, and to see other data such as number of employees, average salary, and growth trends for the industry. You can also toggle between the "Local View", which only lights up nodes with Relative Size greater than 0.5 and scales the nodes using local employment numbers, and the "National View", which lights up all nodes and scales the nodes using national employment numbers.</p><br>
-        <div id="under-trends-text"></div>
+        <div id="under-trends-text"></div><br>
+        <p>One additional takeaway is that location matters. Activity rarely pops up when not close to other activity. Regions hop from industry to industry, often following the connections drawn below. While nothing is impossible, this data helps us better understand what is probable.</p>
         <br>
       </div>
 
@@ -159,9 +160,10 @@
           <!-- </div> -->
         </div>
         <br>
-        <p>At this point, we have a massive amount of information. Again, we put computers’ massive power to good use and compute potential economic impact of trends. We make the computer use a SWOT analysis that many people will find familiar. We think about Strengths and Weaknesses as positive and negative trends based upon historical employment data. These are simple linear projections of “what is likely to happen”.</p><br>
-        <p>Next, we think about Opportunities and Threats using network analysis rather than linear projections. Remember, the network analysis looks at much more than historical data. It looks at co-location trends, employees’ skills, and inputs/outputs. This measure is about “what could happen”, as compared to “what is likely to happen”. We take the network analysis, compare it to the linear projections, and show where the computer thinks industries trends might be more positive or negative than the linear projections.</p>
-
+        <p>At this point, we have a massive amount of information. So, what's the big takeaway? We need to use all this information about trends to understand how to increase productivity by creating more jobs that pay better. To do this, we use a SWOT analysis that many people will find familiar.</p><br>
+        <p>For Strengths and Weaknesses, we use historical data to create linear projections of how employment will change in any given industry. We then multiply the change in employment by average wage for that industry to generate a Net Gain or Loss. I acknowledge that trying to predict the future can cause problems - if it were an exact science, we would all make billions in the stock market - but ignoring trends because they might not continue is even more problematic. In sum, Strengths and Weaknesses reflect "what is likely to happen".</p><br>
+        <img src="img/computer_team.jpg" id="computer_team"><p>Next, we think about Opportunities and Threats using network analysis rather than linear projections. Remember, the network analysis looks at much more than historical data. It looks at co-location patterns, employees’ skills, and inputs/outputs. This measure is about “what could happen”, as compared to “what is likely to happen”. To create this metric, we compare the network analysis to the linear projections from above. The Net Gain or Loss reflects the difference between what the linear trends predict, and what the network analysis predicts.</p><br>
+        <p class="sidebyside">The goal for this section is to provide an interface for the computer to communicate with practitioners. The computer struggles to understand that corporate headquarters in Detroit can be very large because they supervise activity around the world, so it thinks that industry should shrink. It also does not understand that custom computer programming in Austin also serves clients around the world. Noted. On the other hand, it brings more information about patterns in economic development than a practitioner or academic could accumulate in a lifetime, and it points out interesting possibilities.</p><br>
         <div id="under-local-text"></div>
         <br>
       </div>
@@ -182,12 +184,16 @@
           <!-- </div> -->
         </div>
         <br>
-        <div id="under-swot-text">Text</div>
+        <div id="under-swot-text"></div>
+      </div>
+      <div id="bottom-all-cities-text">
+        <p>At this point, we understand what <span class="city"></span> does, how that is changing, and what could come next. This information helps understand how the region can increase productivity, and how it can position members for success. With that understood, this is only one piece of a much larger analysis. Practitioners need to understand whether employers have unfilled jobs or high turnover, whether local labor force participation rates reflect solvable logistical or social issues, whether spatial inequality has isolated communities from effective engagement in the labor market, whether members are properly engaged and incentivized to invest in education, and myriad other issues.</p><br>
+        <p>Understanding the local economic network helps understand and create strategy regarding those other issues. When communities understand how they might grow, they can make solid decisions about how to invest their resources. Should they chase biotech? Not unless they have other "nearby" activity. Should they give tax incentives to a company that will create low-paying jobs? Not unless they have high unemployment or relatively low average wages. The networks create a framework, and the robust analytics can help inform the tough decisions that community leaders need to make every day.</p>
+        <br>
+        Click <a href="#cities-img-wrapper">here</a> to view data for another city, or click Graphs above to view the visualizations without accompanying text.
+        <br>
         <br>
       </div>
-
-      <br>
-      <div id="bottom-all-cities-text"><p>[this text will be the same for every city]</p></div>
     </div>
   </div>
 

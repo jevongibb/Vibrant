@@ -96,3 +96,17 @@
   margin-right: auto;
   display: block;
 }
+
+.sidebyside {
+    margin-left: 0px;
+    overflow:auto;
+    display:block;
+}
+
+#computer_team {
+    float: right;
+    margin-left: 10px;
+    clear:both;
+    height: 240px;
+    width: 400px;
+}
