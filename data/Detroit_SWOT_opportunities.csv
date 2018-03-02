@@ -1,3 +1,11 @@
-NAICS,Description,Employees,Avg Salary,Net Gain,INS
-(naics),(Label),(emp),(avg_salary),(net),(INS)
-,,,,,
+"Description","People(+)","Avg Wage","Net Gain"
+"Colleges, Universities, and Professional Schools","22,228","$ 61,113","$ 1,358,419,764"
+"Portfolio Management","2,082","$ 270,038","$ 562,219,116"
+"Scheduled Passenger Air Transportation","7,060","$ 77,825","$ 549,444,500"
+"Hotels (except Casino Hotels) and Motels","13,770","$ 28,805","$ 396,644,850"
+"Administrative Management and General Management Consulting Services","2,862","$ 106,739","$ 305,487,018"
+"Investment Banking and Securities Dealing","1,116","$ 265,158","$ 295,916,328"
+"Direct Life Insurance Carriers","2,656","$ 99,594","$ 264,521,664"
+"Nonscheduled Chartered Passenger Air Transportation","2,918","$ 87,637","$ 255,724,766"
+"Crude Petroleum and Natural Gas Extraction","1,442","$ 163,167","$ 235,286,814"
+"Pharmaceutical Preparation Manufacturing","1,767","$ 131,314","$ 232,031,838"

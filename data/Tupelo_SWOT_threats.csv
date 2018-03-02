@@ -1,5 +1,11 @@
-NAICS,Description,Employees,Avg Salary,Net Gain,INS
-(naics),(Label),(emp),(avg_salary),(net),(INS)
-,,,,,
-,,,,,
-,,,,,
+"Description","People(-)","Avg Wage","Net Loss"
+"Upholstered Household Furniture Manufacturing","-14,725","$ 36,504","$ -537,521,400"
+"Automobile Manufacturing","-1,416","$ 82,248","$ -116,463,168"
+"Tire Manufacturing (except Retreading)","-1,095","$ 64,618","$ -70,756,710"
+"Urethane and Other Foam Product (except Polystyrene) Manufacturing","-1,507","$ 46,946","$ -70,747,622"
+"Other Engine Equipment Manufacturing","-741","$ 77,980","$ -57,783,180"
+"General Warehousing and Storage","-891","$ 42,528","$ -37,892,448"
+"Institutional Furniture Manufacturing","-671","$ 46,569","$ -31,247,799"
+"Lawn and Garden Tractor and Home Lawn and Garden Equipment Manufacturing","-673","$ 42,565","$ -28,646,245"
+"Synthetic Dye and Pigment Manufacturing","-321","$ 85,562","$ -27,465,402"
+"Showcase, Partition, Shelving, and Locker Manufacturing","-568","$ 45,393","$ -25,783,224"

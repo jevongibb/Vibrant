@@ -1,7 +1,11 @@
-NAICS,Description,Employees,Avg Salary,Net Gain,INS
-(naics),(Label),(emp),(avg_salary),(net),(INS)
-,,,,,
-,,,,,
-,,,,,
-,,,,,
-,,,,,
+"Description","People(+)","Avg Wage","Net Gain"
+"Portfolio Management",5636,270038,1521934168
+"Colleges, Universities, and Professional Schools",6870,61113,419846310
+"Payroll Services",3494,74408,259981552
+"Investment Banking and Securities Dealing",803,265158,212921874
+"Electrical Apparatus and Equipment, Wiring Supplies, and Related Equipment Merchant  Wholesalers",2402,75787,182040374
+"Real Estate Credit",1831,95163,174243453
+"Casino Hotels",4461,36983,164981163
+"Other Computer Related Services",1374,105823,145400802
+"Scheduled Passenger Air Transportation",1827,77825,142186275
+"General Freight Trucking, Long-Distance, Truckload",2361,46728,110324808

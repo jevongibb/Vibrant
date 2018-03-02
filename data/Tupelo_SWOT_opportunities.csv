@@ -1,5 +1,11 @@
-NAICS,Description,Employees,Avg Salary,Net Gain,INS
-(naics),(Label),(emp),(avg_salary),(net),(INS)
-,,,,,
-,,,,,
-,,,,,
+"Description","People(+)","Avg Wage","Net Gain"
+"Corporate, Subsidiary, and Regional Managing Offices","3,752","$ 114,954","$ 431,307,408"
+"Research and Development in the Physical, Engineering, and Life Sciences (except Biotechnology)","1,536","$ 126,209","$ 193,857,024"
+"Colleges, Universities, and Professional Schools","2,843","$ 61,113","$ 173,744,259"
+"Custom Computer Programming Services","1,150","$ 109,386","$ 125,793,900"
+"Computer Systems Design Services","936","$ 105,162","$ 98,431,632"
+"Engineering Services","882","$ 93,370","$ 82,352,340"
+"Data Processing, Hosting, and Related Services","799","$ 98,652","$ 78,822,948"
+"Internet Publishing and Broadcasting and Web Search Portals","346","$ 197,549","$ 68,351,954"
+"Securities Brokerage","248","$ 205,783","$ 51,034,184"
+"Hotels (except Casino Hotels) and Motels","1,746","$ 28,805","$ 50,293,530"

@@ -1,5 +1,11 @@
-NAICS,Description,Employees,Avg Salary,Net Gain,INS
-(naics),(Label),(emp),(avg_salary),(net),(INS)
-,,,,,
-,,,,,
-,,,,,
+"Description","People(-)","Avg Wage","Net Loss"
+"Corporate, Subsidiary, and Regional Managing Offices","-118","$ 114,954","$ -13,564,572"
+"Printed Circuit Assembly (Electronic Assembly) Manufacturing","-88","$ 55,052","$ -4,844,576"
+"Other Motor Vehicle Parts Manufacturing","-90","$ 53,249","$ -4,792,410"
+"Rolled Steel Shape Manufacturing","-69","$ 67,647","$ -4,667,643"
+"Other Activities Related to Credit Intermediation","-65","$ 70,458","$ -4,579,770"
+"Other Engine Equipment Manufacturing","-56","$ 77,980","$ -4,366,880"
+"Upholstered Household Furniture Manufacturing","-112","$ 36,504","$ -4,088,448"
+"Air-Conditioning and Warm Air Heating Equipment and Commercial and Industrial Refrigeration Equipment Manufacturing","-63","$ 55,415","$ -3,491,145"
+"Synthetic Dye and Pigment Manufacturing","-35","$ 85,562","$ -2,994,670"
+"Commercial, Industrial, and Institutional Electric Lighting Fixture Manufacturing","-47","$ 62,814","$ -2,952,258"
