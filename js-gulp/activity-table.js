@@ -74,7 +74,7 @@ class ActivityTable {
       // .html((d) => d)
       .each(function (d) {
         if (d == "Relative Size") {
-          var el = d3.select(this);
+          var el = d3.select(this);//.append("div");
           el.append("span").text(d).style("white-space","nowrap");
           el.append("img")
             .attr("src", "images/information.png")

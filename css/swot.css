@@ -16,11 +16,11 @@
   margin: 20px 1%;
 }
 
-/* @media (max-width: 1600px) {
+@media (max-width: 700px) {
   .swot-table-wrapper {
     width: 98% !important;
   }
-} */
+}
 
 .swot-table-wrapper th,
 .swot-table-wrapper td {
@@ -39,4 +39,82 @@
   color: #fff;
   width: 100%;
   padding: 6px 0;
+}
+/* .swot-table-wrapper tbody td{
+  width: 25%;
+} */
+.content-cutted{
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+element.style {
+}
+#wrapper * {
+    font-family: myriad-pro-condensed, sans-serif;
+}
+
+
+.swot-table-wrapper .caption{
+  padding: 6px;
+  text-align: center;
+  color:#fff;
+  /* width: 100%; */
+}
+.swot-table-wrapper .thead{
+  width: 100%;
+}
+.swot-table-wrapper .thead .tr{
+  width: 100%;
+  display: flex;
+}
+.swot-table-wrapper .thead .th{
+  padding: 8px 4px;
+  font-weight: bold;
+  color: #000;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-wrap: nowrap;
+    min-height: 18px;
+}
+.swot-table-wrapper .tbody{
+  width: 100%;
+}
+.swot-table-wrapper .tbody .tr{
+  width: 100%;
+  display: flex;
+}
+.swot-table-wrapper .tbody .td{
+  padding: 6px 4px;
+  color: #000;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-wrap: nowrap;
+  min-height: 18px;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(1),
+.swot-table-wrapper .tbody .tr .td:nth-child(1){
+  width: 55%;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(2),
+.swot-table-wrapper .tbody .tr .td:nth-child(2){
+  width: 15%;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(3),
+.swot-table-wrapper .tbody .tr .td:nth-child(3){
+  width: 15%;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(4),
+.swot-table-wrapper .tbody .tr .td:nth-child(4){
+  width: 15%;
 }
