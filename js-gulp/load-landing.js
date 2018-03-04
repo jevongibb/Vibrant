@@ -31,6 +31,7 @@
               .on("click", function () {
                 $("#landing-content").removeClass("hidden");
                 $(".city").text(d.city);
+                $("#region-def").text(d.regionDef);
                 $("#under-counties-text").text(d.underCountiesText);
                 $("#under-activity-text").text(d.underActivityText);
                 $("#under-trends-text").text(d.underTrendsText);
