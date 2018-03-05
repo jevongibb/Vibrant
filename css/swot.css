@@ -1,14 +1,22 @@
+/* http://www.cssdrive.com/cssautoprefixer/ */
 #swot-container {
   padding: 50px 40px;
 }
 
 #swot-wrapper {
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   width: 100%;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .swot-table-wrapper {
@@ -30,7 +38,8 @@
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   min-height: 18px;
   /* white-space: nowrap; */
 }
@@ -70,6 +79,8 @@ element.style {
 }
 .swot-table-wrapper .thead .tr{
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .swot-table-wrapper .thead .th{
@@ -81,7 +92,8 @@ element.style {
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     min-height: 18px;
 }
 .swot-table-wrapper .tbody{
@@ -89,6 +101,8 @@ element.style {
 }
 .swot-table-wrapper .tbody .tr{
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .swot-table-wrapper .tbody .td{
@@ -99,7 +113,8 @@ element.style {
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   min-height: 18px;
 }
 .swot-table-wrapper .thead .tr .th:nth-child(1),
