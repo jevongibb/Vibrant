@@ -1670,9 +1670,9 @@ and also iPads specifically.
 
 element.style {
 }
-#wrapper * {
-    font-family: myriad-pro-condensed, sans-serif;
-}
+/* #wrapper * {
+
+} */
 
 
 .swot-table-wrapper .caption{
