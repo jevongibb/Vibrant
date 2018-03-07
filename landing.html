@@ -1,27 +1,23 @@
 <div id="landing">
   <img src="./img/Splash.gif" alt="Splash" class="splash">
   <div id="landing-container">
-    <h1 class="title">Strengthening communities by improving productivity,<br> opportunity, and the connections between us all.
+    <h1 class="title">Moving from clusters to networks.<br>
+      Strengthening communities by improving connections.
     </h1>
     <br>
-    <p>How does a community create inclusive economic growth? Increased productivity – output per working hour – is an obvious
-      part of the answer. Increased opportunity – measured in terms of absolute and relative economic mobility – plays a
-      less obvious, <a href="http://www.equality-of-opportunity.org/">but equally important role</a>. To increase productivity and opportunity, though, we need to understand how communities might grow, and how to position individuals for success.</p>
-    <br>
-    <p>To do this, we need to know <b>what a commmunity does</b> (in terms of economy), <b>how that is changing, what could come next, and how we can leverage that information</b>. Vibrant Networks helps by using network analysis and basic machine learning to understand how individuals combine to create companies, how companies combine to create industries, industries create clusters, clusters create networks, and how networks relate to each other. If the picture below does not make sense already, please be patient - it will.</p>
+    <p>How does a community create inclusive economic growth? What information does it need? Communities need to understand the current activity in their economy, how that is changing, what could come next, and how to leverage that information. Vibrant Networks helps this process by applying network analysis commonly used by the technology industry. In turn, we can see how individuals combine to create companies, companies combine to create industries, industries create clusters, clusters create networks, and how networks relate to each other.</p>
     <br><br><br>
     <p><img src="img/progression.png" alt="Progression from Individuals to Global Networks" id="progression"></p>
     <br><br><br>
-    <div id="more-text">To understand how this works, choose one of the three regions below. Don’t worry, you can come back and try the others later – they are each very unique. You can also click "Graphs" above to see the visualizations without accompanying text.</div>
+    <div id="more-text">To understand how this works, choose one of the three regions below. Don’t worry, you can come back and try the others later – they are each very unique. You can also click "Graphs" above to see the visualizations without accompanying text and with additional data.</div>
     <br><br>
     <div id="cities-img-wrapper">
     </div>
-    <br>
+    <br><br>
 
     <div id="landing-content" class="hidden">
       <div id="top-all-cities-text">
-        <p>Each region is more than just a city, or even a county. The US government creates regions by combining counties into <a href="img/region_types.gif" target="_blank">Statistical and Economic Areas</a>. These are either too big, too small, or do not include enough of the country. Academics typically use much more helpful units, called <a href="img/cz_map.png" target="_blank">Commuting Zones</a>, that group counties into the regions where their populations tend to work. Unfortunately, the most recent Community Zone data is from 2000, and changes since 2000 cause them to do an imperfect job of reflecting current regions.</p><br>
-        <p>In turn, I display these visualizations using custom regions as defined by economic development practitioners, and I'm still thinking about how to solve this problem. For the record, I let the computer group counties by Commuting Zones while it learned from the data.</p>
+        <p>Most practitioners define their regions differently than <a href="img/region_types.gif" target="_blank">Census areas</a> or <a href="img/cz_map.png" target="_blank">Commuting Zones</a>. For the network analysis, I organized data by Commuting Zones, but we can also create analysis using custom regions.
 </div>
       <br>
       <div id="region-def"></div>
@@ -30,8 +26,7 @@
         <img alt="counties" id="counties-img">
       </div>
       <br>
-      <p>After defining the region, the next step is to learn what <span class="city"></span> does. To do this, we look at employment data to see the industries active in the region. Unfortunately, we first need to use a complex algorithm to compensate for data withheld by the Census Bureau or Bureau of Labor Statistics, and then make all data conform to the most recent industry classification, which changes every five years. I did that.</p><br>
-      <p>Next, we sort the industries into “Traded” and “Local”, as defined by <a href="https://clustermapping.us/sites/default/files/files/page/Categorization%20of%20Traded%20and%20Local%20Industries%20in%20the%20US%20Economy.pdf" target="_blank">Michael Porter</a>. Traded industries, such as most manufacturers, create goods or services locally and sell them externally. They bring money into the region. Local industries, such as restaurants and auto mechanics, create locally and sell locally. They circulate money within the region, or possibly extract it to corporate headquarters in other areas. Both Traded and Local industries are important. Local account for most of a region’s jobs, but Traded drives the economy. Without Traded, the Local jobs will start to disappear. The opposite is less true. Also, activity in Local industries should be similar everywhere, while activity in Traded industries should be different. Traded industries better define a region.</p><br>
+      <p>After defining the region, we follow a process very similar to Ricardo Hausmann's <a href="http://atlas.cid.edu" target="_blank">Atlas of Economic Complexity</a>. The next step is to learn what <span class="city"></span> does, in terms of the number of employees per industry. To to this, I created an algorithm to re-identify data withheld by the Census Bureau, and then converted all industry data to 2012 NAICS definitions. Next, we sort the industries into “Traded” and “Local”, as defined by <a href="https://clustermapping.us/sites/default/files/files/page/Categorization%20of%20Traded%20and%20Local%20Industries%20in%20the%20US%20Economy.pdf" target="_blank">Michael Porter</a>. Traded industries, such as most manufacturers, create goods or services locally and sell them externally. They bring money into the region. Local industries, such as restaurants and auto mechanics, create locally and sell locally. They circulate money within the region, or possibly extract it to corporate headquarters in other areas. Both Traded and Local industries are important. Local account for most of a region’s jobs, but Traded drives the economy. Without Traded, the Local jobs will start to disappear. The opposite is less true. Also, activity in Local industries should be similar everywhere, while activity in Traded industries should be different. Finally, Traded industries better define a region.</p><br>
       <div id="under-counties-text"></div>
       <br>
 
@@ -55,14 +50,14 @@
                   </div>
                 </div>
               </div>
-              <div id="activity-table-wrapper"></div>
+              <!--div id="activity-table-wrapper"></div>
             </div>
-          <!-- </div> -->
+          <! </div> -->
         </div>
         <br>
-        <p>Now that we know what <span class="city"></span> does, next we need to learn how that has changed and how it might change in the future. Industries shrink and grow. By looking at data over time, we can identify trends. The data below shows the change in employment from 2006 to 2015, and then generates an estimate for how industries might change through 2020. The size of the circles reflects number of employees, and the axes measure how much the industry is shrinking or growing (in percent change).</p><br>
+        <p>Now that we know what <span class="city"></span> does, next we need to learn how that is changing. Industries shrink and grow. By looking at data over time, we can identify trends. The data below shows the change in employment from 2006 to 2015, and then generates an estimate for how industries might change through 2020. The size of the circles reflects number of employees, and the axes measure how much the industry is shrinking or growing (in percent change).</p><br>
         <p>The dashed red line compares the local trend with the national trend. Circles above the line indicate a more positive local trend and possibly some sort of competitive advantage, while circles below the line might indicate competitive disadvantage. Economic development practitioners can talk with their industries to identify the causes for this situation. In turn, they can build upon their strengths and either improve or hedge against their weaknesses.</p><br>
-        <p>Use the scroll bar beneath the graph to move from year to year. When you hover over a circle, the industry name appears above the graph and the industry's trend path - how it changes from 2006 to 2020 - appears as a line. Note that the scale changes for year 2020 - it is much smaller, because we lose the big swings from year to year when making a prediction for average change in the future.</p><br>
+        <p>Use the scroll bar beneath the graph to move from year to year. When you hover over a circle, the industry name appears above the graph and the industry's trend path - how it changes from 2006 to 2020 - appears as a line.</p><br>
         <div id="under-activity-text"></div>
         <br>
       </div>
@@ -90,18 +85,18 @@
               <div id="trends-slider-wrapper">
                 <input type="range" name="points" min="0" max="208" step="1" value="0" id="trends-time">
               </div>
-              <div id="trends-table-wrapper"></div>
+              <!-- div id="trends-table-wrapper"></div>
             </div>
-          <!-- </div> -->
+          <! </div> -->
         </div>
         <br>
-        <p>Now we understand what <span class="city"></span> does, how that has changed, and how it might change in the future. That part of the analysis was easy. What if we want to put those industry-level trends in context? What if we want to diversify into other industries? To do this, we need to understand how every industry relates to every other industry. For a human, this would be like trying to boil the ocean. For a computer, this is easy.</p><br>
-        <p>First, we divide the country into commuting zones and treat each commuting zone like a network. Next, we look at four factors: (1) how the quantity of employment in one industry affects the quantity of employment in other industries; (2) how the quantity of establishments/companies in one industry affects the quantity of establishments in other industries; (3) the similarity of occupations employed by industries; and (4) the similarity in inputs and outputs that are consumed and produced by industries. See <a href="./data.html" target="_blank">here</a> for details on that data.</p><br>
-        <p>We take all this information and create a network map, as inspired by Ricardo Hausmann and the <a href="http://atlas.cid.harvard.edu/explore/network/?country=231&partner=undefined&product=undefined&productClass=HS&startYear=undefined&target=Product&year=2016" target="_blank">Atlas of Economic Complexity</a>. First, we bring back the circles from earlier that represent <span class="city"></span>’s activity, and we turn them into nodes. We “light up” the circles/nodes where <span class="city"></span> has a Relative Size greater than 0.5 - the other nodes are gray - and we size every node by the number of employees in the industry. The distance between industries indicates their similarity. A connection means that the two industries are very similar.</p><br>
-        <p>Because this graph attempts to visualize a 675-dimension matrix in 2 dimensions, some of the industries might seem closer of further from "similar" industries than they should. Nevertheless, by only looking at the data from above, we see industries group into clusters. Of note, I do not color code by cluster. Once we group clusters into networks, the clusters become less relevant. Instead, I used 9 colors that the human eye can easily identify and linked them to the 9 single-digit NAICS categories.</p><br>
+        <p>Now we understand what <span class="city"></span> does and how that is changing. That part of the analysis was easy. What if we want to put those industry-level trends in context? What if we want to diversify into other industries? To do this, we need to understand how every industry relates to every other industry. For a human, this would be like trying to boil the ocean. For a computer, this is easy.</p><br>
+        <p>We take all the commuting zones in the country and look at four factors: (1) how the quantity of employment in one industry affects the quantity of employment in other industries; (2) how the quantity of establishments/companies in one industry affects the quantity of establishments in other industries; (3) the similarity of occupations employed by industries; and (4) the similarity in inputs and outputs that are consumed and produced by industries. See <a href="./data.html" target="_blank">here</a> for details on that data.</p><br>
+        <p>We take all this information and create a network map, as inspired by the <a href="http://atlas.cid.harvard.edu/explore/network/?country=231&partner=undefined&product=undefined&productClass=HS&startYear=undefined&target=Product&year=2016" target="_blank">Atlas of Economic Complexity</a>. First, we bring back the circles from earlier that represent <span class="city"></span>’s activity, and we turn them into nodes. We “light up” the circles/nodes where <span class="city"></span> has a <a href="./relative_size.html" target="_blank">Relative Size</a> greater than 0.5 - the other nodes are gray - and we size every node by the number of employees in the industry. The distance between industries indicates their similarity. A connection means that the two industries are very similar.</p><br>
+        <p>Because this graph attempts to visualize a 675-dimension matrix in 2 dimensions, some of the industries might seem closer or further from "similar" industries than they should. Nevertheless, by only looking at the data from above, we see industries group into clusters. Of note, I do not color-code by cluster. Once we group clusters into networks, the clusters become less relevant. Instead, I used 9 colors that the human eye can easily identify and linked them to the 9 single-digit NAICS categories.</p><br>
         <p>You can zoom into parts of the map by clicking the zoom icons. You can click on nodes to see their connections, and to see other data such as number of employees, average salary, and growth trends for the industry. You can also toggle between the "Local View", which only lights up nodes with Relative Size greater than 0.5 and scales the nodes using local employment numbers, and the "National View", which lights up all nodes and scales the nodes using national employment numbers.</p><br>
         <div id="under-trends-text"></div><br>
-        <p>One additional takeaway is that location matters. Activity rarely pops up when not close to other activity. Regions hop from industry to industry, often following the connections drawn below. While nothing is impossible, a region is unlikely to develop activity in any given node without activity nearby.</p>
+        <p>One additional takeaway is that location matters. Activity rarely pops up when not close to other activity. Big circles are usually located next to big circles, and vice versa. Regions hop from industry to industry, often following the connections drawn below. While nothing is impossible, a region is unlikely to develop activity in any given node without activity nearby.</p>
         <br>
       </div>
 
@@ -131,7 +126,8 @@
         <br>
         <div id="under-network-text"></div>
         <br>
-        <p>Despite all this discussion of Traded industries, we have not forgotten the important Local industries. As mentioned before, these provide the majority of jobs. Also, sometimes the unique characteristics of a region turn a Local industry into a Traded industry. For these reasons, we need to check how the employment activity in Local industries compares to what we would expect. Because these industries should grow or shrink relative to the number of employees in the region, we expect that they should have a Relatize Size around 1. The visualization below shows the Top 10 and Bottom 10 industries above/below an RS of 1.</p><br>
+        <p>Despite all this discussion of Traded industries, we have not forgotten the important Local industries. As mentioned before, these provide the majority of jobs. Also, sometimes the unique characteristics of a region turn a Local industry into a Traded industry. For these reasons, we need to check how the employment activity in Local industries compares to what we would expect. Because these industries should grow or shrink relative to the number of employees in the region, we expect that they should have a Relatize Size (RS) around 1. The visualization below shows the Top 10 and Bottom 10 industries above/below an RS of 1.</p><br>
+        <p> Of note, the <a href="./index.html?page=local">more detailed version in Graphs</a> can be even more helpful. If someone asks whether a region has as many restaurants - the largest employer in most regions - as might be expected, the Relative Size can answer that question.
         <div id="above-local-text"></div><br>
       </div>
 
@@ -155,11 +151,13 @@
                   </div>
                 </div>
               </div>
-              <div id="local-table-wrapper"></div>
+              <!-- div id="local-table-wrapper"></div>
             </div>
-          <!-- </div> -->
+          <! </div> -->
         </div>
+        <p>
         <br>
+
         <p>At this point, we have a massive amount of information. So, what's the big takeaway? We need to use all this information about trends to understand how to increase productivity by creating more jobs that pay better. To do this, we use a SWOT analysis that many people will find familiar.</p><br>
         <p>For Strengths and Weaknesses, we use historical data to create linear projections of how employment will change in any given industry. We then multiply the change in employment by average wage for that industry to generate a Net Gain or Loss. I acknowledge that trying to predict the future can cause problems - if it were an exact science, we would all make billions in the stock market - but ignoring trends because they might not continue is even more problematic. In sum, Strengths and Weaknesses reflect "what is likely to happen".</p><br>
         <img src="img/computer_team.jpg" id="computer_team"><p>Next, we think about Opportunities and Threats using network analysis rather than linear projections. Remember, the network analysis looks at much more than historical data. It looks at co-location patterns, employees’ skills, and inputs/outputs. This measure is about “what could happen”, as compared to “what is likely to happen”. To create this metric, we compare the network analysis to the linear projections from above. The Net Gain or Loss reflects the difference between what the linear trends predict, and what the network analysis predicts. For more information on the custom algorithm used, click <a href="./knn.html" target="_blank">here</a>.</p><br>
