@@ -94,8 +94,30 @@ function detectIE() {
     //   nav: "graphs",
     //   event: window.loadGraph
     // },
-    // "blog": {},
-    // "contact": {},
+    "blog": {
+      page: "blog",
+      nav: undefined,
+      event: window.loadLanding,
+      prevAjax: function() {
+        $('#sub-navigation').addClass("hidden");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $("#container").css('margin-top', "50px");
+        loadingWrapper.addClass("hidden");
+      },
+      nextAjax: undefined
+    },
+    "contact": {
+      page: "contact",
+      nav: undefined,
+      event: window.loadLanding,
+      prevAjax: function() {
+        $('#sub-navigation').addClass("hidden");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $("#container").css('margin-top', "50px");
+        loadingWrapper.addClass("hidden");
+      },
+      nextAjax: undefined
+    },
     "landing": {
       page: "landing",
       nav: undefined,

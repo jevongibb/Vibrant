@@ -6,9 +6,32 @@
 
 #landing .title {
   text-align: center;
-  font-size: 28px;
   font-weight: normal;
   margin: 10px 0;
+  font-size: 32px;
+}
+
+#bullets_container {
+        margin: auto;
+        width: 800px;
+}
+      
+#title_bullets {
+  font-size: 24px;
+}
+
+#title_bullets ul {
+  text-align: left;
+  display: inline-block;
+  list-style-type: none;
+}
+
+.headline {
+  font-size: 18px;
+}
+
+.videoWrapper {
+  text-align: center;
 }
 
 #landing-container {
@@ -31,9 +54,9 @@
   text-align: center;
 }
 
-.big-tittle {}
+.big-title {}
 
-.small-tittle {
+.small-title {
   font-weight: normal;
 }
 
@@ -95,7 +118,7 @@
 }
 
 #progression {
-  height: 190px;
+  height: 207px;
   width: 960px;
   margin-left: auto;
   margin-right: auto;

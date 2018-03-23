@@ -1,9 +1,9 @@
 #activity-container {
-  padding: 50px 50px;
+  padding: 50px;
 }
 
 #activity-wrapper {
-  margin-top: 10px;
+  margin-top: 0px;
   width: 100%;
   /* display: flex;
   justify-content: start;
@@ -132,4 +132,12 @@
 #activity-table-search:focus,
 #activity-table-search:hover {
   outline: none;
+}
+
+.hed {
+  text-align: center;
+}
+
+.dek {
+  text-align: center; 
 }

@@ -76,7 +76,7 @@ class TrendsBubble {
     }
     // console.log(getTextWidth("hello there!", "bold 12pt arial"));
 
-    let maxY = 1.6;
+    let maxY = 0.5;
     // let tooltip = this.tooltip;
     let that = this;
     // console.log(data);
@@ -107,8 +107,8 @@ class TrendsBubble {
     // const maxY = d3.max(that.data, (d) => d["Local Trend"]);
     // const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
     // y.domain([-this.absMaxY, +this.absMaxY]);
-    if (this.absMaxY > 1.5) {
-      y.domain([-1.6, +1.6])
+    if (this.absMaxY > 0.5) {
+      y.domain([-0.6, +0.6])
     } else {
       y.domain([-this.absMaxY, this.absMaxY])
     }
@@ -118,9 +118,9 @@ class TrendsBubble {
     // console.log(this.year)
     if (this.year == 2020) { //handleYear
       x.domain([-0.1 * this.absMaxX, +0.1 * this.absMaxX]);
-      if (this.absMaxY > 1.5) {
-        y.domain([-0.3 * 1.6, 0.3 * 1.6]);
-        absMin = Math.min(0.3 * 1.6, 0.1 * this.absMaxX);
+      if (this.absMaxY > 0.5) {
+        y.domain([-0.3 * 0.6, 0.3 * 0.6]);
+        absMin = Math.min(0.3 * 0.6, 0.1 * this.absMaxX);
       } else {
         y.domain([-0.3 * this.absMaxY, 0.3 * this.absMaxY]);
         absMin = Math.min(0.3 * this.absMaxY, 0.1 * this.absMaxX);
