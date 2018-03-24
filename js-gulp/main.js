@@ -130,6 +130,22 @@ function detectIE() {
       },
       nextAjax: undefined
     },
+
+    "framework": {
+      page: "framework",
+      nav: "graphs",
+      event: window.loadFramework,
+      prevAjax: function () {
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
+      },
+      nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
+        // window.scrollBy(0,0);
+        loadingWrapper.addClass("hidden");
+      }
+    },
     "activity": {
       page: "activity",
       nav: "graphs",

@@ -11,13 +11,18 @@
   font-size: 32px;
 }
 
+.subtitle {
+  text-align: center;
+  font-size: 20px;
+}
+
 #bullets_container {
         margin: auto;
         width: 800px;
 }
       
 #title_bullets {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 #title_bullets ul {
