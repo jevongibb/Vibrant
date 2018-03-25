@@ -144,7 +144,7 @@ class TradedBubble {
     let element = this.element
     let elementNode = element.node();
     this.padding = elementNode.getBoundingClientRect();
-    element.selectAll('.item').remove();
+    element.select('svg').selectAll("*").remove();//element.selectAll('.item').remove();
     this.width = elementNode.offsetWidth || 400;
     this.height = elementNode.offsetHeight || 400;
     this.margin = {

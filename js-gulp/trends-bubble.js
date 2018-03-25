@@ -32,7 +32,7 @@ class TrendsBubble {
     // set up parent element and SVG
     // this.element.innerHTML = '';
     let element = d3.select(this.element);
-    element.selectAll('.item').remove();
+    element.select('svg').selectAll("*").remove();//element.selectAll('.item').remove();
     this.padding = element.node().getBoundingClientRect();
     const svg = element.select('svg')
       .attr('class', 'item')
@@ -78,6 +78,7 @@ class TrendsBubble {
     // console.log(getTextWidth("hello there!", "bold 12pt arial"));
 
     let maxY = 0.5;
+    let maxYLimit = 0.6;
     // let tooltip = this.tooltip;
     let that = this;
     // console.log(data);
@@ -118,13 +119,13 @@ class TrendsBubble {
 
     // console.log(this.year)
     if (this.year == 2020) { //handleYear
-      x.domain([-0.1 * this.absMaxX, +0.1 * this.absMaxX]);
+      x.domain([-0.3 * this.absMaxX, +0.3 * this.absMaxX]);
       if (this.absMaxY > 0.5) {
-        y.domain([-0.3 * 0.6, 0.3 * 0.6]);
-        absMin = Math.min(0.3 * 0.6, 0.1 * this.absMaxX);
+        y.domain([-0.3 * maxYLimit, 0.3 * maxYLimit]);
+        absMin = Math.min(0.3 * maxYLimit, 0.3 * this.absMaxX);
       } else {
         y.domain([-0.3 * this.absMaxY, 0.3 * this.absMaxY]);
-        absMin = Math.min(0.3 * this.absMaxY, 0.1 * this.absMaxX);
+        absMin = Math.min(0.3 * this.absMaxY, 0.3 * this.absMaxX);
       }
     }
 
@@ -133,13 +134,13 @@ class TrendsBubble {
       .attr("class", "x-axis axis")
       .attr("transform", `translate(0,${this.height})`)
       // .attr("transform", `translate(0,${y(0) || this.height})`)
-      .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d) => d * 100 + "%")); //https://bl.ocks.org/mbostock/9764126
+      .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d) => (d * 100).toFixed(0) + "%")); //https://bl.ocks.org/mbostock/9764126
 
     // add the y Axis
     this.container.append("g")
       // .attr("transform", `translate(${x(0) || 0},0)`)
       .attr("class", "y-axis axis")
-      .call(d3.axisLeft(y).tickSize(-this.width).tickFormat((d) => d * 100 + "%"));
+      .call(d3.axisLeft(y).tickSize(-this.width).tickFormat((d) => d == maxYLimit ? "" : (d * 100).toFixed(0) + "%"));
 
     this.container.append("rect")
       .attr('class', 'around')
@@ -174,12 +175,14 @@ class TrendsBubble {
       .attr("transform", `translate(${(this.width/2)},${(this.height-(-this.margin.bottom+10))})`)
       .text("National Trend (% Change in # Employees)");
 
-    if (this.absMaxY > 1.5 && this.year != 2020) {
+
+    if (this.absMaxY > 0.5 && this.year != 2020) {
       this.container.append("text")
         .attr("class", "more-than-y-max")
         .attr("y", 5)
         .attr("x", -33.5)
-        .text(">150%");
+        .text(">50%");
+        // .text(">"+(maxY*100)+"%");
       // this.container.append("text")
       //   .attr("class", "less-than-y-min")
       //   .attr("y", this.height+5)
