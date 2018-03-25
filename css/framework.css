@@ -1,0 +1,30 @@
+#framework-page{
+  position:relative;
+}
+
+#framework-container {
+  padding: 50px 50px;
+}
+
+#framework-wrapper {
+  margin: 0;
+  width: 100%;
+}
+
+#framework-map-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.process-img-big-wrapper{
+  text-align: center;
+}
+
+.process-img-big{
+  max-width: 800px;
+}
+
+#framework-map-wrapper img {
+  width: 100%;
+}

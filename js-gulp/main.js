@@ -215,6 +215,19 @@ function detectIE() {
         $(window).scrollTop(0); window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
+    },
+    "framework": {
+      page: "framework",
+      nav: "graphs",
+      event: window.loadFramework,
+      prevAjax: function() {
+        $('#sub-navigation').removeClass("hidden");
+        $("#container").css('margin-top', "78px");
+      },
+      nextAjax: function () {
+        $(window).scrollTop(0); window.scrollTo(0, 0);
+        loadingWrapper.addClass("hidden");
+      }
     }
   };
 
