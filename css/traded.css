@@ -1,8 +1,12 @@
-#activity-container {
+#traded-page{
+  position:relative;
+}
+
+#traded-container {
   padding: 50px;
 }
 
-#activity-wrapper {
+#traded-wrapper {
   margin-top: 0px;
   width: 100%;
   /* display: flex;
@@ -11,7 +15,7 @@
   flex-wrap: wrap; */
 }
 
-#activity-bubble-wrapper {
+#traded-bubble-wrapper {
   position: relative;
   height: 500px;
   width: 100%;
@@ -27,7 +31,7 @@
           align-items: center;
 }
 
-#activity-bubble-wrapper .activity-bubble-tooltip {
+#traded-bubble-wrapper .traded-bubble-tooltip {
   position: absolute;
   z-index: 10;
   color: white;
@@ -44,12 +48,14 @@
   text-align: center;
 }
 
-#activity-bubble-legend {
+
+
+#traded-bubble-legend {
   position: absolute;
   z-index: 2;
   top: 0;
   bottom: 50px;
-  right: 50px;
+  right: -50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,11 +68,11 @@
   width: 40px;
 }
 
-#activity-bubble-scale {
+#traded-bubble-scale {
   position: absolute;
   z-index: 2;
   bottom: 20px;
-  right: 50px;
+  right: -50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,29 +85,29 @@
   text-align: center;
 }
 
-#activity-bubble-scale img {
+#traded-bubble-scale img {
   width: 30px;
 }
 
-#activity-bubble-scale p {
+#traded-bubble-scale p {
   margin: 0;
   font-size: 8px;
   text-align: center;
   width: 40px;
 }
 
-#activity-bubble-legend div {
+#traded-bubble-legend div {
   position: relative
 }
 
-#activity-bubble-legend img {
+#traded-bubble-legend img {
   cursor: pointer;
   width: 20px;
   padding: 0 10px;
   max-height: 25px;
 }
 
-#activity-bubble-legend .activity-bubble-legend-tooltip {
+#traded-bubble-legend .traded-bubble-legend-tooltip {
   position: absolute;
   z-index: 10;
   color: white;
@@ -119,19 +125,23 @@
   white-space: nowrap;
 }
 
-#activity-table-wrapper {
+#traded-table-wrapper {
   margin: 20px 0;
   position: relative;
 }
 
-#activity-table-search {
+#traded-table-search {
   /* height: 30px; */
   padding: 5px;
 }
 
-#activity-table-search:focus,
-#activity-table-search:hover {
+#traded-table-search:focus,
+#traded-table-search:hover {
   outline: none;
+}
+
+.hed-dek-wrapper{
+  position: relative;
 }
 
 .hed {
@@ -140,4 +150,8 @@
 
 .dek {
   text-align: center; 
+}
+
+.hed-dek-wrapper .dropdown-wrapper{
+  margin: 0 !important;
 }

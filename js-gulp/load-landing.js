@@ -33,7 +33,7 @@
                 $(".city").text(d.city);
                 $("#region-def").text(d.regionDef);
                 $("#under-counties-text").text(d.underCountiesText);
-                $("#under-activity-text").text(d.underActivityText);
+                $("#under-traded-text").text(d.underTradedText);
                 $("#under-trends-text").text(d.underTrendsText);
                 $("#under-network-text").text(d.underNetworkText);
                 $("#above-local-text").text(d.aboveLocalText);
@@ -49,7 +49,7 @@
     }
 
     function loadContent(activeCity) {
-      _loadActivity(activeCity);
+      _loadTraded(activeCity);
       _loadTrends(activeCity);
       _loadLocal(activeCity);
       _loadSwot(activeCity);
@@ -58,10 +58,10 @@
       // }, 1000);
     }
 
-    function _loadActivity(activeCity) {
+    function _loadTraded(activeCity) {
       new BubbleLegend({
-        element: d3.select('#activity-bubble-legend div'), //.node(),
-        class: "activity-bubble-legend-tooltip"
+        element: d3.select('#traded-bubble-legend div'), //.node(),
+        class: "traded-bubble-legend-tooltip"
       });
 
 
@@ -81,10 +81,10 @@
       }
 
 
-      //Activity: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
+      //Traded: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
       function buildTable(data) {
-        const table = new ActivityTable({
-          element: d3.select('#activity-table-wrapper'),
+        const table = new TradedTable({
+          element: d3.select('#traded-table-wrapper'),
           data: data,
           count: 25
         });
@@ -93,8 +93,8 @@
 
 
       function buildBubble(data, colors) {
-        const chart = new ActivityBubble({
-          element: d3.select('#activity-bubble-wrapper'), //document.querySelector('#activity-bubble-wrapper'),
+        const chart = new TradedBubble({
+          element: d3.select('#traded-bubble-wrapper'), //document.querySelector('#traded-bubble-wrapper'),
           data: data,
           colors: colors
         });

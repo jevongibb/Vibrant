@@ -146,10 +146,10 @@ function detectIE() {
         loadingWrapper.addClass("hidden");
       }
     },
-    "activity": {
-      page: "activity",
+    "traded": {//activity
+      page: "traded",
       nav: "graphs",
-      event: window.loadActivity,
+      event: window.loadTraded,
       prevAjax: function () {
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
         $('#sub-navigation').removeClass("hidden");

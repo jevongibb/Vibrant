@@ -67,6 +67,7 @@
     build(activeCity);
 
     function build(activeCity) {
+      $(".city").text(activeCity);
       d3.queue(2)
         // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
         .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)

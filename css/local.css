@@ -1,3 +1,7 @@
+#local-page{
+  position:relative;
+}
+
 #local-container {
   padding: 50px 50px;
 }
@@ -147,4 +151,20 @@
   font-family: sans-serif;
   text-align: center;
   white-space: nowrap;
+}
+
+.hed-dek-wrapper{
+  position: relative;
+}
+
+.hed {
+  text-align: center;
+}
+
+.dek {
+  text-align: center; 
+}
+
+.hed-dek-wrapper .dropdown-wrapper{
+  margin: 0 !important;
 }

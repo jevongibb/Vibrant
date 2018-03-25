@@ -1,4 +1,4 @@
-class ActivityBubble {
+class TradedBubble {
   constructor(opts) {
     this.element = opts.element;
     this.color = d3.scaleOrdinal().range(["#a6761d", "#666666", "#377eb8", "#984ea3", "#73c000", "#ff7f00", "#e31a1c", "#e6ab02"]);
@@ -22,8 +22,8 @@ class ActivityBubble {
         return acc;
       }, {});
 
-    var width = $('#activity-bubble-wrapper').width() || 960,
-      height = $('#activity-bubble-wrapper').height() || 550,
+    var width = $('#traded-bubble-wrapper').width() || 960,
+      height = $('#traded-bubble-wrapper').height() || 550,
       padding = 1.5, // separation between same-color nodes
       clusterPadding = 6, // separation between different-color nodes
       maxRadius = 12;
@@ -149,15 +149,16 @@ class ActivityBubble {
     this.height = elementNode.offsetHeight || 400;
     this.margin = {
       top: 0,
-      right: 10,
+      right: 0,
       bottom: 0,
       left: 0
     };
     this.width = this.width - (this.margin.left + this.margin.right);
     this.height = this.height - (this.margin.top + this.margin.bottom);
+    this.width = this.height;
     // set up parent element and SVG
     // this.element.innerHTML = '';
-    const svg = element.append('svg')
+    const svg = element.select('svg')
       .attr('class', 'item')
       .attr('width', this.width + (this.margin.left + this.margin.right))
       .attr('height', this.height + (this.margin.top + this.margin.bottom));
@@ -170,7 +171,7 @@ class ActivityBubble {
 
     this.tooltip = element
       .append("div")
-      .attr('class', 'item activity-bubble-tooltip')
+      .attr('class', 'item traded-bubble-tooltip')
       .style("visibility", "hidden");
     // create the other stuff
     this.createBubbles(this.graph);

@@ -28,12 +28,13 @@ class TrendsBubble {
     };
     this.width = this.width - (this.margin.left + this.margin.right);
     this.height = this.height - (this.margin.top + this.margin.bottom);
+    this.width = this.height;
     // set up parent element and SVG
     // this.element.innerHTML = '';
     let element = d3.select(this.element);
     element.selectAll('.item').remove();
     this.padding = element.node().getBoundingClientRect();
-    const svg = element.append('svg')
+    const svg = element.select('svg')
       .attr('class', 'item')
       .attr('width', this.width + (this.margin.left + this.margin.right))
       .attr('height', this.height + (this.margin.top + this.margin.bottom));

@@ -1,3 +1,7 @@
+#trends-page{
+  position:relative;
+}
+
 #trends-container {
   padding: 50px 50px;
 }
@@ -33,7 +37,7 @@
   position: absolute;
   z-index: 2;
   bottom: 20px;
-  right: 50px;
+  right: -50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,7 +187,7 @@
   z-index: 2;
   top: 0;
   bottom: 50px;
-  right: 50px;
+  right: -50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,4 +254,20 @@
 #trends-table-search:focus,
 #trends-table-search:hover {
   outline: none;
+}
+
+.hed-dek-wrapper{
+  position: relative;
+}
+
+.hed {
+  text-align: center;
+}
+
+.dek {
+  text-align: center; 
+}
+
+.hed-dek-wrapper .dropdown-wrapper{
+  margin: 0 !important;
 }

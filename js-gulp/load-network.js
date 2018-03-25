@@ -24,9 +24,9 @@
       build(activeCity);
     });
     // const otherHeight = $("#header").outerHeight(true);// + $("#footer").outerHeight(true);
-    const height = $(window).height() - $("#header").outerHeight(true) + 5;
-    $("#page-wrapper").addClass('no-min-height').css('height', height);
-
+    const height = $(window).height() - $("#header").outerHeight(true) + 5 + $("#network-other-container").outerHeight(true);
+    // $("#page-wrapper").addClass('no-min-height').css('height', height);
+    // console.log($("#network-other-container").outerHeight(true));
 
     // new BubbleLegend({
     //   element: d3.select('#network-bubble-legend div'), //.node(),
@@ -38,11 +38,13 @@
     build(activeCity);
 
     function build(activeCity) {
+      $(".city").text(activeCity);
       var el = d3.select("#network-wrapper");
       el.selectAll("*").remove();
       var w = $(window);
+      // console.log($("#network").outerWidth(true), $("#network").width());
       el.append("iframe")
-        .attr("width", Math.floor($(window).width()) || "100%")
+        .attr("width", Math.floor($("#network").width() || $(window).width()) || "100%")
         .attr("height", Math.floor(height) + "px")
         .attr("src", activeCity.toLowerCase() + ".html");
       // $("#network-wrapper").on('load', function(){

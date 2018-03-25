@@ -6,7 +6,7 @@
     window.vibrant = {};
   }
 
-  window.loadActivity = function loadActivity(callback) {
+  window.loadTraded = function loadTraded(callback) {
     run(undefined, callback);
   }
 
@@ -30,14 +30,15 @@
 
 
     new BubbleLegend({
-      element: d3.select('#activity-bubble-legend div'), //.node(),
-      class: "activity-bubble-legend-tooltip"
+      element: d3.select('#traded-bubble-legend div'), //.node(),
+      class: "traded-bubble-legend-tooltip"
     });
 
 
     build(activeCity);
 
     function build(activeCity) {
+      $(".city").text(activeCity);
       d3.queue(2)
         // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
         .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
@@ -51,10 +52,10 @@
     }
 
 
-    //Activity: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
+    //Traded: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
     function buildTable(data) {
-      const table = new ActivityTable({
-        element: d3.select('#activity-table-wrapper'),
+      const table = new TradedTable({
+        element: d3.select('#traded-table-wrapper'),
         data: data,
         count: undefined
       });
@@ -63,8 +64,8 @@
 
 
     function buildBubble(data, colors) {
-      const chart = new ActivityBubble({
-        element: d3.select('#activity-bubble-wrapper'), //document.querySelector('#activity-bubble-wrapper'),
+      const chart = new TradedBubble({
+        element: d3.select('#traded-bubble-wrapper'), //document.querySelector('#traded-bubble-wrapper'),
         data: data,
         colors: colors
       });

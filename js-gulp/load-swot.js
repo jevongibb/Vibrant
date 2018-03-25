@@ -30,6 +30,7 @@
     build(activeCity);
 
     function build(activeCity) {
+      $(".city").text(activeCity);
       new swotTable({
         activeCity: activeCity, //.node(),
         type: "strengths"

@@ -68,6 +68,19 @@ class LocalBubble {
       .attr('width', this.width + (this.margin.left + this.margin.right))
       .attr('height', this.height + (this.margin.top + this.margin.bottom));
 
+    svg.append("defs").append("marker")
+      .attr("id", "arrow")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 5)
+      .attr("refY", 0)
+      .attr("markerWidth", 5)
+      .attr("markerHeight", 5)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+      .attr("stroke-width", 1)
+      .attr("stroke-dasharray", 0)
+      .attr("class", "arrowHead");
     // we'll actually be appending to a <g> element
     this.container = svg.append('g')
       .attr("width", this.width)
@@ -104,6 +117,39 @@ class LocalBubble {
     x.domain(data.map((d) => d["Industry"]));
 
     y.domain([d3.min(data, (d) => -d["Relative Size"]), d3.max(data, (d) => -d["Relative Size"])]);
+
+    this.container.append("line")
+      .attr("class", "arrow")
+      .attr("marker-end", "url(#arrow)")
+      .style("stroke", "#000")
+      .style("stroke-width", "2px")
+      .attr("x1", 0)
+      .attr("x2", 0)
+      .attr("y1", y(-1))
+      .attr("y2", -25);
+
+      this.container.append("line")
+      .attr("class", "arrow")
+      .attr("marker-end", "url(#arrow)")
+      .style("stroke", "#000")
+      .style("stroke-width", "2px")
+      .attr("x1", 0)
+      .attr("x2", 0)
+      .attr("y1", y(-1))
+      .attr("y2", this.height + 25);
+      
+      [
+        {text:"Above", x:-25,y:y(-1)/2 - 14},
+        {text:"Average", x:-25,y:y(-1)/2 + 0},
+        {text:"Below", x:-25,y:(this.height + y(-1))/2 + 6},
+        {text:"Average", x:-25,y:(this.height + y(-1))/2 + 20}
+      ].map((d)=>{
+        this.container.append("text")
+          .attr("x", d.x)
+          .attr("y", d.y)
+          .attr("text-anchor", "middle")
+          .text(d.text);
+      });
 
     this.container.append("line")
       .style("stroke", "#000")

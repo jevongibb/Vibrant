@@ -1,4 +1,4 @@
-class ActivityTable {
+class TradedTable {
   constructor(opts) {
     this.element = opts.element;
     this.count = opts.count
@@ -48,7 +48,7 @@ class ActivityTable {
     searchBar.append('input')
       .attr('placeholder', 'Search by Description...')
       .attr('type', 'text')
-      .attr('id', 'activity-table-search')
+      .attr('id', 'traded-table-search')
       .on('keyup', function () {
         let text = this.value.trim().toLowerCase();
         let i = 0;
