@@ -39,6 +39,9 @@
 
     function build(activeCity) {
       $(".city").text(activeCity);
+      $('.expandable').click(function(){
+        $('.collapsible').slideToggle('slow');
+      });
       var el = d3.select("#network-wrapper");
       el.selectAll("*").remove();
       var w = $(window);

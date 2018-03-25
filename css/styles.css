@@ -584,3 +584,19 @@ and also iPads specifically.
 .svg-wrapper{
   position: relative;
 }
+
+.expandable-collapsible{
+  padding: 10px;
+  border: 1px solid #000;
+  position: relative;
+}
+.collapsible{
+  display: none;
+}
+
+.expandable{
+  cursor: pointer;
+  position: absolute;
+  top:-8px;
+  background: #fff;
+}
