@@ -6,7 +6,7 @@ class LocalBubble {
     this.draw();
   }
 
-  prepareData(master, colors) {
+  prepareData(master, colors) { 
 
     var format = d3.format(',');
 
@@ -217,7 +217,7 @@ class LocalBubble {
         tooltip.style("top", (top) + "px").style("left", ((d3.event.pageX - padding.left) + 10) + "px");
       })
       .on("mouseout", () => tooltip.style("visibility", "hidden"))
-
+ 
     // https://bl.ocks.org/HarryStevens/54d01f118bc8d1f2c4ccd98235f33848
     // function redraw(classes){
     //   // transition
