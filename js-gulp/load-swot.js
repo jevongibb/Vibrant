@@ -24,7 +24,7 @@
       $('.dropdown-hidden').toggleClass('visibility-visible');
       build(activeCity);
     });
-
+ 
 
 
     build(activeCity);
