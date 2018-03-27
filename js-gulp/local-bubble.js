@@ -103,7 +103,7 @@ class LocalBubble {
 
   createBubbles(data) {
     let tooltip = this.tooltip;
-
+    let yAxisPadding = 20;
     // console.log(data);
     // set the ranges
     var x = d3.scaleBand()
@@ -123,8 +123,8 @@ class LocalBubble {
       .attr("marker-end", "url(#arrow)")
       .style("stroke", "#000")
       .style("stroke-width", "2px")
-      .attr("x1", 0)
-      .attr("x2", 0)
+      .attr("x1", -yAxisPadding+"px")
+      .attr("x2", -yAxisPadding+"px")
       .attr("y1", y(-1))
       .attr("y2", -25);
 
@@ -133,16 +133,16 @@ class LocalBubble {
       .attr("marker-end", "url(#arrow)")
       .style("stroke", "#000")
       .style("stroke-width", "2px")
-      .attr("x1", 0)
-      .attr("x2", 0)
+      .attr("x1", -yAxisPadding+"px")
+      .attr("x2", -yAxisPadding+"px")
       .attr("y1", y(-1))
       .attr("y2", this.height + 25);
       
       [
-        {text:"Above", x:-25,y:y(-1)/2 - 14},
-        {text:"Average", x:-25,y:y(-1)/2 + 0},
-        {text:"Below", x:-25,y:(this.height + y(-1))/2 + 6},
-        {text:"Average", x:-25,y:(this.height + y(-1))/2 + 20}
+        {text:"Above", x:-25-yAxisPadding,y:y(-1)/2 - 14},
+        {text:"Average", x:-25-yAxisPadding,y:y(-1)/2 + 0},
+        {text:"Below", x:-25-yAxisPadding,y:(this.height + y(-1))/2 + 6},
+        {text:"Average", x:-25-yAxisPadding,y:(this.height + y(-1))/2 + 20}
       ].map((d)=>{
         this.container.append("text")
           .attr("x", d.x)
@@ -154,7 +154,7 @@ class LocalBubble {
     this.container.append("line")
       .style("stroke", "#000")
       .style("stroke-width", "2px")
-      .attr("x1", 0)
+      .attr("x1", -yAxisPadding+"px")
       .attr("x2", this.width)
       .attr("y1", y(-1))
       .attr("y2", y(-1));

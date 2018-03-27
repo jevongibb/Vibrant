@@ -1402,7 +1402,8 @@ img.information{
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   z-index: 3;
-  min-height: 33px;
+  min-height: 33px;;
+  padding: 0 25px;
 }
 
 #sub-navigation p {
