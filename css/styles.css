@@ -578,8 +578,12 @@ and also iPads specifically.
       flex-wrap: wrap;
 }
 
+.process-step {
+  font-size: 32px;
+}
+
 .process-img{
-  width:400px;
+  width:350px;
 }
 
 .svg-wrapper{

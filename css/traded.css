@@ -71,7 +71,7 @@
 #traded-bubble-scale {
   position: absolute;
   z-index: 2;
-  bottom: 20px;
+  bottom: 80px;
   right: -50px;
   display: -webkit-box;
   display: -ms-flexbox;
