@@ -294,7 +294,8 @@ $(function () {
 
     if (page === "landing") {
       window.vibrant.city = '';
-    } 
+    }
+    
     if (page) {
       window.history.pushState({
         "page": page,

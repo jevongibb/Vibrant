@@ -26,7 +26,7 @@
       build(activeCity);
     });
     // const otherHeight = $("#header").outerHeight(true);// + $("#footer").outerHeight(true);
-    const height = $(window).height() - $("#header").outerHeight(true) + 5 + $("#network-other-container").outerHeight(true);
+    const height = $(window).height() - $("#header").outerHeight(true) + 5 - $("#footer").outerHeight(true);// - $("#network-other-container").outerHeight(true);
     // $("#page-wrapper").addClass('no-min-height').css('height', height);
     // console.log($("#network-other-container").outerHeight(true));
 
