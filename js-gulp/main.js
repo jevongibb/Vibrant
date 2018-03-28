@@ -5,7 +5,7 @@ $(function () {
   if (!window.vibrant) {
     window.vibrant = {};
   }
-  window.vibrant.city = '';
+  window.vibrant.city = 'Austin';
   /*
    * this swallows backspace keys on any non-input element.
    * stops backspace -> back
@@ -295,7 +295,7 @@ $(function () {
     if (page === "landing") {
       window.vibrant.city = '';
     }
-    
+
     if (page) {
       window.history.pushState({
         "page": page,

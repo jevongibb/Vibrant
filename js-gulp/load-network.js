@@ -24,6 +24,11 @@
       $('.dropdown-value').text(activeCity);
       $('.dropdown-hidden').toggleClass('visibility-visible');
       build(activeCity);
+      let page = 'network';
+      window.history.pushState({
+        "page": page,
+        "city": window.vibrant.city
+      }, page, "?page=" + page+"&city="+window.vibrant.city);
     });
     // const otherHeight = $("#header").outerHeight(true);// + $("#footer").outerHeight(true);
     const height = $(window).height() - $("#header").outerHeight(true) + 5 - $("#footer").outerHeight(true);// - $("#network-other-container").outerHeight(true);

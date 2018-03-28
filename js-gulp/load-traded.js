@@ -28,6 +28,11 @@
       $('.dropdown-value').text(activeCity);
       $('.dropdown-hidden').toggleClass('visibility-visible');
       build(activeCity);
+      let page = 'traded';
+      window.history.pushState({
+        "page": page,
+        "city": window.vibrant.city
+      }, page, "?page=" + page+"&city="+window.vibrant.city);
     });
 
 
