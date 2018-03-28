@@ -96,12 +96,23 @@
   pointer-events: none;
   text-anchor: start;
 }
-
+#trends-bubble-wrapper text.more-than-x-max,
+#trends-bubble-wrapper text.less-than-x-min,
 #trends-bubble-wrapper text.more-than-y-max,
 #trends-bubble-wrapper text.less-than-y-min,
 #trends-bubble-wrapper .axis text {
   fill: #aaa;
   pointer-events: none;
+}
+
+#trends-bubble-wrapper text.more-than-x-max,
+#trends-bubble-wrapper text.more-than-y-max,
+#trends-bubble-wrapper text.less-than-y-min{
+  text-align: end;
+}
+
+#trends-bubble-wrapper text.less-than-x-min{
+  text-align: start;
 }
 
 #trends-bubble-wrapper .label-axis {
@@ -141,6 +152,8 @@
   stroke: #eee;
 }
 
+#trends-bubble-wrapper line.less-than-x-min,
+#trends-bubble-wrapper line.more-than-x-max,
 #trends-bubble-wrapper line.less-than-y-min,
 #trends-bubble-wrapper line.more-than-y-max,
 #trends-bubble-wrapper .like-diagonal,
@@ -148,6 +161,14 @@
   stroke-width: 1px;
   stroke: #333;
   pointer-events: none;
+}
+
+#trends-bubble-wrapper circle.less-than-x-min,
+#trends-bubble-wrapper circle.more-than-x-max,
+#trends-bubble-wrapper circle.less-than-y-min,
+#trends-bubble-wrapper circle.more-than-y-max{
+  fill:#fff;
+  stroke-width:0;
 }
 
 #trends-bubble-wrapper .like-diagonal {

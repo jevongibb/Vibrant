@@ -1603,8 +1603,12 @@ and also iPads specifically.
       flex-wrap: wrap;
 }
 
+.process-step {
+  font-size: 32px;
+}
+
 .process-img{
-  width:400px;
+  width:350px;
 }
 
 .svg-wrapper{
@@ -1853,7 +1857,7 @@ element.style {
 #traded-bubble-scale {
   position: absolute;
   z-index: 2;
-  bottom: 20px;
+  bottom: 80px;
   right: -50px;
   display: -ms-flexbox;
   display: flex;
@@ -2026,12 +2030,23 @@ element.style {
   pointer-events: none;
   text-anchor: start;
 }
-
+#trends-bubble-wrapper text.more-than-x-max,
+#trends-bubble-wrapper text.less-than-x-min,
 #trends-bubble-wrapper text.more-than-y-max,
 #trends-bubble-wrapper text.less-than-y-min,
 #trends-bubble-wrapper .axis text {
   fill: #aaa;
   pointer-events: none;
+}
+
+#trends-bubble-wrapper text.more-than-x-max,
+#trends-bubble-wrapper text.more-than-y-max,
+#trends-bubble-wrapper text.less-than-y-min{
+  text-align: end;
+}
+
+#trends-bubble-wrapper text.less-than-x-min{
+  text-align: start;
 }
 
 #trends-bubble-wrapper .label-axis {
@@ -2071,6 +2086,8 @@ element.style {
   stroke: #eee;
 }
 
+#trends-bubble-wrapper line.less-than-x-min,
+#trends-bubble-wrapper line.more-than-x-max,
 #trends-bubble-wrapper line.less-than-y-min,
 #trends-bubble-wrapper line.more-than-y-max,
 #trends-bubble-wrapper .like-diagonal,
@@ -2078,6 +2095,14 @@ element.style {
   stroke-width: 1px;
   stroke: #333;
   pointer-events: none;
+}
+
+#trends-bubble-wrapper circle.less-than-x-min,
+#trends-bubble-wrapper circle.more-than-x-max,
+#trends-bubble-wrapper circle.less-than-y-min,
+#trends-bubble-wrapper circle.more-than-y-max{
+  fill:#fff;
+  stroke-width:0;
 }
 
 #trends-bubble-wrapper .like-diagonal {

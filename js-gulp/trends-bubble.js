@@ -32,7 +32,7 @@ class TrendsBubble {
     // set up parent element and SVG
     // this.element.innerHTML = '';
     let element = d3.select(this.element);
-    element.select('svg').selectAll("*").remove();//element.selectAll('.item').remove();
+    element.select('svg').selectAll("*").remove(); //element.selectAll('.item').remove();
     this.padding = element.node().getBoundingClientRect();
     const svg = element.select('svg')
       .attr('class', 'item')
@@ -77,7 +77,14 @@ class TrendsBubble {
     }
     // console.log(getTextWidth("hello there!", "bold 12pt arial"));
 
-    let maxY = 0.5;
+
+    // New algorithm for axes:
+    // For ALL YEARS:
+    // yMax = 30%, yMin = -30%.
+    // xMax = 20%, yMin = -20%
+    // include the line break at min and max for both axes
+    // display values above/below max/min as ">30%" or "<30%" (or 20% for y Axis)
+
     let maxYLimit = 0.6;
     // let tooltip = this.tooltip;
     let that = this;
@@ -87,60 +94,95 @@ class TrendsBubble {
       .range([0, this.width])
     var y = d3.scaleLinear()
       .range([this.height, 0]);
+
+    // Scale the range of the data in the domains
+    const minX = d3.min(this.data, (d) => d["National Trend"]);
+    const maxX = d3.max(this.data, (d) => d["National Trend"]);
+    const absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
+    // x.domain([-this.absMaxX, +this.absMaxX]);
+    const minY = d3.min(this.data, (d) => d["Local Trend"]);
+    const maxY = d3.max(this.data, (d) => d["Local Trend"]);
+    const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
+
+    const breakXEnd = 0.24 * absMaxX;
+    const breakYEnd = 0.34 * absMaxY;
+
+    const breakXStart = 0.2 * absMaxX;
+    const breakYStart = 0.3 * absMaxY;
+    // const newMaxY = 0.3 * maxY;
+    // const newMinY = 0.3 * minY;
+    // const newMaxX = 0.2 * maxX;
+    // const newMinX = 0.2 * minX;
+
     var line = d3.line()
-      .x((d) => x(d.x))
+      // .x((d) => x(d.x))
+      .x((d) => {
+        if (d.x > breakXStart) {
+          return x(breakXEnd);
+        } else if (d.x < -breakXStart) {
+          return x(-breakXEnd);
+        } else {
+          return x(d.x);
+        }
+      })
       .y((d) => {
-        if (d.y > maxY) {
-          return y(maxY);
-        } else if (d.y < -maxY) {
-          return y(-maxY);
+        if (d.y > breakYStart) {
+          return y(breakYEnd);
+        } else if (d.y < -breakYStart) {
+          return y(-breakYEnd);
         } else {
           return y(d.y);
         }
       });
     var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d.radius));
 
-    // Scale the range of the data in the domains
-    // const minX = d3.min(that.data, (d) => d["National Trend"]);
-    // const maxX = d3.max(that.data, (d) => d["National Trend"]);
-    // const absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
-    x.domain([-this.absMaxX, +this.absMaxX]);
-    // const minY = d3.min(that.data, (d) => d["Local Trend"]);
-    // const maxY = d3.max(that.data, (d) => d["Local Trend"]);
-    // const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
+
     // y.domain([-this.absMaxY, +this.absMaxY]);
-    if (this.absMaxY > 0.5) {
-      y.domain([-0.6, +0.6])
-    } else {
-      y.domain([-this.absMaxY, this.absMaxY])
-    }
+    // if (this.absMaxY > 0.5) {
+    //   y.domain([-0.6, +0.6])
+    // } else {
+    //   y.domain([-this.absMaxY, this.absMaxY])
+    // }
 
-    let absMin = Math.min(this.absMaxY, this.absMaxX);
+    x.domain([-breakXEnd, breakXEnd]);
+    y.domain([-breakYEnd, breakYEnd]);
 
+    // let absMin = Math.min(this.absMaxY, this.absMaxX);
     // console.log(this.year)
-    if (this.year == 2020) { //handleYear
-      x.domain([-0.3 * this.absMaxX, +0.3 * this.absMaxX]);
-      if (this.absMaxY > 0.5) {
-        y.domain([-0.3 * maxYLimit, 0.3 * maxYLimit]);
-        absMin = Math.min(0.3 * maxYLimit, 0.3 * this.absMaxX);
-      } else {
-        y.domain([-0.3 * this.absMaxY, 0.3 * this.absMaxY]);
-        absMin = Math.min(0.3 * this.absMaxY, 0.3 * this.absMaxX);
-      }
-    }
+    // if (this.year == 2020) { //handleYear
+    //   x.domain([-0.2 * this.absMaxX, +0.2 * this.absMaxX]);
+    //   if (this.absMaxY > 0.5) {
+    //     y.domain([-0.3 * maxYLimit, 0.3 * maxYLimit]);
+    //     absMin = Math.min(0.3 * maxYLimit, 0.3 * this.absMaxX);
+    //   } else {
+    //     y.domain([-0.3 * this.absMaxY, 0.3 * this.absMaxY]);
+    //     absMin = Math.min(0.3 * this.absMaxY, 0.3 * this.absMaxX);
+    //   }
+    // }
 
     // add the x Axis
     this.container.append("g")
       .attr("class", "x-axis axis")
       .attr("transform", `translate(0,${this.height})`)
       // .attr("transform", `translate(0,${y(0) || this.height})`)
-      .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d) => (d * 100).toFixed(0) + "%")); //https://bl.ocks.org/mbostock/9764126
+      .call(d3.axisBottom(x).tickSize(-this.height).tickFormat((d) => {
+        if (d > breakXStart || d < -breakXStart) {
+          return "";
+        }
+        return d;
+
+      })); //.tickFormat((d) => (d * 100).toFixed(0) + "%")); //https://bl.ocks.org/mbostock/9764126
 
     // add the y Axis
     this.container.append("g")
       // .attr("transform", `translate(${x(0) || 0},0)`)
       .attr("class", "y-axis axis")
-      .call(d3.axisLeft(y).tickSize(-this.width).tickFormat((d) => d == maxYLimit ? "" : (d * 100).toFixed(0) + "%"));
+      .call(d3.axisLeft(y).tickSize(-this.width).tickFormat((d) => {
+        if (d > breakYStart || d < -breakYStart) {
+          return "";
+        }
+        return d;
+      })); ////.tickFormat((d) => d == maxYLimit ? "" : (d * 100).toFixed(0) + "%"));
 
     this.container.append("rect")
       .attr('class', 'around')
@@ -176,46 +218,109 @@ class TrendsBubble {
       .text("National Trend (% Change in # Employees)");
 
 
-    if (this.absMaxY > 0.5 && this.year != 2020) {
+    // if (this.absMaxY > 0.5 && this.year != 2020) {
+    this.container.append("text")
+      .attr("class", "more-than-y-max")
+      .attr("y", 8)
+      .attr("x", -28)
+      .text(">30%");
+    // .text(">"+(maxY*100)+"%");
+    this.container.append("circle")
+      .attr('class', 'more-than-y-max')
+      .attr("cx", x(0))
+      .attr("cy", 12.5)
+      .attr("r", 2);
+    this.container.append("line")
+      .attr('class', 'more-than-y-max')
+      .attr("x1", x(0) - 5)
+      .attr("x2", x(0) + 5)
+      .attr("y1", 10 + 5)
+      .attr("y2", 10 - 5);
+    this.container.append("line")
+      .attr('class', 'more-than-y-max')
+      .attr("x1", x(0) - 5)
+      .attr("x2", x(0) + 5)
+      .attr("y1", 15 + 5)
+      .attr("y2", 15 - 5);
+      
+    this.container.append("text")
+      .attr("class", "less-than-y-min")
+      .attr("y", this.height)
+      .attr("x", -28)
+      .text("<30%");
+    this.container.append("circle")
+      .attr('class', 'less-than-y-min')
+      .attr("cx", x(0))
+      .attr("cy", this.height - 12.5)
+      .attr("r", 2);
+    this.container.append("line")
+      .attr('class', 'less-than-y-min')
+      .attr("x1", x(0) - 5)
+      .attr("x2", x(0) + 5)
+      .attr("y1", this.height - 10 + 5)
+      .attr("y2", this.height - 10 - 5);
+    this.container.append("line")
+      .attr('class', 'less-than-y-min')
+      .attr("x1", x(0) - 5)
+      .attr("x2", x(0) + 5)
+      .attr("y1", this.height - 15 + 5)
+      .attr("y2", this.height - 15 - 5);
+
+    this.container.append("text")
+      .attr("class", "more-than-x-max")
+      .attr("y", this.height+10)
+      .attr("x", this.width-26)
+      .text(">20%");
+    this.container.append("circle")
+      .attr('class', 'more-than-x-max')
+      .attr("cy", y(0))
+      .attr("cx", this.width-12.5)
+      .attr("r", 2);
+    this.container.append("line")
+      .attr('class', 'more-than-x-max')
+      .attr("y1", y(0) - 5)
+      .attr("y2", y(0) + 5)
+      .attr("x1", this.width-10 + 5)
+      .attr("x2", this.width-10 - 5);
+    this.container.append("line")
+      .attr('class', 'more-than-x-max')
+      .attr("y1", y(0) - 5)
+      .attr("y2", y(0) + 5)
+      .attr("x1", this.width-15 + 5)
+      .attr("x2", this.width-15 - 5);
+
       this.container.append("text")
-        .attr("class", "more-than-y-max")
-        .attr("y", 5)
-        .attr("x", -33.5)
-        .text(">50%");
-        // .text(">"+(maxY*100)+"%");
-      // this.container.append("text")
-      //   .attr("class", "less-than-y-min")
-      //   .attr("y", this.height+5)
-      //   .attr("x", -26)
-      //   .text("<-1.5");
+        .attr("class", "less-than-x-min")
+        .attr("y", this.height+10)
+        .attr("x", 0)
+        .text("<20%");
       this.container.append("circle")
-        .attr('class', 'more-than-y-max')
-        .style('fill', '#fff')
-        .style('stroke-width', '0')
-        .attr("cx", x(0))
-        .attr("cy", y(1.52))
+        .attr('class', 'less-than-x-min')
+        .attr("cy", y(0))
+        .attr("cx", 12.5)
         .attr("r", 2);
       this.container.append("line")
-        .attr('class', 'more-than-y-max')
-        .attr("x1", x(-0.02))
-        .attr("x2", x(0.02))
-        .attr("y1", y(1.47))
-        .attr("y2", y(1.53));
+        .attr('class', 'less-than-x-min')
+        .attr("y1", y(0) - 5)
+        .attr("y2", y(0) + 5)
+        .attr("x1", 10 + 5)
+        .attr("x2", 10 - 5);
       this.container.append("line")
-        .attr('class', 'more-than-y-max')
-        .attr("x1", x(-0.02))
-        .attr("x2", x(0.02))
-        .attr("y1", y(1.51))
-        .attr("y2", y(1.57));
-      // this.container.append("line")
-      //   .attr('class', 'less-than-y-min')
-      //   .attr("x1", x(-0.02))
-      //   .attr("x2", x(0.02))
-      //   .attr("y1", y(-1.53))
-      //   .attr("y2", y(-1.47));
-    } else {
+        .attr('class', 'less-than-x-min')
+        .attr("y1", y(0) - 5)
+        .attr("y2", y(0) + 5)
+        .attr("x1", 15 + 5)
+        .attr("x2", 15 - 5);
 
-    }
+    // this.container.append("line")
+    //   .attr('class', 'less-than-y-min')
+    //   .attr("x1", x(-0.02))
+    //   .attr("x2", x(0.02))
+    //   .attr("y1", y(-1.53))
+    //   .attr("y2", y(-1.47));
+    // } else {
+
+    // }
 
 
     var label = this.container.append("text")
@@ -243,16 +348,27 @@ class TrendsBubble {
       .style("stroke", "#565352")
       .style("stroke-width", "1")
       .style('fill', (d, i) => d.color)
+      .attr('clip-path', 'url(#line-clip)')
+      .attr("cx", (d) => {
+        if (d["National Trend"] > breakXStart) {
+          return x(breakXEnd);
+        } else if (d["National Trend"] < -breakXStart) {
+          return x(-breakXEnd);
+        } else {
+          return x(d["National Trend"]);
+        }
+      })
       .attr("cy", (d) => {
-        if (d["Local Trend"] > maxY) {
-          return y(maxY);
-        } else if (d["Local Trend"] < -maxY) {
-          return y(-maxY);
+        if (d["Local Trend"] > breakYStart) {
+          return y(breakYEnd);
+        } else if (d["Local Trend"] < -breakYStart) {
+          return y(-breakYEnd);
         } else {
           return y(d["Local Trend"]);
         }
       })
-      .attr("cx", (d) => x(d["National Trend"]))
+      // .attr("cy", (d) => y(d["Local Trend"]))
+      // .attr("cx", (d) => x(d["National Trend"]))
       .attr("r", (d) => radius(d.radius))
       .style("cursor", "pointer")
       .on("mouseover", function (d) {
@@ -332,9 +448,14 @@ class TrendsBubble {
 
     this.container.append("line")
       .attr('class', 'like-diagonal')
-      .attr("x1", x(-absMin))
-      .attr("x2", x(+absMin))
-      .attr("y1", y(-absMin))
-      .attr("y2", y(+absMin));
+      .attr('clip-path', 'url(#line-clip)')
+      .attr("x1", x(-breakXEnd))
+      .attr("x2", x(+breakXEnd))
+      .attr("y1", y(-breakYEnd))
+      .attr("y2", y(+breakYEnd));
+    // .attr("x1", x(-absMin))
+    // .attr("x2", x(+absMin))
+    // .attr("y1", y(-absMin))
+    // .attr("y2", y(+absMin));
   }
 }
