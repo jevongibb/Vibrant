@@ -1,6 +1,38 @@
 #contact-container {
   margin: 60px 50px 50px 50px;
 }
+
+.form-middle{
+  width: 100%;
+  text-align: center;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; */
+}
+
+.form-full-size{
+  width:95%;
+  margin: 10px 1%;
+}
+
+.form-half-size{
+  width:46%;
+  margin: 10px 1%;
+}
+
+.form-middle input{
+  padding: 5px 0;
+}
+
+@media only screen and (max-width: 760px){
+  .form-half-size{
+    width:95% !important;
+  }
+}
+/* form label{
+  margin: 10px 1%;
+} */
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
