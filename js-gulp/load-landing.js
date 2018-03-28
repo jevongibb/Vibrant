@@ -173,7 +173,7 @@
         el.selectAll("*").remove();
         var w = $(window);
         el.append("iframe")
-          .attr("width", Math.floor($("#landing-network-wrapper").width() || $(window).width()) || "100%")
+          .attr("width", Math.floor($("#landing-container").width() || $(window).width()) || "100%")
           .attr("height", Math.floor(height) + "px")
           .attr("src", activeCity.toLowerCase() + ".html");
       }
