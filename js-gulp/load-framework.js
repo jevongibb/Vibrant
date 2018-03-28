@@ -15,7 +15,7 @@
 
 
   function run(data, callback) {
-    var activeCity = 'Austin';
+    var activeCity = window.vibrant.city || 'Austin';
 
 
     // $('.dropdown-visible').off().on('click', function () {

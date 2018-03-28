@@ -15,7 +15,8 @@
 
 
   function run(data, callback) {
-    var activeCity = 'Austin';
+    var activeCity = window.vibrant.city || 'Austin';
+    $('.dropdown-value').text(activeCity);
 
     $('.dropdown-visible').off().on('click', function () {
       $('.dropdown-hidden').toggleClass('visibility-visible');
@@ -23,6 +24,7 @@
     });
     $('.dropdown-item').off().on('click', function () {
       activeCity = $(this).data('value');
+      window.vibrant.city = activeCity;
       $('.dropdown-value').text(activeCity);
       $('.dropdown-hidden').toggleClass('visibility-visible');
       build(activeCity);
