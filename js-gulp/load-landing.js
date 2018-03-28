@@ -13,7 +13,7 @@
 
 
   function run(data, callback) {
-    // window.vibrant.city = '';
+    window.vibrant.city = '';
     // var activeCity = 'Austin';
     // $(document).ready(() => {
     //   console.log("ready");
@@ -86,6 +86,7 @@
           });
 
           if(window.vibrant.city) {
+            let page = 'landing';
             loadContent(window.vibrant.city);
           }
         });

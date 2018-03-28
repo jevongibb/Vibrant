@@ -292,12 +292,9 @@ $(function () {
       return;
     }
 
-    // if (page === "landingcity") {
-    //   window.history.pushState({
-    //     "page": page,
-    //     "city": window.vibrant.city
-    //   }, page, "?page=" + page+"&city="+window.vibrant.city);
-    // } else 
+    if (page === "landing") {
+      window.vibrant.city = '';
+    } 
     if (page) {
       window.history.pushState({
         "page": page,
