@@ -13,41 +13,72 @@
 
 
   function run(data, callback) {
-    var activeCity = 'Austin';
+    // var activeCity = 'Austin';
+    // $(document).ready(() => {
+    //   console.log("ready");
+    //   $("#landing-content").text("");
+    //   $("#landing-content").empty();
+    // });
+    // d3.select("#landing-content iframe").remove();
 
-    addCitiesImg();
+    $(".city-img-wrapper").off().click(function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      window.vibrant.city = $(this).data("city");
+      // let html = $(this).data("html");
+      window.loadPage({
+        page: 'landingcity'
+      });
+      // var el = d3.select("#landing-content");
+      // el.selectAll("*").remove();
+      // el.append("iframe")
+      //   .attr("width", (Math.floor($("#landing-container").width() || $(window).width()) + "px") || "100%")
+      //   .attr("height", Math.floor($(window).height()*2) + "px")
+      //   // .style("height", "100%")
+      //   .on("load", function(){
+      //     d3.event.stopPropagation();
+      //     d3.event.preventDefault();
+      //     let iframe = d3.select(this);
+      //     // console.log("load", $(iframe.node()).prop('scrollHeight'), iframe.node().contentWindow.document.body.scrollHeight);
+      //     // $("#landing-content iframe").height(iframe.node().contentWindow.document.body.scrollHeight);
+      //     iframe.attr("height", iframe.node().contentWindow.document.body.scrollHeight + "px");  
+      //   })
+      //   .attr("src", html + ".html");
+    });
+    // addCitiesImg();
 
-    function addCitiesImg() {
-      d3.queue(2)
-        .defer(d3.json, `./data/cities.json`)
-        .await(function (error, cities) {
-          if (error) throw error;
-          // console.log(cities);
-          let citiesImgWrapper = d3.select("#cities-img-wrapper");
-          citiesImgWrapper.selectAll("*").remove();
-          cities.map((d) => {
-            let cityImgWrapper = citiesImgWrapper.append("div").attr("class", "city-img-wrapper");
-            let cityImg = cityImgWrapper.append("div").attr("class", "city-img")
-              .on("click", function () {
-                $("#landing-content").removeClass("hidden");
-                $(".city").text(d.city);
-                $("#region-def").text(d.regionDef);
-                $("#under-counties-text").text(d.underCountiesText);
-                $("#under-traded-text").text(d.underTradedText);
-                $("#under-trends-text").text(d.underTrendsText);
-                $("#under-network-text").text(d.underNetworkText);
-                $("#above-local-text").text(d.aboveLocalText);
-                $("#under-local-text").text(d.underLocalText);
-                $("#under-swot-text").text(d.underSWOTText);
-                d3.select("#counties-img").attr("src", `./img/Counties_${d.city}.gif`);
-                loadContent(d.city);
-              });
-            cityImg.append("img").attr("src", `./img/${d.city.toLowerCase()}.jpg`);
-            cityImg.append("p").text(`${d.city}, ${d.state}`);
-          });
-        });
-    }
+    // function addCitiesImg() {
+    //   d3.queue(2)
+    //     .defer(d3.json, `./data/cities.json`)
+    //     .await(function (error, cities) {
+    //       if (error) throw error;
+    //       // console.log(cities);
+    //       let citiesImgWrapper = d3.select("#cities-img-wrapper");
+    //       citiesImgWrapper.selectAll("*").remove();
+    //       cities.map((d) => {
+    //         let cityImgWrapper = citiesImgWrapper.append("div").attr("class", "city-img-wrapper");
+    //         let cityImg = cityImgWrapper.append("div").attr("class", "city-img")
+    //           .on("click", function () {
+    //             $("#landing-content").removeClass("hidden");
+    //             $(".city").text(d.city);
+    //             $("#region-def").text(d.regionDef);
+    //             $("#under-counties-text").text(d.underCountiesText);
+    //             $("#under-traded-text").text(d.underTradedText);
+    //             $("#under-trends-text").text(d.underTrendsText);
+    //             $("#under-network-text").text(d.underNetworkText);
+    //             $("#above-local-text").text(d.aboveLocalText);
+    //             $("#under-local-text").text(d.underLocalText);
+    //             $("#under-swot-text").text(d.underSWOTText);
+    //             d3.select("#counties-img").attr("src", `./img/Counties_${d.city}.gif`);
+    //             loadContent(d.city);
+    //           });
+    //         cityImg.append("img").attr("src", `./img/${d.city.toLowerCase()}.jpg`);
+    //         cityImg.append("p").text(`${d.city}, ${d.state}`);
+    //       });
+    //     });
+    // }
 
+    /*
     function loadContent(activeCity) {
       _loadTraded(activeCity);
       _loadTrends(activeCity);
@@ -245,7 +276,8 @@
         });
       }
     }
-
+    */
+   
     if ($.isFunction(callback)) {
       callback();
     }

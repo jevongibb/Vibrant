@@ -5,7 +5,7 @@ $(function () {
   if (!window.vibrant) {
     window.vibrant = {};
   }
-
+  window.vibrant.city = 'Austin';
   /*
    * this swallows backspace keys on any non-input element.
    * stops backspace -> back
@@ -57,34 +57,34 @@ $(function () {
   });
 
   /**
- * detect IE
- * returns version of IE or false, if browser is not Internet Explorer
- */
-function detectIE() {
-  var ua = window.navigator.userAgent;
+   * detect IE
+   * returns version of IE or false, if browser is not Internet Explorer
+   */
+  function detectIE() {
+    var ua = window.navigator.userAgent;
 
-  var msie = ua.indexOf('MSIE ');
-  if (msie > 0) {
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
       // IE 10 or older => return version number
       return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-  }
+    }
 
-  var trident = ua.indexOf('Trident/');
-  if (trident > 0) {
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
       // IE 11 => return version number
       var rv = ua.indexOf('rv:');
       return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-  }
+    }
 
-  var edge = ua.indexOf('Edge/');
-  if (edge > 0) {
-     // Edge (IE 12+) => return version number
-     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-  }
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+      // Edge (IE 12+) => return version number
+      return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
 
-  // other browser
-  return false;
-}
+    // other browser
+    return false;
+  }
 
 
 
@@ -98,7 +98,7 @@ function detectIE() {
       page: "blog",
       nav: undefined,
       event: window.loadLanding,
-      prevAjax: function() {
+      prevAjax: function () {
         $('#sub-navigation').addClass("hidden");
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
         $("#container").css('margin-top', "50px");
@@ -110,7 +110,7 @@ function detectIE() {
       page: "contact",
       nav: undefined,
       event: window.loadLanding,
-      prevAjax: function() {
+      prevAjax: function () {
         $('#sub-navigation').addClass("hidden");
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
         $("#container").css('margin-top', "50px");
@@ -122,7 +122,7 @@ function detectIE() {
       page: "landing",
       nav: undefined,
       event: window.loadLanding,
-      prevAjax: function() {
+      prevAjax: function () {
         $('#sub-navigation').addClass("hidden");
         $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
         $("#container").css('margin-top', "50px");
@@ -130,7 +130,22 @@ function detectIE() {
       },
       nextAjax: undefined
     },
-
+    "landingcity": {
+      page: "landingcity",
+      nav: undefined,
+      event: window.loadLandingCity,
+      prevAjax: function () {
+        $('#sub-navigation').addClass("hidden");
+        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+        $("#container").css('margin-top', "50px");
+        loadingWrapper.addClass("hidden");
+      },
+      nextAjax: function () {
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
+        loadingWrapper.addClass("hidden");
+      }
+    },
     "framework": {
       page: "framework",
       nav: "graphs",
@@ -141,12 +156,13 @@ function detectIE() {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         // window.scrollBy(0,0);
         loadingWrapper.addClass("hidden");
       }
     },
-    "traded": {//activity
+    "traded": { //activity
       page: "traded",
       nav: "graphs",
       event: window.loadTraded,
@@ -156,7 +172,8 @@ function detectIE() {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         // window.scrollBy(0,0);
         loadingWrapper.addClass("hidden");
       }
@@ -171,7 +188,8 @@ function detectIE() {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -185,7 +203,8 @@ function detectIE() {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -199,7 +218,8 @@ function detectIE() {
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -207,12 +227,13 @@ function detectIE() {
       page: "network",
       nav: "graphs",
       event: window.loadNetwork,
-      prevAjax: function() {
+      prevAjax: function () {
         $('#sub-navigation').removeClass("hidden");
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     },
@@ -220,12 +241,13 @@ function detectIE() {
       page: "framework",
       nav: "graphs",
       event: window.loadFramework,
-      prevAjax: function() {
+      prevAjax: function () {
         $('#sub-navigation').removeClass("hidden");
         $("#container").css('margin-top', "78px");
       },
       nextAjax: function () {
-        $(window).scrollTop(0); window.scrollTo(0, 0);
+        $(window).scrollTop(0);
+        window.scrollTo(0, 0);
         loadingWrapper.addClass("hidden");
       }
     }
@@ -257,8 +279,8 @@ function detectIE() {
   // }
 
   window.loadPage = function loadPage(obj, initLoading) {
-
     var page = obj.page || getParameterByName('page', window.location.search) || "landing";
+    window.vibrant.city = window.vibrant.city || getParameterByName('city', window.location.search) || 'Austin';
     if (page === "nolink") {
       return;
     }
@@ -270,7 +292,12 @@ function detectIE() {
       return;
     }
 
-    if (page) {
+    if (page === "landingcity") {
+      window.history.pushState({
+        "page": page,
+        "city": window.vibrant.city
+      }, page, "?page=" + page+"&city="+window.vibrant.city);
+    }else if (page) {
       window.history.pushState({
         "page": page,
       }, page, "?page=" + page);
@@ -286,6 +313,52 @@ function detectIE() {
     $('#sub-navigation-wrapper .link-to-' + page).addClass('link-to-active');
     if (initLoading) {
       resize(false);
+    }
+
+    if (page === "landingcity") {
+      $(document).ready(() => {
+        $('#page-wrapper').empty().load("landingcity-" + window.vibrant.city.toLowerCase() + ".html", function (d) {
+          var activeCity = window.vibrant.city || 'Austin';
+
+          $("#network-wrapper iframe").width($("#landingcity").width());
+
+          _loadTraded(activeCity);
+
+          function _loadTraded(activeCity) {
+            new BubbleLegend({
+              element: d3.select('#traded-bubble-legend div'), //.node(),
+              class: "traded-bubble-legend-tooltip"
+            });
+
+            build(activeCity);
+
+            function build(activeCity) {
+              d3.queue(2)
+                // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
+                .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
+                .defer(d3.csv, `./data/color_legend2.csv`) //linked to color_legend2 to show you the issue
+                .await(function ready(error, master, colors) {
+                  if (error) throw error;
+
+                  buildBubble(master, colors);
+                  // buildTable(master);
+                });
+            }
+
+            function buildBubble(data, colors) {
+              const chart = new TradedBubble({
+                element: d3.select('#traded-bubble-wrapper'), //document.querySelector('#traded-bubble-wrapper'),
+                data: data,
+                colors: colors
+              });
+            }
+          }
+          if ($.isFunction(events[page].nextAjax)) {
+            events[page].nextAjax();
+          }
+        });
+      });
+      return;
     }
 
     // d3.select("#page-wrapper").selectAll("*").remove();
@@ -304,7 +377,7 @@ function detectIE() {
 
       // resize(false);
     });
-    if (detectIE()){
+    if (detectIE()) {
       alert("For best viewing experience, please use a modern browser");
     }
   };

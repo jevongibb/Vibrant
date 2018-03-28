@@ -47,7 +47,7 @@
       var w = $(window);
       // console.log($("#network").outerWidth(true), $("#network").width());
       el.append("iframe")
-        .attr("width", Math.floor($("#network").width() || $(window).width()) || "100%")
+        .attr("width", (Math.floor($("#network").width() || $(window).width()) + "px") || "100%")
         .attr("height", Math.floor(height) + "px")
         .attr("src", activeCity.toLowerCase() + ".html");
       // $("#network-wrapper").on('load', function(){

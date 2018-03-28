@@ -27,12 +27,12 @@ class TradedBubble {
       padding = 1.5, // separation between same-color nodes
       clusterPadding = 6, // separation between different-color nodes
       maxRadius = 12;
-
+    
     var data = [];
     _data.map((d) => {
       data.push({
         text: d["Label"],
-        size: +d["2015"],
+        size: width>500 ? +d["2015"] : +d["2015"]/2,
         group: d["Group"],
       });
     });
