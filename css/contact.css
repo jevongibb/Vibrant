@@ -2,34 +2,67 @@
   margin: 60px 50px 50px 50px;
 }
 
-.form-middle{
+.middle {
   width: 100%;
   text-align: center;
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.form-full-size{
-  width:95%;
+.form-middle {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-full-size {
+  width: 98%;
   margin: 10px 1%;
 }
 
-.form-half-size{
-  width:46%;
+.display-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-half-size {
+  width: 48%;
   margin: 10px 1%;
 }
 
-.form-middle input{
-  padding: 5px 0;
+.form-middle textarea,
+.form-middle input {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #a4b4ac;
+  border-radius: 2px;
 }
 
-@media only screen and (max-width: 760px){
-  .form-half-size{
-    width:95% !important;
+.form-middle .button {
+  background: #fff;
+  width: 150px;
+}
+
+.form-middle .button:hover {
+  background: #e9e9e7;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 760px) {
+  .form-half-size {
+    width: 98% !important;
   }
 }
-/* form label{
-  margin: 10px 1%;
-} */
+
+.form-middle input:focus,
+.form-middle input:active,
+.form-middle textarea:focus,
+.form-middle textarea:active{
+  background-color: #e9e9e7;
+  outline: none;
+}

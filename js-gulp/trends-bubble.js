@@ -246,8 +246,8 @@ class TrendsBubble {
     this.container.append("text")
       .attr("class", "less-than-y-min")
       .attr("y", this.height)
-      .attr("x", -28)
-      .text("<30%");
+      .attr("x", -31)
+      .text("<-30%");
     this.container.append("circle")
       .attr('class', 'less-than-y-min')
       .attr("cx", x(0))
@@ -293,7 +293,7 @@ class TrendsBubble {
         .attr("class", "less-than-x-min")
         .attr("y", this.height+10)
         .attr("x", 0)
-        .text("<20%");
+        .text("<-20%");
       this.container.append("circle")
         .attr('class', 'less-than-x-min')
         .attr("cy", y(0))

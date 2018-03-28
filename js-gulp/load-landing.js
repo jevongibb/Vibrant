@@ -24,7 +24,7 @@
     $(".city-img-wrapper").off().click(function(e){
       e.stopPropagation();
       e.preventDefault();
-      window.vibrant.city = $(this).data("city");
+      window.vibrant.city = $(this).data("city") || 'Austin';
       // let html = $(this).data("html");
       window.loadPage({
         page: 'landingcity'
