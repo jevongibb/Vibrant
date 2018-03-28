@@ -13,6 +13,7 @@
 
 
   function run(data, callback) {
+    // window.vibrant.city = '';
     // var activeCity = 'Austin';
     // $(document).ready(() => {
     //   console.log("ready");
@@ -21,72 +22,122 @@
     // });
     // d3.select("#landing-content iframe").remove();
 
-    $(".city-img-wrapper").off().click(function(e){
-      e.stopPropagation();
-      e.preventDefault();
-      window.vibrant.city = $(this).data("city") || 'Austin';
-      // let html = $(this).data("html");
-      window.loadPage({
-        page: 'landingcity'
-      });
-      // var el = d3.select("#landing-content");
-      // el.selectAll("*").remove();
-      // el.append("iframe")
-      //   .attr("width", (Math.floor($("#landing-container").width() || $(window).width()) + "px") || "100%")
-      //   .attr("height", Math.floor($(window).height()*2) + "px")
-      //   // .style("height", "100%")
-      //   .on("load", function(){
-      //     d3.event.stopPropagation();
-      //     d3.event.preventDefault();
-      //     let iframe = d3.select(this);
-      //     // console.log("load", $(iframe.node()).prop('scrollHeight'), iframe.node().contentWindow.document.body.scrollHeight);
-      //     // $("#landing-content iframe").height(iframe.node().contentWindow.document.body.scrollHeight);
-      //     iframe.attr("height", iframe.node().contentWindow.document.body.scrollHeight + "px");  
-      //   })
-      //   .attr("src", html + ".html");
-    });
-    // addCitiesImg();
+    // $(".city-img-wrapper").off().click(function(e){
+    //   e.stopPropagation();
+    //   e.preventDefault();
+    //   window.vibrant.city = $(this).data("city") || 'Austin';
+    //   // let html = $(this).data("html");
+    //   window.loadPage({
+    //     page: 'landingcity'
+    //   });
+    //   // var el = d3.select("#landing-content");
+    //   // el.selectAll("*").remove();
+    //   // el.append("iframe")
+    //   //   .attr("width", (Math.floor($("#landing-container").width() || $(window).width()) + "px") || "100%")
+    //   //   .attr("height", Math.floor($(window).height()*2) + "px")
+    //   //   // .style("height", "100%")
+    //   //   .on("load", function(){
+    //   //     d3.event.stopPropagation();
+    //   //     d3.event.preventDefault();
+    //   //     let iframe = d3.select(this);
+    //   //     // console.log("load", $(iframe.node()).prop('scrollHeight'), iframe.node().contentWindow.document.body.scrollHeight);
+    //   //     // $("#landing-content iframe").height(iframe.node().contentWindow.document.body.scrollHeight);
+    //   //     iframe.attr("height", iframe.node().contentWindow.document.body.scrollHeight + "px");  
+    //   //   })
+    //   //   .attr("src", html + ".html");
+    // });
 
-    // function addCitiesImg() {
-    //   d3.queue(2)
-    //     .defer(d3.json, `./data/cities.json`)
-    //     .await(function (error, cities) {
-    //       if (error) throw error;
-    //       // console.log(cities);
-    //       let citiesImgWrapper = d3.select("#cities-img-wrapper");
-    //       citiesImgWrapper.selectAll("*").remove();
-    //       cities.map((d) => {
-    //         let cityImgWrapper = citiesImgWrapper.append("div").attr("class", "city-img-wrapper");
-    //         let cityImg = cityImgWrapper.append("div").attr("class", "city-img")
-    //           .on("click", function () {
-    //             $("#landing-content").removeClass("hidden");
-    //             $(".city").text(d.city);
-    //             $("#region-def").text(d.regionDef);
-    //             $("#under-counties-text").text(d.underCountiesText);
-    //             $("#under-traded-text").text(d.underTradedText);
-    //             $("#under-trends-text").text(d.underTrendsText);
-    //             $("#under-network-text").text(d.underNetworkText);
-    //             $("#above-local-text").text(d.aboveLocalText);
-    //             $("#under-local-text").text(d.underLocalText);
-    //             $("#under-swot-text").text(d.underSWOTText);
-    //             d3.select("#counties-img").attr("src", `./img/Counties_${d.city}.gif`);
-    //             loadContent(d.city);
-    //           });
-    //         cityImg.append("img").attr("src", `./img/${d.city.toLowerCase()}.jpg`);
-    //         cityImg.append("p").text(`${d.city}, ${d.state}`);
-    //       });
-    //     });
-    // }
+    addCitiesImg();
 
-    /*
+    function addCitiesImg() {
+      d3.queue(2)
+        .defer(d3.json, `./data/cities.json`)
+        .await(function (error, cities) {
+          if (error) throw error;
+          // console.log(cities);
+          let citiesImgWrapper = d3.select("#cities-img-wrapper");
+          citiesImgWrapper.selectAll("*").remove();
+          cities.map((d) => {
+            let cityImgWrapper = citiesImgWrapper.append("div").attr("class", "city-img-wrapper");
+            let cityImg = cityImgWrapper.append("div").attr("class", "city-img")
+              .on("click", function () {
+                $("#landing-content").removeClass("hidden");
+                window.vibrant.city = d.city
+                // $(".city").text(d.city);
+                // $("#summary-text").html();
+                // $("#region-def").text(d.regionDef);
+                // $("#under-counties-text").text(d.underCountiesText);
+                // $("#under-traded-text").text(d.underTradedText);
+                // $("#under-trends-text").text(d.underTrendsText);
+                // $("#under-network-text").text(d.underNetworkText);
+                // $("#above-local-text").text(d.aboveLocalText);
+                // $("#under-local-text").text(d.underLocalText);
+                // $("#under-swot-text").text(d.underSWOTText);
+                // d3.select("#counties-img").attr("src", `./img/Counties_${d.city}.gif`);
+                let page = 'landing';
+                window.history.pushState({
+                  "page": page,
+                  "city": window.vibrant.city
+                }, page, "?page=" + page+"&city="+window.vibrant.city);
+                loadContent(window.vibrant.city);
+              });
+            cityImg.append("img").attr("src", `./img/${d.city.toLowerCase()}.jpg`);
+            cityImg.append("p").text(`${d.city}, ${d.state}`);
+          });
+
+          if(window.vibrant.city) {
+            loadContent(window.vibrant.city);
+          }
+        });
+    }
+
+
     function loadContent(activeCity) {
-      _loadTraded(activeCity);
-      _loadTrends(activeCity);
-      _loadLocal(activeCity);
-      _loadSwot(activeCity);
-      // setTimeout(()=>{
-      _loadNetworks(activeCity);
-      // }, 1000);
+      $('#landing-content').empty().load("landingcity-" + activeCity.toLowerCase() + ".html", function (d) {
+        // $("#network-wrapper iframe").width($("#landingcity").width());
+
+        // _loadTraded(activeCity);
+
+        // function _loadTraded(activeCity) {
+        //   new BubbleLegend({
+        //     element: d3.select('#traded-bubble-legend div'), //.node(),
+        //     class: "traded-bubble-legend-tooltip"
+        //   });
+
+        //   build(activeCity);
+
+        //   function build(activeCity) {
+        //     d3.queue(2)
+        //       // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
+        //       .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
+        //       .defer(d3.csv, `./data/color_legend2.csv`) //linked to color_legend2 to show you the issue
+        //       .await(function ready(error, master, colors) {
+        //         if (error) throw error;
+
+        //         buildBubble(master, colors);
+        //         // buildTable(master);
+        //       });
+        //   }
+
+        //   function buildBubble(data, colors) {
+        //     const chart = new TradedBubble({
+        //       element: d3.select('#traded-bubble-wrapper'), //document.querySelector('#traded-bubble-wrapper'),
+        //       data: data,
+        //       colors: colors
+        //     });
+        //   }
+        // }
+
+        _loadTraded(activeCity);
+        _loadNetworks(activeCity);
+      });
+      // _loadTraded(activeCity);
+      // // _loadTrends(activeCity);
+      // // _loadLocal(activeCity);
+      // // _loadSwot(activeCity);
+      // // setTimeout(()=>{
+      // _loadNetworks(activeCity);
+      // // }, 1000);
     }
 
     function _loadTraded(activeCity) {
@@ -107,19 +158,19 @@
             if (error) throw error;
 
             buildBubble(master, colors);
-            buildTable(master);
+            // buildTable(master);
           });
       }
 
 
       //Traded: NAICS=naics, Description=Label, Employees=2015, Relative Size=RS_2015, % Total=Pct_Total.
-      function buildTable(data) {
-        const table = new TradedTable({
-          element: d3.select('#traded-table-wrapper'),
-          data: data,
-          count: 25
-        });
-      }
+      // function buildTable(data) {
+      //   const table = new TradedTable({
+      //     element: d3.select('#traded-table-wrapper'),
+      //     data: data,
+      //     count: 25
+      //   });
+      // }
 
 
 
@@ -276,8 +327,8 @@
         });
       }
     }
-    */
-   
+
+
     if ($.isFunction(callback)) {
       callback();
     }

@@ -86,7 +86,7 @@
 }
 
 #framework-container {
-  padding: 50px 50px;
+  padding: 30px 50px;
 }
 
 #framework-wrapper {
@@ -259,7 +259,7 @@
 }
 
 #local-container {
-  padding: 50px 50px;
+  padding: 20px 50px;
 }
 
 #local-wrapper {
@@ -420,7 +420,7 @@
 }
 #network{
   position:relative;
-  margin: 50px;
+  margin: 20px 50px;
   /* width:100%; */
 }
 /* #network-container {
@@ -1712,7 +1712,7 @@ and also iPads specifically.
 
 /* http://www.cssdrive.com/cssautoprefixer/ */
 #swot-container {
-  padding: 50px;
+  padding: 20px 50px;
 }
 
 #swot-wrapper {
@@ -1871,7 +1871,7 @@ element.style {
 }
 
 #traded-container {
-  padding: 50px;
+  padding: 20px 50px;
 }
 
 #traded-wrapper {
@@ -2019,7 +2019,7 @@ element.style {
 }
 
 #trends-container {
-  padding: 50px 50px;
+  padding: 20px 50px;
 }
 
 #trends-wrapper {

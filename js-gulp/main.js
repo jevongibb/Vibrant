@@ -5,7 +5,7 @@ $(function () {
   if (!window.vibrant) {
     window.vibrant = {};
   }
-  window.vibrant.city = 'Austin';
+  window.vibrant.city = '';
   /*
    * this swallows backspace keys on any non-input element.
    * stops backspace -> back
@@ -130,22 +130,22 @@ $(function () {
       },
       nextAjax: undefined
     },
-    "landingcity": {
-      page: "landingcity",
-      nav: undefined,
-      event: window.loadLandingCity,
-      prevAjax: function () {
-        $('#sub-navigation').addClass("hidden");
-        $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
-        $("#container").css('margin-top', "50px");
-        loadingWrapper.addClass("hidden");
-      },
-      nextAjax: function () {
-        $(window).scrollTop(0);
-        window.scrollTo(0, 0);
-        loadingWrapper.addClass("hidden");
-      }
-    },
+    // "landingcity": {
+    //   page: "landingcity",
+    //   nav: undefined,
+    //   event: window.loadLandingCity,
+    //   prevAjax: function () {
+    //     $('#sub-navigation').addClass("hidden");
+    //     $("#page-wrapper").css('height', "inherit").removeClass('no-min-height');
+    //     $("#container").css('margin-top', "50px");
+    //     loadingWrapper.addClass("hidden");
+    //   },
+    //   nextAjax: function () {
+    //     $(window).scrollTop(0);
+    //     window.scrollTo(0, 0);
+    //     loadingWrapper.addClass("hidden");
+    //   }
+    // },
     "framework": {
       page: "framework",
       nav: "graphs",
@@ -280,7 +280,7 @@ $(function () {
 
   window.loadPage = function loadPage(obj, initLoading) {
     var page = obj.page || getParameterByName('page', window.location.search) || "landing";
-    window.vibrant.city = window.vibrant.city || getParameterByName('city', window.location.search) || 'Austin';
+    window.vibrant.city = getParameterByName('city', window.location.search) || window.vibrant.city;// || 'Austin';
     if (page === "nolink") {
       return;
     }
@@ -292,15 +292,17 @@ $(function () {
       return;
     }
 
-    if (page === "landingcity") {
+    // if (page === "landingcity") {
+    //   window.history.pushState({
+    //     "page": page,
+    //     "city": window.vibrant.city
+    //   }, page, "?page=" + page+"&city="+window.vibrant.city);
+    // } else 
+    if (page) {
       window.history.pushState({
         "page": page,
         "city": window.vibrant.city
       }, page, "?page=" + page+"&city="+window.vibrant.city);
-    }else if (page) {
-      window.history.pushState({
-        "page": page,
-      }, page, "?page=" + page);
     } else {
       return;
     }
@@ -315,51 +317,51 @@ $(function () {
       resize(false);
     }
 
-    if (page === "landingcity") {
-      $(document).ready(() => {
-        $('#page-wrapper').empty().load("landingcity-" + window.vibrant.city.toLowerCase() + ".html", function (d) {
-          var activeCity = window.vibrant.city || 'Austin';
+    // if (page === "landingcity") {
+    //   $(document).ready(() => {
+    //     $('#page-wrapper').empty().load("landingcity-" + window.vibrant.city.toLowerCase() + ".html", function (d) {
+    //       var activeCity = window.vibrant.city || 'Austin';
 
-          $("#network-wrapper iframe").width($("#landingcity").width());
+    //       $("#network-wrapper iframe").width($("#landingcity").width());
 
-          _loadTraded(activeCity);
+    //       _loadTraded(activeCity);
 
-          function _loadTraded(activeCity) {
-            new BubbleLegend({
-              element: d3.select('#traded-bubble-legend div'), //.node(),
-              class: "traded-bubble-legend-tooltip"
-            });
+    //       function _loadTraded(activeCity) {
+    //         new BubbleLegend({
+    //           element: d3.select('#traded-bubble-legend div'), //.node(),
+    //           class: "traded-bubble-legend-tooltip"
+    //         });
 
-            build(activeCity);
+    //         build(activeCity);
 
-            function build(activeCity) {
-              d3.queue(2)
-                // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
-                .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
-                .defer(d3.csv, `./data/color_legend2.csv`) //linked to color_legend2 to show you the issue
-                .await(function ready(error, master, colors) {
-                  if (error) throw error;
+    //         function build(activeCity) {
+    //           d3.queue(2)
+    //             // .defer(d3.csv, `./data/${activeCity}_Table.csv`)
+    //             .defer(d3.csv, `./data/${activeCity}_Master_Traded.csv`)
+    //             .defer(d3.csv, `./data/color_legend2.csv`) //linked to color_legend2 to show you the issue
+    //             .await(function ready(error, master, colors) {
+    //               if (error) throw error;
 
-                  buildBubble(master, colors);
-                  // buildTable(master);
-                });
-            }
+    //               buildBubble(master, colors);
+    //               // buildTable(master);
+    //             });
+    //         }
 
-            function buildBubble(data, colors) {
-              const chart = new TradedBubble({
-                element: d3.select('#traded-bubble-wrapper'), //document.querySelector('#traded-bubble-wrapper'),
-                data: data,
-                colors: colors
-              });
-            }
-          }
-          if ($.isFunction(events[page].nextAjax)) {
-            events[page].nextAjax();
-          }
-        });
-      });
-      return;
-    }
+    //         function buildBubble(data, colors) {
+    //           const chart = new TradedBubble({
+    //             element: d3.select('#traded-bubble-wrapper'), //document.querySelector('#traded-bubble-wrapper'),
+    //             data: data,
+    //             colors: colors
+    //           });
+    //         }
+    //       }
+    //       if ($.isFunction(events[page].nextAjax)) {
+    //         events[page].nextAjax();
+    //       }
+    //     });
+    //   });
+    //   return;
+    // }
 
     // d3.select("#page-wrapper").selectAll("*").remove();
     $('#page-wrapper').empty().load(events[page].page + ".html", function (d) { //.replace(/[^0-9#]+/g, '');
