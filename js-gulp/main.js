@@ -294,6 +294,8 @@ $(function () {
 
     if (page === "landing") {
       window.vibrant.city = '';
+    } else {
+      window.vibrant.city = 'Austin';
     }
 
     if (page) {
