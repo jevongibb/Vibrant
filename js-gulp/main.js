@@ -292,9 +292,9 @@ $(function () {
       return;
     }
 
-    if (page === "landing") {
+    if (page === "landing" || page === "network") {
       window.vibrant.city = '';
-    } else {
+    } else{
       window.vibrant.city = 'Austin';
     }
 
