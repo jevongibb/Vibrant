@@ -95,6 +95,9 @@ class TrendsBubble {
     var y = d3.scaleLinear()
       .range([this.height, 0]);
 
+
+    var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d.radius));
+
     // Scale the range of the data in the domains
     const minX = d3.min(this.data, (d) => d["National Trend"]);
     const maxX = d3.max(this.data, (d) => d["National Trend"]);
@@ -104,38 +107,27 @@ class TrendsBubble {
     const maxY = d3.max(this.data, (d) => d["Local Trend"]);
     const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
 
-    const breakXEnd = 0.24 * absMaxX;
-    const breakYEnd = 0.34 * absMaxY;
+    let xEndPercent = 0.22;
+    let yEndPercent = 0.32;
+    let breakXEnd = xEndPercent * absMaxX;
+    let breakYEnd = yEndPercent * absMaxY;
+
+    const breakXPoint = 0.21 * absMaxX;
+    const breakYPoint = 0.31 * absMaxY;
 
     const breakXStart = 0.2 * absMaxX;
     const breakYStart = 0.3 * absMaxY;
+
+    var maxOutsideRadius = 0;
+    that.data.map((d) => {
+      if (d["National Trend"] > breakXStart || d["National Trend"] < -breakXStart || d["Local Trend"] > breakYStart || d["Local Trend"] < -breakYStart) {
+        maxOutsideRadius = +d.radius > maxOutsideRadius ? +d.radius : maxOutsideRadius;
+      }
+    });
     // const newMaxY = 0.3 * maxY;
     // const newMinY = 0.3 * minY;
     // const newMaxX = 0.2 * maxX;
     // const newMinX = 0.2 * minX;
-
-    var line = d3.line()
-      // .x((d) => x(d.x))
-      .x((d) => {
-        if (d.x > breakXStart) {
-          return x(breakXEnd);
-        } else if (d.x < -breakXStart) {
-          return x(-breakXEnd);
-        } else {
-          return x(d.x);
-        }
-      })
-      .y((d) => {
-        if (d.y > breakYStart) {
-          return y(breakYEnd);
-        } else if (d.y < -breakYStart) {
-          return y(-breakYEnd);
-        } else {
-          return y(d.y);
-        }
-      });
-    var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d.radius));
-
 
     // y.domain([-this.absMaxY, +this.absMaxY]);
     // if (this.absMaxY > 0.5) {
@@ -146,6 +138,46 @@ class TrendsBubble {
 
     x.domain([-breakXEnd, breakXEnd]);
     y.domain([-breakYEnd, breakYEnd]);
+    var i = 6;
+    while (i > 0) {
+      if ((x(breakXEnd) - x(breakXPoint)) > radius(maxOutsideRadius) &&
+        (y(breakYPoint) - y(breakYEnd)) > radius(maxOutsideRadius)) {
+        i = 0;
+      } else {
+        xEndPercent = xEndPercent + 0.01;
+        yEndPercent = yEndPercent + 0.01;
+        breakXEnd = xEndPercent * absMaxX;
+        breakYEnd = yEndPercent * absMaxY;
+        x.domain([-breakXEnd, breakXEnd]);
+        y.domain([-breakYEnd, breakYEnd]);
+        i--;
+      }
+    }
+    // console.log(xEndPercent, yEndPercent)
+    // console.log(radius(maxOutsideRadiusCircles), x(breakXEnd)-x(breakXPoint))
+
+    var line = d3.line()
+      // .x((d) => x(d.x))
+      .x((d) => {
+        if (d.x > breakXStart) {
+          return x(breakXPoint);
+        } else if (d.x < -breakXStart) {
+          return x(-breakXPoint);
+        } else {
+          return x(d.x);
+        }
+      })
+      .y((d) => {
+        if (d.y > breakYStart) {
+          return y(breakYPoint);
+        } else if (d.y < -breakYStart) {
+          return y(-breakYPoint);
+        } else {
+          return y(d.y);
+        }
+      });
+
+
 
     // let absMin = Math.min(this.absMaxY, this.absMaxX);
     // console.log(this.year)
@@ -228,21 +260,21 @@ class TrendsBubble {
     this.container.append("circle")
       .attr('class', 'more-than-y-max')
       .attr("cx", x(0))
-      .attr("cy", 12.5)
+      .attr("cy", y(breakYStart) + 2.5) //12.5)
       .attr("r", 2);
     this.container.append("line")
       .attr('class', 'more-than-y-max')
       .attr("x1", x(0) - 5)
       .attr("x2", x(0) + 5)
-      .attr("y1", 10 + 5)
-      .attr("y2", 10 - 5);
+      .attr("y1", y(breakYStart) + 5) //10 + 5)
+      .attr("y2", y(breakYStart) - 5); //10 - 5);
     this.container.append("line")
       .attr('class', 'more-than-y-max')
       .attr("x1", x(0) - 5)
       .attr("x2", x(0) + 5)
-      .attr("y1", 15 + 5)
-      .attr("y2", 15 - 5);
-      
+      .attr("y1", y(breakYStart) + 5 + 5) //15 + 5)
+      .attr("y2", y(breakYStart) - 5 + 5); //15 - 5);
+
     this.container.append("text")
       .attr("class", "less-than-y-min")
       .attr("y", this.height)
@@ -251,66 +283,66 @@ class TrendsBubble {
     this.container.append("circle")
       .attr('class', 'less-than-y-min')
       .attr("cx", x(0))
-      .attr("cy", this.height - 12.5)
+      .attr("cy", y(-breakYStart) - 2.5) //this.height - 12.5)
       .attr("r", 2);
     this.container.append("line")
       .attr('class', 'less-than-y-min')
       .attr("x1", x(0) - 5)
       .attr("x2", x(0) + 5)
-      .attr("y1", this.height - 10 + 5)
-      .attr("y2", this.height - 10 - 5);
+      .attr("y1", y(-breakYStart) + 5) //this.height - 10 + 5)
+      .attr("y2", y(-breakYStart) - 5); //this.height - 10 - 5);
     this.container.append("line")
       .attr('class', 'less-than-y-min')
       .attr("x1", x(0) - 5)
       .attr("x2", x(0) + 5)
-      .attr("y1", this.height - 15 + 5)
-      .attr("y2", this.height - 15 - 5);
+      .attr("y1", y(-breakYStart) + 5 - 5) //this.height - 15 + 5)
+      .attr("y2", y(-breakYStart) - 5 - 5); //this.height - 15 - 5);
 
     this.container.append("text")
       .attr("class", "more-than-x-max")
-      .attr("y", this.height+10)
-      .attr("x", this.width-26)
+      .attr("y", this.height + 10)
+      .attr("x", this.width - 26)
       .text(">20%");
     this.container.append("circle")
       .attr('class', 'more-than-x-max')
       .attr("cy", y(0))
-      .attr("cx", this.width-12.5)
+      .attr("cx", x(breakXStart) + 2.5) //this.width-12.5)
       .attr("r", 2);
     this.container.append("line")
       .attr('class', 'more-than-x-max')
       .attr("y1", y(0) - 5)
       .attr("y2", y(0) + 5)
-      .attr("x1", this.width-10 + 5)
-      .attr("x2", this.width-10 - 5);
+      .attr("x1", x(breakXStart) + 5) //this.width-10 + 5)
+      .attr("x2", x(breakXStart) - 5); //this.width-10 - 5);
     this.container.append("line")
       .attr('class', 'more-than-x-max')
       .attr("y1", y(0) - 5)
       .attr("y2", y(0) + 5)
-      .attr("x1", this.width-15 + 5)
-      .attr("x2", this.width-15 - 5);
+      .attr("x1", x(breakXStart) + 5 + 5) //this.width-15 + 5)
+      .attr("x2", x(breakXStart) - 5 + 5); //this.width-15 - 5);
 
-      this.container.append("text")
-        .attr("class", "less-than-x-min")
-        .attr("y", this.height+10)
-        .attr("x", 0)
-        .text("<-20%");
-      this.container.append("circle")
-        .attr('class', 'less-than-x-min')
-        .attr("cy", y(0))
-        .attr("cx", 12.5)
-        .attr("r", 2);
-      this.container.append("line")
-        .attr('class', 'less-than-x-min')
-        .attr("y1", y(0) - 5)
-        .attr("y2", y(0) + 5)
-        .attr("x1", 10 + 5)
-        .attr("x2", 10 - 5);
-      this.container.append("line")
-        .attr('class', 'less-than-x-min')
-        .attr("y1", y(0) - 5)
-        .attr("y2", y(0) + 5)
-        .attr("x1", 15 + 5)
-        .attr("x2", 15 - 5);
+    this.container.append("text")
+      .attr("class", "less-than-x-min")
+      .attr("y", this.height + 10)
+      .attr("x", 0)
+      .text("<-20%");
+    this.container.append("circle")
+      .attr('class', 'less-than-x-min')
+      .attr("cy", y(0))
+      .attr("cx", x(-breakXStart) - 2.5) //12.5)
+      .attr("r", 2);
+    this.container.append("line")
+      .attr('class', 'less-than-x-min')
+      .attr("y1", y(0) - 5)
+      .attr("y2", y(0) + 5)
+      .attr("x1", x(-breakXStart) + 5) //10 + 5)
+      .attr("x2", x(-breakXStart) - 5); //10 - 5);
+    this.container.append("line")
+      .attr('class', 'less-than-x-min')
+      .attr("y1", y(0) - 5)
+      .attr("y2", y(0) + 5)
+      .attr("x1", x(-breakXStart) + 5 - 5) //15 + 5)
+      .attr("x2", x(-breakXStart) - 5 - 5); //15 - 5);
 
     // this.container.append("line")
     //   .attr('class', 'less-than-y-min')
@@ -351,18 +383,18 @@ class TrendsBubble {
       .attr('clip-path', 'url(#line-clip)')
       .attr("cx", (d) => {
         if (d["National Trend"] > breakXStart) {
-          return x(breakXEnd);
+          return x(breakXPoint);
         } else if (d["National Trend"] < -breakXStart) {
-          return x(-breakXEnd);
+          return x(-breakXPoint);
         } else {
           return x(d["National Trend"]);
         }
       })
       .attr("cy", (d) => {
         if (d["Local Trend"] > breakYStart) {
-          return y(breakYEnd);
+          return y(breakYPoint);
         } else if (d["Local Trend"] < -breakYStart) {
-          return y(-breakYEnd);
+          return y(-breakYPoint);
         } else {
           return y(d["Local Trend"]);
         }
