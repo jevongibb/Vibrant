@@ -22,9 +22,9 @@ class TrendsBubble {
     this.height = min;
     this.margin = {
       top: 40,
-      right: 40,
+      right: 30,
       bottom: 40,
-      left: 40
+      left: 50
     };
     this.width = this.width - (this.margin.left + this.margin.right);
     this.height = this.height - (this.margin.top + this.margin.bottom);
@@ -201,9 +201,8 @@ class TrendsBubble {
         if (d > breakXStart || d < -breakXStart) {
           return "";
         }
-        return d;
-
-      })); //.tickFormat((d) => (d * 100).toFixed(0) + "%")); //https://bl.ocks.org/mbostock/9764126
+        return (100*(+d)/this.absMaxX).toFixed(1)+"%";
+      }).ticks(6)); //.tickFormat((d) => (d * 100).toFixed(0) + "%")); //https://bl.ocks.org/mbostock/9764126
 
     // add the y Axis
     this.container.append("g")
@@ -213,7 +212,7 @@ class TrendsBubble {
         if (d > breakYStart || d < -breakYStart) {
           return "";
         }
-        return d;
+        return (100*(+d)/this.absMaxY).toFixed(1)+"%";
       })); ////.tickFormat((d) => d == maxYLimit ? "" : (d * 100).toFixed(0) + "%"));
 
     this.container.append("rect")
@@ -301,7 +300,7 @@ class TrendsBubble {
     this.container.append("text")
       .attr("class", "more-than-x-max")
       .attr("y", this.height + 10)
-      .attr("x", this.width - 26 + 10)
+      .attr("x", this.width - 26)
       .text(">20%");
     this.container.append("circle")
       .attr('class', 'more-than-x-max')
@@ -324,7 +323,7 @@ class TrendsBubble {
     this.container.append("text")
       .attr("class", "less-than-x-min")
       .attr("y", this.height + 10)
-      .attr("x", -10)
+      .attr("x", 0)
       .text("<-20%");
     this.container.append("circle")
       .attr('class', 'less-than-x-min')
