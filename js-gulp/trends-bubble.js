@@ -201,7 +201,7 @@ class TrendsBubble {
         if (d > breakXStart || d < -breakXStart) {
           return "";
         }
-        return (100*(+d)/this.absMaxX).toFixed(1)+"%";
+        return (100*(+d)/this.absMaxX).toFixed(0)+"%";
       }).ticks(6)); //.tickFormat((d) => (d * 100).toFixed(0) + "%")); //https://bl.ocks.org/mbostock/9764126
 
     // add the y Axis
@@ -212,7 +212,7 @@ class TrendsBubble {
         if (d > breakYStart || d < -breakYStart) {
           return "";
         }
-        return (100*(+d)/this.absMaxY).toFixed(1)+"%";
+        return (100*(+d)/this.absMaxY).toFixed(0)+"%";
       })); ////.tickFormat((d) => d == maxYLimit ? "" : (d * 100).toFixed(0) + "%"));
 
     this.container.append("rect")
