@@ -99,14 +99,14 @@ class TrendsTable {
 
     years.map((year) => {
       let bubbleByYearSliced = bubbleByYear[year].slice(0, 50);
-      // let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
-      // let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
-      // absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
+      let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
+      let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
+      absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
       let minY = d3.min(bubbleByYearSliced, (d) => d["Local Trend"]);
       let maxY = d3.max(bubbleByYearSliced, (d) => d["Local Trend"]);
       absMaxY = Math.max(absMaxY, Math.max(Math.abs(minY), Math.abs(maxY)));
     });
-    absMaxX = 0.5;
+    // absMaxX = 0.5;
     // console.log(absMaxX, absMaxY);
 
     $("#trends-time")
@@ -271,14 +271,14 @@ class TrendsTable {
         var absMaxY = 0;
         bubbleObj.years.map((year) => {
           let bubbleByYearSliced = bubbleObj.bubbleByYear[year].slice(0, 50);
-          // let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
-          // let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
-          // absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
+          let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
+          let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
+          absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
           let minY = d3.min(bubbleByYearSliced, (d) => d["Local Trend"]);
           let maxY = d3.max(bubbleByYearSliced, (d) => d["Local Trend"]);
           absMaxY = Math.max(absMaxY, Math.max(Math.abs(minY), Math.abs(maxY)));
         });
-        absMaxX = 0.5;
+        // absMaxX = 0.5;
         bubbleObj.absMaxX = absMaxX;
         bubbleObj.absMaxY = absMaxY;
         buildBubble(bubbleObj); //buildBubble, bubbleObj = { bubbleByYear, years, year:selectedYear, yearLabel:selectedYear, absMaxX, absMaxY};

@@ -99,24 +99,24 @@ class TrendsBubble {
     var radius = d3.scaleLinear().range([2, 18]).domain(d3.extent(that.data, (d) => +d.radius));
 
     // Scale the range of the data in the domains
-    const minX = d3.min(this.data, (d) => d["National Trend"]);
-    const maxX = d3.max(this.data, (d) => d["National Trend"]);
-    const absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
-    // x.domain([-this.absMaxX, +this.absMaxX]);
-    const minY = d3.min(this.data, (d) => d["Local Trend"]);
-    const maxY = d3.max(this.data, (d) => d["Local Trend"]);
-    const absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
+    // const minX = d3.min(this.data, (d) => d["National Trend"]);
+    // const maxX = d3.max(this.data, (d) => d["National Trend"]);
+    // this.absMaxX = Math.max(Math.abs(minX), Math.abs(maxX))
+    // // x.domain([-this.absMaxX, +this.absMaxX]);
+    // const minY = d3.min(this.data, (d) => d["Local Trend"]);
+    // const maxY = d3.max(this.data, (d) => d["Local Trend"]);
+    // this.absMaxY = Math.max(Math.abs(minY), Math.abs(maxY))
 
-    let xEndPercent = 0.22;
-    let yEndPercent = 0.32;
-    let breakXEnd = xEndPercent * absMaxX;
-    let breakYEnd = yEndPercent * absMaxY;
+    let xEndPercent = 0.225;
+    let yEndPercent = 0.325;
+    let breakXEnd = xEndPercent * this.absMaxX;
+    let breakYEnd = yEndPercent * this.absMaxY;
 
-    const breakXPoint = 0.21 * absMaxX;
-    const breakYPoint = 0.31 * absMaxY;
+    const breakXPoint = 0.21 * this.absMaxX;
+    const breakYPoint = 0.31 * this.absMaxY;
 
-    const breakXStart = 0.2 * absMaxX;
-    const breakYStart = 0.3 * absMaxY;
+    const breakXStart = 0.2 * this.absMaxX;
+    const breakYStart = 0.3 * this.absMaxY;
 
     var maxOutsideRadius = 0;
     that.data.map((d) => {
@@ -146,8 +146,8 @@ class TrendsBubble {
       } else {
         xEndPercent = xEndPercent + 0.01;
         yEndPercent = yEndPercent + 0.01;
-        breakXEnd = xEndPercent * absMaxX;
-        breakYEnd = yEndPercent * absMaxY;
+        breakXEnd = xEndPercent * this.absMaxX;
+        breakYEnd = yEndPercent * this.absMaxY;
         x.domain([-breakXEnd, breakXEnd]);
         y.domain([-breakYEnd, breakYEnd]);
         i--;
@@ -301,7 +301,7 @@ class TrendsBubble {
     this.container.append("text")
       .attr("class", "more-than-x-max")
       .attr("y", this.height + 10)
-      .attr("x", this.width - 26)
+      .attr("x", this.width - 26 + 10)
       .text(">20%");
     this.container.append("circle")
       .attr('class', 'more-than-x-max')
@@ -324,7 +324,7 @@ class TrendsBubble {
     this.container.append("text")
       .attr("class", "less-than-x-min")
       .attr("y", this.height + 10)
-      .attr("x", 0)
+      .attr("x", -10)
       .text("<-20%");
     this.container.append("circle")
       .attr('class', 'less-than-x-min')

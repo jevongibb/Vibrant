@@ -57,6 +57,7 @@
 
     function buildBubble(bubbleObj) { //bubbleByYear, years, year, yearLabel, absMaxX, absMaxY
       let bubbleByYearSliced = bubbleObj.bubbleByYear[bubbleObj.year].slice(0, 50);
+      // console.log(bubbleObj);
       const chart = new TrendsBubble({
         element: d3.select('#trends-bubble-wrapper').node(), //document.querySelector('#trends-bubble-wrapper'),
         data: bubbleByYearSliced,
