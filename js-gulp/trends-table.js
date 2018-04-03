@@ -42,9 +42,9 @@ class TrendsTable {
       bubbleByYear[year] = [];
       return year;
     });
-    const handleYear = undefined;//years[years.length - 1] + 1;// => removed 2016===2020
-    // years.push(handleYear);
-    // bubbleByYear[handleYear] = [];
+    const handleYear = years[years.length - 1] + 1;
+    years.push(handleYear);
+    bubbleByYear[handleYear] = [];
 
     years.sort((a, b) => a - b);
     // console.log(years, bubbleByYear);
@@ -83,21 +83,14 @@ class TrendsTable {
         bubbleByYear[year].push(obj.year)
       });
 
-      var _data = {};
-      _data["Industry"] = d["Label"];
-      _data["Employees"] = setNumberFormat(d["2015"]);
-      _data["Relative Size"] = (+d["RS_2015"]).toFixed(2);
-      _data["Local Trend ("+years[years.length-1]+")"] = setNumberFormat(+d["L_T_" + years[years.length-1] || 0]);
-      _data["Nat’l Trend ("+years[years.length-1]+")"] = setNumberFormat(+d["N_T_" + years[years.length-1] || 0]);
-      data.push(_data);
-      // data.push({
-      //   // "bubbleByYear": obj,
-      //   "Industry": d["Label"],
-      //   "Employees": setNumberFormat(d["2015"]), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
-      //   "Relative Size": (+d["RS_2015"]).toFixed(2), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
-      //   "Local Trend (2020)": (+d["Local_Trend"] * 100).toFixed(2) + "%",
-      //   "Nat’l Trend (2020)": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
-      // });
+      data.push({
+        // "bubbleByYear": obj,
+        "Industry": d["Label"],
+        "Employees": setNumberFormat(d["2015"]), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
+        "Relative Size": (+d["RS_2015"]).toFixed(2), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
+        "Local Trend (2020)": (+d["Local_Trend"] * 100).toFixed(2) + "%",
+        "Nat’l Trend (2020)": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
+      });
     });
 
     // data.sort((a, b) => +b['Employees'].replace(/[^0-9]+/g, '') - +a['Employees'].replace(/[^0-9]+/g, ''));//for table
@@ -106,8 +99,8 @@ class TrendsTable {
 
     years.map((year) => {
       let bubbleByYearSliced = bubbleByYear[year].slice(0, 50);
-      let minX = d3.min(bubbleByYearSliced, (d) => d["National Trend"]);
-      let maxX = d3.max(bubbleByYearSliced, (d) => d["National Trend"]);
+      let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
+      let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
       absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
       let minY = d3.min(bubbleByYearSliced, (d) => d["Local Trend"]);
       let maxY = d3.max(bubbleByYearSliced, (d) => d["Local Trend"]);
@@ -277,10 +270,9 @@ class TrendsTable {
         var absMaxX = 0;
         var absMaxY = 0;
         bubbleObj.years.map((year) => {
-          // console.log(year, bubbleObj);
           let bubbleByYearSliced = bubbleObj.bubbleByYear[year].slice(0, 50);
-          let minX = d3.min(bubbleByYearSliced, (d) => d["National Trend"]);
-          let maxX = d3.max(bubbleByYearSliced, (d) => d["National Trend"]);
+          let minX = d3.min(bubbleByYear[year], (d) => d["National Trend"]);
+          let maxX = d3.max(bubbleByYear[year], (d) => d["National Trend"]);
           absMaxX = Math.max(absMaxX, Math.max(Math.abs(minX), Math.abs(maxX)));
           let minY = d3.min(bubbleByYearSliced, (d) => d["Local Trend"]);
           let maxY = d3.max(bubbleByYearSliced, (d) => d["Local Trend"]);
