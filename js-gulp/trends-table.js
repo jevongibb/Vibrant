@@ -83,21 +83,21 @@ class TrendsTable {
         bubbleByYear[year].push(obj.year)
       });
 
-      var _data = {};
-      _data["Industry"] = d["Label"];
-      _data["Employees"] = setNumberFormat(d["2015"]);
-      _data["Relative Size"] = (+d["RS_2015"]).toFixed(2);
-      _data["Local Trend ("+years[years.length-1]+")"] = setNumberFormat(+d["L_T_" + years[years.length-1] || 0]);
-      _data["Nat’l Trend ("+years[years.length-1]+")"] = setNumberFormat(+d["N_T_" + years[years.length-1] || 0]);
-      data.push(_data);
-      // data.push({
-      //   // "bubbleByYear": obj,
-      //   "Industry": d["Label"],
-      //   "Employees": setNumberFormat(d["2015"]), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
-      //   "Relative Size": (+d["RS_2015"]).toFixed(2), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
-      //   "Local Trend (2020)": (+d["Local_Trend"] * 100).toFixed(2) + "%",
-      //   "Nat’l Trend (2020)": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
-      // });
+      // var _data = {};
+      // _data["Industry"] = d["Label"];
+      // _data["Employees"] = setNumberFormat(d["2015"]);
+      // _data["Relative Size"] = (+d["RS_2015"]).toFixed(2);
+      // _data["Local Trend ("+years[years.length-1]+")"] = setNumberFormat(+d["L_T_" + years[years.length-1] || 0]);
+      // _data["Nat’l Trend ("+years[years.length-1]+")"] = setNumberFormat(+d["N_T_" + years[years.length-1] || 0]);
+      // data.push(_data);
+      data.push({
+        // "bubbleByYear": obj,
+        "Industry": d["Label"],
+        "Employees": setNumberFormat(d["2015"]), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Employees"] : "",
+        "Relative Size": (+d["RS_2015"]).toFixed(2), //tableByNaics[d.naics] ? tableByNaics[d.naics]["Relative Size (RS)"] : (""+i),
+        "Local Trend (2020)": (+d["Local_Trend"] * 100).toFixed(2) + "%",
+        "Nat’l Trend (2020)": (+d["Natl_Trend"] * 100).toFixed(2) + "%"
+      });
     });
 
     // data.sort((a, b) => +b['Employees'].replace(/[^0-9]+/g, '') - +a['Employees'].replace(/[^0-9]+/g, ''));//for table
