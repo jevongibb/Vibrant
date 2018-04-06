@@ -1,0 +1,80 @@
+<div id="network">
+
+  <div id="network-other-container">
+    <br>
+    <br>
+    <div class="process-step-wrapper">
+      <h1 class="process-step">3) How the industries are connected</h1>
+      <img class="process-img" src="img/process3.gif">
+    </div>
+    <br>
+    <p class="process-explanation">The network map below takes the circles from Step 1 and spreads them out on a network map based on their similarity to
+      each other. More similar industries are closer, and connections reflect a strong relationship between industries. All
+      nodes/circles are sized based upon number of employees, but nodes with a Relative Size less than 0.5 are colored gray,
+      so that we can focus on the industries with more activity that define a region. Using this network map, we can see
+      which new industries are reasonable targets, and create strategies to expand from existing activities to new ones.</p>
+    <br><br>
+    <div class="expandable-collapsible">
+    <p class="expandable">Click Here To See More Instructions</p>
+    <p class="collapsible"><br>You can zoom into parts of the map by clicking the zoom icons. You can click on nodes to see their connections, and to
+      see other data such as number of employees, average salary, and growth trends for the industry. You can also toggle
+      between the "Local View", which only lights up nodes with Relative Size greater than 0.5 and scales the nodes using
+      local employment numbers, and the "National View", which lights up all nodes and scales the nodes using national employment
+      numbers.
+      <br>
+      <br>Because this graph attempts to visualize a 675-dimension matrix in 2 dimensions, some of the industries might seem
+      closer or further from "similar" industries than they should. Nevertheless, by only looking at the data from above,
+      we see industries group into clusters. Of note, I do not color-code by cluster. Once we group clusters into networks,
+      the clusters become less relevant. Instead, I used 9 colors that the human eye can easily identify and linked them
+      to the 9 single-digit NAICS categories.
+      <br>
+      <br>Finally, this graph combines all four factors to determine similarity (employment, establishments, occupation composition,
+      and inputs/outputs). We can adjust the graph to determine similarity by only one factor, or by a different combination
+      of factors.</p>
+  </div>
+    <p class="expand-instruction">
+    <br>
+    <br>
+    <div class="hed-dek-wrapper">
+      <h1 class="hed">How
+        <span class="city"></span>'s industries are connected to each other</h1>
+      <h3 class="dek">A network map that positions industries and clusters based on their similarity</h3>
+      <div class="dropdown-wrapper">
+        <div class="dropdown-visible">
+          <div class="dropdown-text">
+            <span class="dropdown-value">National</span>
+            <i class="fa fa-angle-down" aria-hidden="true" style="margin-left:5px;"></i>
+          </div>
+        </div>
+        <div class="dropdown-hidden" style="visibility:hidden;">
+          <p class="dropdown-item" data-value="National">National</p>
+          <p class="dropdown-item" data-value="Austin">Austin</p>
+          <p class="dropdown-item" data-value="Tupelo">Tupelo</p>
+          <p class="dropdown-item" data-value="Detroit">Detroit</p>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+  
+  <br>
+  
+  <br>
+
+
+  <div id="network-container">
+    <!-- <div id="network-bubble-legend">
+      <div>
+      </div>
+    </div>
+    <div id="network-bubble-scale">
+      <div>
+        <img src="img dump/scale.png" alt="scale">
+        <p>Size by # Employees</p>
+      </div>
+    </div> -->
+    <div id="network-wrapper">
+    </div>
+  </div>
+
+</div>

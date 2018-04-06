@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Vibrant Networks</title>
+
+  <!-- <link href="./dist/public.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="./css/styles.css" rel="stylesheet" type="text/css">
+  <!-- <link href="./css/style2.css" rel="stylesheet" type="text/css"> -->
+  <link href="./css/traded.css" rel="stylesheet" type="text/css">
+  <link href="./css/local.css" rel="stylesheet" type="text/css">
+  <link href="./css/network.css" rel="stylesheet" type="text/css">
+  <link href="./css/swot.css" rel="stylesheet" type="text/css">
+  <link href="./css/trends.css" rel="stylesheet" type="text/css">
+  <link href="./css/landing.css" rel="stylesheet" type="text/css">
+  <link href="./css/framework.css" rel="stylesheet" type="text/css">
+  <link href="./css/contact.css" rel="stylesheet" type="text/css">
+  <!-- <link href="./css/tablet.css" rel="stylesheet" type="text/css"> -->
+
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon-57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon-72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon-76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon-114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon-120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon-144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon-152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png" />
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <div id="header">
+      <nav id="navigation">
+        <p class="brand"><a href="/?page=landing" data-link-to="landing" class="link-to">VIBRANT</a></p>
+        <div class="logo-wrapper">
+          <img src="img/logo_white.png" alt="logo" class="logo">
+        </div>
+        <p>
+          <a href="#" class="link-to link-to-graphs" data-link-to="framework">Graphs</a>
+        </p>
+        <p>
+          <a href="#" class="link-to link-to-blog" data-link-to="blog">Blog</a>
+        </p>
+        <p>
+          <a href="#" class="link-to link-to-contact" data-link-to="contact">Contact</a>
+        </p>
+      </nav>
+      <div id="sub-navigation-wrapper">
+        <nav id="sub-navigation">
+          <p>
+            <a href="#" class="link-to link-to-framework" data-link-to="framework">Framework</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-traded" data-link-to="traded">Traded</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-local" data-link-to="local">Local</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-trends" data-link-to="trends">Trends</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-network" data-link-to="network">Network</a>
+          </p>
+          <p>
+            <a href="#" class="link-to link-to-swot" data-link-to="swot">SWOT</a>
+          </p>
+        </nav>
+      </div>
+    </div>
+
+    <div class="information-tooltip" style="visibility:hidden">Relative Size compares the percent size of the industry in the local economy with the percent size of the industry in the national economy. A value of 1 means that the local industry is average sized. A value of 10 means that it is 10 times the average size. This is also called Location Quotient or Relative Comparative Advantage.</div>
+
+    <main id="container">
+      <section id="page-wrapper"></section>
+      <div id="loading-wrapper">
+        <div class="sk-circle">
+          <div class="sk-circle1 sk-child"></div>
+          <div class="sk-circle2 sk-child"></div>
+          <div class="sk-circle3 sk-child"></div>
+          <div class="sk-circle4 sk-child"></div>
+          <div class="sk-circle5 sk-child"></div>
+          <div class="sk-circle6 sk-child"></div>
+          <div class="sk-circle7 sk-child"></div>
+          <div class="sk-circle8 sk-child"></div>
+          <div class="sk-circle9 sk-child"></div>
+          <div class="sk-circle10 sk-child"></div>
+          <div class="sk-circle11 sk-child"></div>
+          <div class="sk-circle12 sk-child"></div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer">
+      <p>© 2018, Vibrant Networks</p>
+    </div>
+
+    <script src="./lib/jquery.v3.min.js"></script>
+    <script src="./lib/d3.v4.min.js"></script>
+
+    <!-- <script src="./dist/public.min.js"></script> -->
+    <script src="./js-gulp/bubble-legend.js"></script>
+
+    <script src="./js-gulp/traded-bubble.js"></script>
+    <script src="./js-gulp/traded-table.js"></script>
+    <script src="./js-gulp/load-traded.js"></script>
+
+    <script src="./js-gulp/local-bubble.js"></script>
+    <script src="./js-gulp/local-table.js"></script>
+    <script src="./js-gulp/load-local.js"></script>
+    
+    <script src="./js-gulp/load-network.js"></script>
+
+    <script src="./js-gulp/swot-table.js"></script>
+    <script src="./js-gulp/load-swot.js"></script>
+
+    <script src="./js-gulp/trends-bubble.js"></script>
+    <script src="./js-gulp/trends-table.js"></script>
+    <script src="./js-gulp/load-trends.js"></script>
+    
+    <script src="./js-gulp/load-framework.js"></script>
+
+    <script src="./js-gulp/load-landing.js"></script>
+    <script src="./js-gulp/main.js"></script>
+
+</html>
