@@ -1,0 +1,162 @@
+#swot-page{
+  position:relative;
+}
+
+/* http://www.cssdrive.com/cssautoprefixer/ */
+#swot-container {
+  padding: 20px 50px;
+}
+
+#swot-wrapper {
+  margin-top: 0px;
+  width: 100%;
+}
+
+#swot-tables-wrapper {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-between;
+      -ms-flex-pack: space-between;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  padding: 20px 0;
+}
+
+.swot-table-wrapper {
+  width: 49%;
+  margin: 20px 0;
+}
+
+@media (max-width: 700px) {
+  .swot-table-wrapper {
+    width: 98% !important;
+  }
+}
+
+.swot-table-wrapper th,
+.swot-table-wrapper td {
+  color: #000;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  min-height: 18px;
+  /* white-space: nowrap; */
+}
+
+.swot-table-wrapper caption {
+  color: #fff;
+  width: 100%;
+  padding: 6px 0;
+}
+/* .swot-table-wrapper tbody td{
+  width: 25%;
+} */
+.content-cutted{
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+element.style {
+}
+/* #wrapper * {
+
+} */
+
+
+.swot-table-wrapper .caption{
+  padding: 6px;
+  text-align: center;
+  color:#fff;
+  /* width: 100%; */
+}
+.swot-table-wrapper .thead{
+  width: 100%;
+}
+.swot-table-wrapper .thead .tr{
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.swot-table-wrapper .thead .th{
+  padding: 8px 4px;
+  font-weight: bold;
+  color: #000;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    min-height: 18px;
+}
+.swot-table-wrapper .tbody{
+  width: 100%;
+}
+.swot-table-wrapper .tbody .tr{
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.swot-table-wrapper .tbody .td{
+  padding: 6px 4px;
+  color: #000;
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  min-height: 18px;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(1),
+.swot-table-wrapper .tbody .tr .td:nth-child(1){
+  width: 55%;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(2),
+.swot-table-wrapper .tbody .tr .td:nth-child(2){
+  width: 15%;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(3),
+.swot-table-wrapper .tbody .tr .td:nth-child(3){
+  width: 15%;
+}
+.swot-table-wrapper .thead .tr .th:nth-child(4),
+.swot-table-wrapper .tbody .tr .td:nth-child(4){
+  width: 15%;
+}
+
+.hed-dek-wrapper{
+  position: relative;
+}
+
+.hed {
+  text-align: center;
+}
+
+.dek {
+  text-align: center; 
+}
+
+.hed-dek-wrapper .dropdown-wrapper{
+  margin: 0 !important;
+}

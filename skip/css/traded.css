@@ -1,0 +1,157 @@
+#traded-page{
+  position:relative;
+}
+
+#traded-container {
+  padding: 20px 50px;
+}
+
+#traded-wrapper {
+  margin-top: 0px;
+  width: 100%;
+  /* display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap; */
+}
+
+#traded-bubble-wrapper {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#traded-bubble-wrapper .traded-bubble-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+
+
+#traded-bubble-legend {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 50px;
+  right: -50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+}
+
+#traded-bubble-scale {
+  position: absolute;
+  z-index: 2;
+  bottom: 80px;
+  right: -50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+#traded-bubble-scale img {
+  width: 30px;
+}
+
+#traded-bubble-scale p {
+  margin: 0;
+  font-size: 8px;
+  text-align: center;
+  width: 40px;
+}
+
+#traded-bubble-legend div {
+  position: relative
+}
+
+#traded-bubble-legend img {
+  cursor: pointer;
+  width: 20px;
+  padding: 0 10px;
+  max-height: 25px;
+}
+
+#traded-bubble-legend .traded-bubble-legend-tooltip {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 6px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-family: sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#traded-table-wrapper {
+  margin: 20px 0;
+  position: relative;
+}
+
+#traded-table-search {
+  /* height: 30px; */
+  padding: 5px;
+}
+
+#traded-table-search:focus,
+#traded-table-search:hover {
+  outline: none;
+}
+
+.hed-dek-wrapper{
+  position: relative;
+}
+
+.hed {
+  text-align: center;
+}
+
+.dek {
+  text-align: center; 
+}
+
+.hed-dek-wrapper .dropdown-wrapper{
+  margin: 0 !important;
+}
